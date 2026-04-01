@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+<meta charset="UTF-8">
+<title>דירוג נהג</title>
+<style>
+  body {
+    font-family: Arial;
+    text-align: center;
+    background: #f5f5f5;
+    padding-top: 50px;
+  }
+  h2 { margin-bottom: 30px; }
+  .star {
+    font-size: 50px;
+    cursor: pointer;
+    color: #ccc;
+  }
+  .star:hover,
+  .star.active {
+    color: gold;
+  }
+</style>
+</head>
+<body>
+
+<h2>איך היה השירות?</h2>
+
+<div id="stars">
+  <span class="star" onclick="rate(1)">★</span>
+  <span class="star" onclick="rate(2)">★</span>
+  <span class="star" onclick="rate(3)">★</span>
+  <span class="star" onclick="rate(4)">★</span>
+  <span class="star" onclick="rate(5)">★</span>
+</div>
+
+<p id="msg"></p>
+
+<script>
+function rate(stars) {
+  document.querySelectorAll('.star').forEach((s, i) => {
+    s.classList.toggle('active', i < stars);
+  });
+
+  // שליחה לשרת (אפשר לשנות)
+  fetch("https://your-server.com/rate?stars=" + stars);
+
+  document.getElementById("msg").innerText = "תודה רבה 🙏";
+}
+</script>
+
+</body>
+</html>
