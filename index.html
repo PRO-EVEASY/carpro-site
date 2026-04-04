@@ -75,15 +75,17 @@
 
 <!-- VIDEO -->
 <div style="text-align:center;margin:40px;">
-<h2>מה אנחנו עושים?</h2><div style="font-size:30px;animation:arrow 1.5s infinite;">⬇</div>
-<div style="font-size:30px;">⬇</div>
-
-<video controls style="width:90%;max-width:600px;border-radius:15px;">
+<h2>מה אנחנו עושים?</h2>
+<div class="arrow-center">⬇</div>
+<div class="video-row">
+<video autoplay muted loop playsinline>
+<source src="eveasynew.mp4" type="video/mp4">
+</video>
+<video controls>
 <source src="eveasy.mp4" type="video/mp4">
 </video>
-<source src="eveasy.mp4" type="video/mp4">
 </div>
-
+</div>
 <!-- FLOATING BUTTONS -->
 <a href="https://wa.me/972506530471" target="_blank" class="float whatsapp">💬</a>
 <a href="https://www.facebook.com/share/1CL6tEciU1/" target="_blank" class="float facebook">f</a>
@@ -167,6 +169,10 @@ p,li{color:#e0e0e0;}
 .video-box{max-width:900px;margin:20px auto;border-radius:20px;overflow:hidden;box-shadow:0 0 30px rgba(255,215,0,0.4);}
 .video-box video{width:100%;height:auto;display:block;}
 
+.video-row{display:flex;gap:20px;justify-content:center;align-items:center;flex-wrap:wrap;}
+.video-row video{width:45%;max-width:400px;border-radius:15px;box-shadow:0 0 20px rgba(255,215,0,0.3);}
+.arrow-center{font-size:30px;animation:arrow 1.5s infinite;}
+
 </style>
 <style>
 .float{animation: floaty 2s infinite ease-in-out;}
@@ -223,6 +229,10 @@ p,li{color:#e0e0e0;}
 
 .video-box{max-width:900px;margin:20px auto;border-radius:20px;overflow:hidden;box-shadow:0 0 30px rgba(255,215,0,0.4);}
 .video-box video{width:100%;height:auto;display:block;}
+
+.video-row{display:flex;gap:20px;justify-content:center;align-items:center;flex-wrap:wrap;}
+.video-row video{width:45%;max-width:400px;border-radius:15px;box-shadow:0 0 20px rgba(255,215,0,0.3);}
+.arrow-center{font-size:30px;animation:arrow 1.5s infinite;}
 
 </style>
 
