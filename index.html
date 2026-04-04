@@ -3,12 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<h1 class="rainbow-title">Car Pro Service</h1>
 <meta name="google-site-verification" content="REALCODE" />
 </head>
 
 <body style="font-family: Arial; direction: rtl; text-align: center; background-color: #f4f4f4; margin: 0;">
-
+<video autoplay muted loop playsinline preload="auto" id="bg-video">
+  <source src="eveasynew.mp4" type="video/mp4">
+</video>
+<div class="overlay"></div>
 <!-- HERO -->
 <div style="position:relative;text-align:center;">
 <img src="eveasy.jpg" style="width:100%;max-height:300px;object-fit:cover;filter:brightness(60%);">
@@ -112,10 +114,8 @@ background:#1877F2;
 @keyframes glow{from{text-shadow:0 0 5px #FFD700;}to{text-shadow:0 0 20px #ffcc00,0 0 30px #ffaa00;}}
 .hero-title{font-size:20px;font-weight:600;color:#ffffff;text-shadow:0 0 10px rgba(255,255,255,0.6);line-height:1.6;animation:fadeIn 1.5s ease-in-out;}
 @keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
-body, h1, h2, h3, p, li, span, a{color:#FFD700 !important;text-shadow:0 0 8px rgba(255,215,0,0.8);}
 
 body, h1, h2, h3, p, li, span, a{
-background-size:300%;
 }
 0%{background-position:0%}
 100%{background-position:300%}
@@ -124,12 +124,9 @@ background-size:300%;
 font-size:32px;
 font-weight:bold;
 background:linear-gradient(90deg,#ff0000,#ff9900,#ffff00,#00ff00,#00ffff,#0000ff,#ff00ff);
-background-size:300%;
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
-animation:rgbMove 4s linear infinite;
 }
-@keyframes rgbMove{
 0%{background-position:0%}
 100%{background-position:300%}
 }
@@ -151,6 +148,10 @@ a{color:#d4af37 !important;}
 
 #bg-video{position:fixed;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-2;filter:brightness(0.3);}
 .overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:-1;}
+
+body{background:#000;color:#e0e0e0;}
+h1,h2,h3{color:#d4af37;}
+p,li{color:#e0e0e0;}
 
 </style>
 <style>
@@ -163,10 +164,8 @@ a{color:#d4af37 !important;}
 @keyframes glow{from{text-shadow:0 0 5px #FFD700;}to{text-shadow:0 0 20px #ffcc00,0 0 30px #ffaa00;}}
 .hero-title{font-size:20px;font-weight:600;color:#ffffff;text-shadow:0 0 10px rgba(255,255,255,0.6);line-height:1.6;animation:fadeIn 1.5s ease-in-out;}
 @keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
-body, h1, h2, h3, p, li, span, a{color:#FFD700 !important;text-shadow:0 0 8px rgba(255,215,0,0.8);}
 
 body, h1, h2, h3, p, li, span, a{
-background-size:300%;
 }
 0%{background-position:0%}
 100%{background-position:300%}
@@ -175,12 +174,9 @@ background-size:300%;
 font-size:32px;
 font-weight:bold;
 background:linear-gradient(90deg,#ff0000,#ff9900,#ffff00,#00ff00,#00ffff,#0000ff,#ff00ff);
-background-size:300%;
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
-animation:rgbMove 4s linear infinite;
 }
-@keyframes rgbMove{
 0%{background-position:0%}
 100%{background-position:300%}
 }
@@ -202,6 +198,10 @@ a{color:#d4af37 !important;}
 
 #bg-video{position:fixed;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-2;filter:brightness(0.3);}
 .overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:-1;}
+
+body{background:#000;color:#e0e0e0;}
+h1,h2,h3{color:#d4af37;}
+p,li{color:#e0e0e0;}
 
 </style>
 
