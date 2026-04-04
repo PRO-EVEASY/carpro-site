@@ -9,6 +9,13 @@
 <meta name="description" content="מומחה למערכות מולטימדיה לרכבים חשמליים. התקנת YouTube, Netflix ו-Waze למסך הרכב ללא פגיעה במערכת. שירות מקצועי ואמין.">
 
 <style>
+.videos{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:20px;}
+.videos video{width:45%;border-radius:15px;}
+.videos::before{content:"⬇";display:block;width:100%;font-size:30px;margin-bottom:10px;}
+.floating-buttons{position:fixed;bottom:20px;right:20px;display:flex;flex-direction:column;gap:10px;z-index:999;}
+.floating-buttons a{width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:24px;text-decoration:none;}
+.whatsapp{background:#25D366;}
+.facebook{background:#1877f2;}
 body{
 font-family: Arial;
 direction: rtl;
@@ -92,5 +99,9 @@ margin-top:20px;
 
 </div>
 
+<div class="floating-buttons">
+<a href="https://wa.me/972506530471" target="_blank" class="whatsapp">💬</a>
+<a href="https://facebook.com" target="_blank" class="facebook">f</a>
+</div>
 </body>
 </html>
