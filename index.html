@@ -10,6 +10,9 @@
 
 <style>
 .videos{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:20px;}
+.videos video{width:45%;border-radius:15px;box-shadow:0 0 15px rgba(0,0,0,0.5);}
+body::before{content:"";position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.4);z-index:-1;}
+.videos{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:20px;}
 .videos video{width:45%;border-radius:15px;}
 .videos::before{content:"⬇";display:block;width:100%;font-size:30px;margin-bottom:10px;}
 .floating-buttons{position:fixed;bottom:20px;right:20px;display:flex;flex-direction:column;gap:10px;z-index:999;}
@@ -17,6 +20,9 @@
 .whatsapp{background:#25D366;}
 .facebook{background:#1877f2;}
 body{
+position:relative; z-index:1;
+background: url("eveasy.jpg") no-repeat center center fixed; 
+background-size: cover;
 font-family: Arial;
 direction: rtl;
 text-align: center;
