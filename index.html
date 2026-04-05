@@ -4,10 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Car Pro Service | מומחה למולטימדיה לרכב בירושלים</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Tailwind CSS - גרסה יציבה יותר -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  <!-- Structured Data - Schema.org (לגוגל - תוצאות עשירות) -->
+  <!-- Structured Data for Google (Rich Results) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -21,45 +24,20 @@
       "addressLocality": "ירושלים",
       "addressCountry": "IL"
     },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 31.7683,
-      "longitude": 35.2137
-    },
-    "openingHours": "Su-Th 09:00-18:00",
-    "image": "https://pro-eveasy.github.io/carpro-site/eveasy.jpg",
-    "priceRange": "$$",
-    "areaServed": "ירושלים והסביבה",
-    "serviceType": ["התקנת Netflix לרכב", "התקנת YouTube לרכב", "התקנת Waze לרכב", "שדרוג מולטימדיה לרכבים חשמליים"]
+    "image": "https://pro-eveasy.github.io/carpro-site/eveasy.jpg"
   }
   </script>
 
   <style>
-    .glow-text { text-shadow: 0 0 20px rgb(255 215 0 / 0.6); }
-    .nav-link {
-      position: relative;
-      transition: all 0.3s ease;
-    }
-    .nav-link:after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: -4px;
-      right: 0;
-      background-color: #fcd34d;
-      transition: width 0.3s ease;
-    }
-    .nav-link:hover:after {
-      width: 100%;
-      right: auto;
-      left: 0;
+    .glow-text { 
+      text-shadow: 0 0 20px rgb(255 215 0 / 0.6); 
     }
     .hero-bg {
       background-image: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)), 
-                        url('https://i.imgur.com/PLACEHOLDER1.jpg'); 
+                        url('https://picsum.photos/id/1015/2000/1200');
       background-size: cover;
       background-position: center;
+      background-attachment: fixed;
     }
     video {
       border-radius: 24px;
@@ -81,20 +59,20 @@
       </div>
 
       <div class="hidden md:flex items-center gap-10 text-lg">
-        <a href="#" onclick="document.getElementById('home').scrollIntoView({behavior: 'smooth'})" class="nav-link">בית</a>
-        <a href="#services" onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'})" class="nav-link">שירותים</a>
-        <a href="#work" onclick="document.getElementById('work').scrollIntoView({behavior: 'smooth'})" class="nav-link">עבודות</a>
-        <a href="#contact" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})" class="nav-link">צור קשר</a>
+        <a href="#" onclick="document.getElementById('home').scrollIntoView({behavior: 'smooth'})" class="nav-link hover:text-amber-300">בית</a>
+        <a href="#services" onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'})" class="nav-link hover:text-amber-300">שירותים</a>
+        <a href="#work" onclick="document.getElementById('work').scrollIntoView({behavior: 'smooth'})" class="nav-link hover:text-amber-300">עבודות</a>
+        <a href="#contact" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})" class="nav-link hover:text-amber-300">צור קשר</a>
       </div>
 
       <div class="hidden md:flex items-center gap-4">
-        <a href="https://wa.me/972506530471" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-2xl flex items-center gap-2 transition-all">
-          <i class="fab fa-whatsapp text-2xl"></i>
-          WhatsApp
+        <a href="https://wa.me/972506530471" target="_blank" 
+           class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-2xl flex items-center gap-2 transition-all">
+          <i class="fab fa-whatsapp text-2xl"></i> WhatsApp
         </a>
-        <a href="tel:0506530471" class="bg-amber-400 hover:bg-amber-500 text-black font-semibold px-6 py-3 rounded-2xl flex items-center gap-2 transition-all">
-          <i class="fas fa-phone"></i>
-          050-6530471
+        <a href="tel:0506530471" 
+           class="bg-amber-400 hover:bg-amber-500 text-black font-semibold px-6 py-3 rounded-2xl flex items-center gap-2 transition-all">
+          <i class="fas fa-phone"></i> 050-6530471
         </a>
       </div>
 
@@ -131,10 +109,12 @@
       <div class="max-w-2xl mx-auto text-xl mb-12">רוצים לשדרג את הרכב שלכם?<br><span class="text-amber-400">בלי לפגוע באחריות – בלי פשרות</span></div>
       
       <div class="flex flex-col sm:flex-row gap-6 justify-center">
-        <a href="https://wa.me/972506530471" target="_blank" class="bg-green-500 hover:bg-green-600 text-white font-semibold text-xl px-10 py-5 rounded-2xl flex items-center justify-center gap-3">
+        <a href="https://wa.me/972506530471" target="_blank" 
+           class="bg-green-500 hover:bg-green-600 text-white font-semibold text-xl px-10 py-5 rounded-2xl flex items-center justify-center gap-3">
           <i class="fab fa-whatsapp text-3xl"></i> שלח הודעה בווטסאפ
         </a>
-        <a href="tel:0506530471" class="bg-amber-400 hover:bg-amber-500 text-black font-semibold text-xl px-10 py-5 rounded-2xl flex items-center justify-center gap-3">
+        <a href="tel:0506530471" 
+           class="bg-amber-400 hover:bg-amber-500 text-black font-semibold text-xl px-10 py-5 rounded-2xl flex items-center justify-center gap-3">
           <i class="fas fa-phone"></i> התקשר עכשיו
         </a>
       </div>
@@ -224,16 +204,19 @@
       <p class="text-2xl text-zinc-300 mb-10">צרו קשר עכשיו – שירות מהיר ומקצועי</p>
       
       <div class="flex flex-col sm:flex-row gap-6 justify-center">
-        <a href="https://wa.me/972506530471" target="_blank" class="bg-green-500 hover:bg-green-600 text-white font-semibold text-2xl px-12 py-7 rounded-3xl flex items-center justify-center gap-4">
+        <a href="https://wa.me/972506530471" target="_blank" 
+           class="bg-green-500 hover:bg-green-600 text-white font-semibold text-2xl px-12 py-7 rounded-3xl flex items-center justify-center gap-4">
           <i class="fab fa-whatsapp text-4xl"></i> ווטסאפ
         </a>
-        <a href="tel:0506530471" class="bg-amber-400 hover:bg-amber-500 text-black font-semibold text-2xl px-12 py-7 rounded-3xl flex items-center justify-center gap-4">
+        <a href="tel:0506530471" 
+           class="bg-amber-400 hover:bg-amber-500 text-black font-semibold text-2xl px-12 py-7 rounded-3xl flex items-center justify-center gap-4">
           <i class="fas fa-phone text-4xl"></i> 050-6530471
         </a>
       </div>
 
       <div class="mt-12">
-        <a href="https://www.facebook.com/share/1DpZnCkJRn/" target="_blank" class="inline-flex items-center gap-3 text-zinc-400 hover:text-blue-400 transition-colors text-lg">
+        <a href="https://www.facebook.com/share/1DpZnCkJRn/" target="_blank" 
+           class="inline-flex items-center gap-3 text-zinc-400 hover:text-blue-400 transition-colors text-lg">
           <i class="fab fa-facebook text-4xl"></i>
           <span>עקבו אחרינו בפייסבוק</span>
         </a>
@@ -255,6 +238,7 @@
   </footer>
 
   <script>
+    // Mobile menu
     const mobileBtn = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
     
