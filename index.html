@@ -1,232 +1,116 @@
 <!DOCTYPE html>
-<html lang="he">
+<html lang="he" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title><span style="letter-spacing:2px;font-weight:600;"><h1 style="color:#fff;font-weight:600;letter-spacing:2px;"><h1 style="font-size:40px;letter-spacing:3px;">Car Pro Service</h1></h1></span></title>
-<meta name="google-site-verification" content="REALCODE" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Pro Service | מומחה למולטימדיה לרכב</title>
 
-<meta name="description" content="מומחה למערכות מולטימדיה לרכבים חשמליים. התקנת YouTube, Netflix ו-Waze למסך הרכב ללא פגיעה במערכת. שירות מקצועי ואמין.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<style>
-h1{ text-shadow:0 2px 10px rgba(255,255,255,0.08);}
-p{ text-shadow:0 1px 6px rgba(255,255,255,0.05);}
-h1{color:#ffffff !important;font-weight:600;letter-spacing:2px;}
-h2{color:#d0d0d0 !important;}
-h3{color:#a8a8a8 !important;}
-p,li{color:#e5e5e5 !important;}
-strong{color:#ffffff !important;}
-h2,h3{color:#BFBFBF !important;}
-body{background:#000000 !important;}
-h1{color:#FFFFFF !important;}
-h2{color:#FFFFFF !important;}
-h3{color:#FFFFFF !important;}
-p,li{color:#FFFFFF !important;}
-strong{color:#FFFFFF !important;}
-h1,h2,h3{transition:0.3s;}
-h1:hover{color:#FFFFFF !important;}
-a:hover{opacity:0.8;}
-.container{
-background:rgba(255,255,255,0.03);
-padding:25px;
-margin:20px;
-border-radius:18px;
-backdrop-
-box-shadow:0 0 30px rgba(0,0,0,0.6);
-}
-p,li{font-size:17px;line-height:1.8;color:#FFFFFF !important;}
-h1{font-size:38px;font-weight:600;letter-spacing:1px;}
-h2{font-size:26px;font-weight:500;color:#FFFFFF !important;}
-h3{font-size:20px;font-weight:500;color:#FFFFFF !important;}
-body{background:#0B0B0B !important;color:#FFFFFF !important;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial;}
-body{color:#FFFFFF !important;}
-h1{color:#FFFFFF !important;}
-h2{color:#FFFFFF !important;}
-h3{color:#FFFFFF !important;}
-p,li{color:#FFFFFF !important;}
-h1{font-size:34px;font-weight:700;}
-h2{font-size:24px;}
-p,li{font-size:18px;}
-body{background:#111;color:#FFFFFF !important;font-family:Arial;text-align:center;direction:rtl;}
-body{font-size:28px !important;line-height:2;}
-body{text-shadow:
-0 0 5px ,
-0 0 10px ,
-0 0 20px #FFC107,
-0 0 40px rgba(255,215,0,0.8);
-}
-body, h1, h2, h3, p, li{
+  <style>
+    body { background:#000; }
 
-font-weight:900 !important;
-}
-body{line-height:2.2;}
-body{}
-body, h1, h2, h3, p, li{
+    .glow-text { text-shadow: none; }
 
+    .premium-text {
+      text-shadow: 0 2px 10px rgba(255,255,255,0.08);
+    }
 
+    .hero-bg {
+      background-image: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.9)), url('mycar.jpg');
+      background-size: cover;
+      background-position: center;
+    }
 
-}
-body, h1, h2, h3, p, li{font-size:42px !important;font-weight:900 !important;}
-body{}
-body, h1, h2, h3, p, li{
+    .nav-link {
+      position: relative;
+    }
 
-background-size:300% 300%;
+    .nav-link:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      right: 0;
+      background-color: #fff;
+      transition: 0.3s;
+    }
 
+    .nav-link:hover:after {
+      width: 100%;
+      left: 0;
+      right: auto;
+    }
 
-
-}
-p{font-size:22px !important;font-weight:600;}
-li{font-size:21px !important;font-weight:600;}
-h1{font-size:48px !important;font-weight:900;}
-h2{font-size:34px !important;font-weight:800;}
-h3{font-size:26px !important;font-weight:700;}
-body{font-size:20px !important;line-height:1.8;font-weight:700;}
-body{}
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
-}
-body, h1, h2, h3, p, li{
-
-background-size:400% 400%;
-
-
-
-font-weight:700;
-}
-body{}
-body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
-p,li{font-size:19px;font-weight:600;}
-h1{font-size:44px;font-weight:900;}
-h2{font-size:30px;font-weight:800;}
-h3{font-size:24px;font-weight:700;}
-body{font-weight:700 !important;line-height:1.7;font-size:18px;}
-.::before{content:"✨ ⭐ ✨";margin-left:10px;}
-.::after{content:"✨ ⭐ ✨";margin-right:10px;}
-0%{}
-50%{}
-100%{}
-}
-.{}
-.{
-font-size:32px;
-font-weight:bold;
-
-
-
-
-}
-.videos{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:20px;}
-.videos video{width:45%;border-radius:15px;box-shadow:0 0 15px rgba(0,0,0,0.5);}
-body::before{content:"";position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.4);z-index:-1;}
-.videos{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:20px;}
-.videos video{width:45%;border-radius:15px;}
-.videos::before{content:"⬇";display:block;width:100%;font-size:30px;margin-bottom:10px;}
-.floating-buttons{position:fixed;bottom:20px;right:20px;display:flex;flex-direction:column;gap:10px;z-index:999;}
-.floating-buttons a{width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;text-decoration:none;}
-.whatsapp{background:#25D366;}
-.facebook{background:#1877f2;}
-body{
-position:relative; z-index:1;
-background: url("eveasy.jpg") no-repeat center center fixed; 
-background-size: cover;
-font-family: Arial;
-direction: rtl;
-text-align: center;
-background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
-
-margin:0;
-}
-
-.header{
-background: linear-gradient(90deg, black, #222);
-padding:20px;
-}
-
-.section{
-padding:20px;
-}
-
-ul{
-list-style:none;
-font-size:18px;
-padding:0;
-}
-
-.footer{
-background:#222;
-
-padding:15px;
-margin-top:20px;
-}
-</style>
-
+    .car-float:hover {
+      transform: translateY(-10px) scale(1.02);
+      transition: 0.4s;
+    }
+  </style>
 </head>
 
-<body style=" background-size:cover; ">
-<div style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:-1;"></div>
+<body class="text-white font-sans">
 
-<div class="header">
-<h1 class=" "><span style="letter-spacing:2px;font-weight:600;"><h1 style="color:#fff;font-weight:600;letter-spacing:2px;"><h1 style="font-size:40px;letter-spacing:3px;">Car Pro Service</h1></h1></span></h1>
-<h2 class="">מומחה למערכות מולטימדיה לרכב</h2>
-</div>
+<section class="hero-bg h-screen flex items-center justify-center text-center">
+  <div>
+    <h1 class="text-6xl font-bold premium-text tracking-wider mb-4">
+      Car Pro Service
+    </h1>
 
-<div class="section">
+    <p class="text-3xl text-zinc-300 mb-6">
+      מומחה למערכות מולטימדיה לרכב
+    </p>
 
-<h2 class="">🚗 רוצים לשדרג את הרכב שלכם?</h2>
+    <p class="text-xl text-zinc-400 mb-10">
+      בלי לפגוע באחריות • בלי פשרות • תוצאה מושלמת
+    </p>
 
-<p style="font-size:18px;">
-התקנת אפליקציות מתקדמות למסך הרכב – בלי לפגוע באחריות!
-</p>
+    <a href="tel:0506530471"
+       class="bg-white text-black px-10 py-4 rounded-2xl text-xl font-semibold hover:bg-zinc-200 transition">
+       📞 התקשר עכשיו
+    </a>
+  </div>
+</section>
 
-<p>
- <div style="font-size:24px;font-weight:700;">שלום אני יצחק פרץ, מומחה למערכות מולטימדיה עם ניסיון של מעל שנתיים בתחום.
-מתמחה בהתקנת אפליקציות לרכבים חשמליים ולמערכות מקוריות.</div>
-</p>
+<section class="py-24 bg-black text-center">
+  <h2 class="text-4xl font-bold mb-16 premium-text">השירותים שלנו</h2>
 
-<h3>🔥 מה אני מציע לכם?</h3>
+  <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto px-6">
 
-<ul>
-<li>✔ התקנת Netflix פרימיום לרכב</li>
-<li>✔ התקנת YouTube ללא פרסומות</li>
-<li>✔ התקנת Waze עם שליטה קולית</li>
-<li>✔ התאמת אפליקציות למסך הקיים</li>
-<li>✔ טיפול בתקלות שקשורות למערכת המולטימדיה</li>
-<li>✔ עבודה מקצועית ללא פגיעה במערכת</li>
-<li>✔ שירות מהיר ואמין</li>
-</ul>
+    <div class="bg-zinc-900 p-8 rounded-3xl border border-zinc-800 car-float">
+      <i class="fas fa-tv text-3xl mb-4"></i>
+      <h3 class="text-xl font-semibold">Netflix לרכב</h3>
+    </div>
 
-<h2 style="color:#ffffff;font-weight:500;letter-spacing:1px;">📞 התקשר עכשיו</h2>
+    <div class="bg-zinc-900 p-8 rounded-3xl border border-zinc-800 car-float">
+      <i class="fab fa-youtube text-3xl mb-4"></i>
+      <h3 class="text-xl font-semibold">YouTube ללא פרסומות</h3>
+    </div>
 
-<p style="font-size:22px;font-weight:bold;">
-050-6530471
-</p>
+    <div class="bg-zinc-900 p-8 rounded-3xl border border-zinc-800 car-float">
+      <i class="fas fa-map text-3xl mb-4"></i>
+      <h3 class="text-xl font-semibold">Waze חכם</h3>
+    </div>
 
-<p>
-</p>
+  </div>
+</section>
 
-<div class="footer">
-</div>
+<section class="py-24 bg-zinc-900 text-center">
+  <h2 class="text-4xl font-bold mb-10 premium-text">עבודה לדוגמה</h2>
 
-<div class="floating-buttons">
-<a href="https://wa.me/972506530471" target="_blank" class="whatsapp">💬</a>
-<a href="https://facebook.com" target="_blank" class="facebook">f</a>
-</div>
-<div style="padding:20px;">
-<h2 class="">👇 צפו בעבודות שלנו</h2>
-<video width="90%" controls autoplay muted loop>
-<source src="eveasy.mp4" type="video/mp4">
-</video>
-<br><br>
-<video width="90%" controls autoplay muted loop>
-<source src="eveasynew.mp4" type="video/mp4">
-</video>
-</div>
-<div style="margin-top:40px;padding:20px;background:#222;border-radius:10px;">
-<p>בברכה,</p>
-<p>יצחק פרץ</p>
-<p>מומחה למערכות מולטימדיה</p>
-</div>
-<a href="tel:0506530471" style="position:fixed;bottom:20px;left:20px;background:#111;color:#FFFFFF !important;padding:15px 20px;border-radius:30px;text-decoration:none;border:1px solid #333;">📞 התקשר</a>
-</div></body>
+  <img src="mycar.jpg" class="mx-auto rounded-2xl max-w-4xl w-full">
+</section>
+
+<section class="py-24 text-center bg-black">
+  <h2 class="text-4xl font-bold mb-6 premium-text">דברו איתי</h2>
+
+  <a href="tel:0506530471"
+     class="bg-white text-black text-2xl px-12 py-6 rounded-3xl font-bold hover:bg-zinc-200 transition">
+     050-6530471
+  </a>
+</section>
+
+</body>
 </html>
