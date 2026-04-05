@@ -3,9 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Car Pro Service | מומחה למולטימדיה לרכב</title>
+  <title>Car Pro Service | מומחה למולטימדיה לרכב בירושלים</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Structured Data - Schema.org (עוזר לגוגל להציג את האתר גדול יותר) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AutoRepair",
+    "name": "Car Pro Service",
+    "description": "מומחה להתקנת מערכות מולטימדיה לרכב - Netflix, YouTube, Waze, אפליקציות ועוד. שירות מקצועי לרכבים חשמליים ומקוריים בירושלים והסביבה.",
+    "url": "https://yourwebsite.com",
+    "telephone": "+972506530471",
+    "email": "",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "ירושלים",
+      "addressCountry": "IL"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 31.7683,
+      "longitude": 35.2137
+    },
+    "openingHours": "Su-Th 09:00-18:00",
+    "image": "https://yourwebsite.com/eveasy.jpg",
+    "priceRange": "$$",
+    "areaServed": "ירושלים והסביבה",
+    "serviceType": ["התקנת Netflix לרכב", "התקנת YouTube לרכב", "התקנת Waze לרכב", "שדרוג מולטימדיה לרכבים חשמליים"]
+  }
+  </script>
+
   <style>
     .glow-text { text-shadow: 0 0 20px rgb(255 215 0 / 0.6); }
     .nav-link {
@@ -60,13 +89,11 @@
       </div>
 
       <div class="hidden md:flex items-center gap-4">
-        <a href="https://wa.me/972506530471" target="_blank"
-           class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-2xl flex items-center gap-2 transition-all">
+        <a href="https://wa.me/972506530471" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-2xl flex items-center gap-2 transition-all">
           <i class="fab fa-whatsapp text-2xl"></i>
-          <span class="font-medium">WhatsApp</span>
+          WhatsApp
         </a>
-        <a href="tel:0506530471" 
-           class="bg-amber-400 hover:bg-amber-500 text-black font-semibold px-6 py-3 rounded-2xl flex items-center gap-2 transition-all">
+        <a href="tel:0506530471" class="bg-amber-400 hover:bg-amber-500 text-black font-semibold px-6 py-3 rounded-2xl flex items-center gap-2 transition-all">
           <i class="fas fa-phone"></i>
           050-6530471
         </a>
@@ -86,15 +113,11 @@
         <a href="#contact" onclick="toggleMobileMenu()" class="hover:text-amber-300">צור קשר</a>
         
         <div class="flex flex-col gap-4 mt-6">
-          <a href="https://wa.me/972506530471" target="_blank"
-             class="bg-green-500 text-white font-semibold py-4 rounded-2xl flex items-center justify-center gap-3">
-            <i class="fab fa-whatsapp text-3xl"></i>
-            שלח הודעה בווטסאפ
+          <a href="https://wa.me/972506530471" target="_blank" class="bg-green-500 text-white font-semibold py-4 rounded-2xl flex items-center justify-center gap-3">
+            <i class="fab fa-whatsapp text-3xl"></i> שלח הודעה בווטסאפ
           </a>
-          <a href="tel:0506530471" 
-             class="bg-amber-400 text-black font-semibold py-4 rounded-2xl flex items-center justify-center gap-3">
-            <i class="fas fa-phone"></i>
-            התקשר: 050-6530471
+          <a href="tel:0506530471" class="bg-amber-400 text-black font-semibold py-4 rounded-2xl flex items-center justify-center gap-3">
+            <i class="fas fa-phone"></i> התקשר: 050-6530471
           </a>
         </div>
       </div>
@@ -109,15 +132,11 @@
       <div class="max-w-2xl mx-auto text-xl mb-12">רוצים לשדרג את הרכב שלכם?<br><span class="text-amber-400">בלי לפגוע באחריות – בלי פשרות</span></div>
       
       <div class="flex flex-col sm:flex-row gap-6 justify-center">
-        <a href="https://wa.me/972506530471" target="_blank"
-           class="bg-green-500 hover:bg-green-600 text-white font-semibold text-xl px-10 py-5 rounded-2xl flex items-center justify-center gap-3">
-          <i class="fab fa-whatsapp text-3xl"></i>
-          שלח הודעה בווטסאפ
+        <a href="https://wa.me/972506530471" target="_blank" class="bg-green-500 hover:bg-green-600 text-white font-semibold text-xl px-10 py-5 rounded-2xl flex items-center justify-center gap-3">
+          <i class="fab fa-whatsapp text-3xl"></i> שלח הודעה בווטסאפ
         </a>
-        <a href="tel:0506530471" 
-           class="bg-amber-400 hover:bg-amber-500 text-black font-semibold text-xl px-10 py-5 rounded-2xl flex items-center justify-center gap-3">
-          <i class="fas fa-phone"></i>
-          התקשר עכשיו
+        <a href="tel:0506530471" class="bg-amber-400 hover:bg-amber-500 text-black font-semibold text-xl px-10 py-5 rounded-2xl flex items-center justify-center gap-3">
+          <i class="fas fa-phone"></i> התקשר עכשיו
         </a>
       </div>
     </div>
@@ -128,8 +147,8 @@
     <div class="max-w-4xl mx-auto px-6 text-center">
       <h2 class="text-4xl font-bold mb-6">שלום, אני יצחק פרץ</h2>
       <p class="text-lg leading-relaxed text-zinc-300">
-        מומחה למערכות מולטימדיה לרכב עם ניסיון של מעל שנתיים בתחום.<br>
-        מתמחה בהתקנת אפליקציות לרכבים חשמליים ומקוריים – בלי לפגוע באחריות.
+        מומחה למערכות מולטימדיה לרכב עם ניסיון של מעל שנתיים.<br>
+        מתמחה בהתקנת אפליקציות לרכבים חשמליים ומקוריים בירושלים והסביבה – בלי לפגוע באחריות.
       </p>
     </div>
   </section>
@@ -164,13 +183,13 @@
         </div>
         <div class="bg-zinc-900 p-8 rounded-3xl hover:bg-zinc-800 transition-all border border-zinc-800">
           <i class="fas fa-shield-alt text-4xl text-emerald-400 mb-6"></i>
-          <h3 class="text-2xl font-semibold mb-3">ללא פגיעה במערכת</h3>
+          <h3 class="text-2xl font-semibold mb-3">ללא פגיעה באחריות</h3>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Work - Videos -->
+  <!-- Work Videos -->
   <section id="work" class="py-24 bg-zinc-900">
     <div class="max-w-6xl mx-auto px-6">
       <div class="text-center mb-12">
@@ -198,31 +217,24 @@
     </div>
   </section>
 
-  <!-- Contact / CTA -->
+  <!-- Contact -->
   <section id="contact" class="py-28 bg-gradient-to-b from-black to-zinc-950 text-center">
     <div class="max-w-2xl mx-auto px-6">
       <i class="fas fa-phone-volume text-7xl text-amber-400 mb-8"></i>
       <h2 class="text-5xl font-bold mb-6">מוכנים לשדרג את הרכב?</h2>
-      <p class="text-2xl text-zinc-300 mb-10">צרו קשר עכשיו – אני כאן בשבילכם</p>
+      <p class="text-2xl text-zinc-300 mb-10">צרו קשר עכשיו – שירות מהיר ומקצועי</p>
       
       <div class="flex flex-col sm:flex-row gap-6 justify-center">
-        <a href="https://wa.me/972506530471" target="_blank"
-           class="bg-green-500 hover:bg-green-600 text-white font-semibold text-2xl px-12 py-7 rounded-3xl flex items-center justify-center gap-4 transition-all">
-          <i class="fab fa-whatsapp text-4xl"></i>
-          שלח הודעה בווטסאפ
+        <a href="https://wa.me/972506530471" target="_blank" class="bg-green-500 hover:bg-green-600 text-white font-semibold text-2xl px-12 py-7 rounded-3xl flex items-center justify-center gap-4">
+          <i class="fab fa-whatsapp text-4xl"></i> ווטסאפ
         </a>
-        
-        <a href="tel:0506530471" 
-           class="bg-amber-400 hover:bg-amber-500 text-black font-semibold text-2xl px-12 py-7 rounded-3xl flex items-center justify-center gap-4 transition-all">
-          <i class="fas fa-phone text-4xl"></i>
-          התקשר: 050-6530471
+        <a href="tel:0506530471" class="bg-amber-400 hover:bg-amber-500 text-black font-semibold text-2xl px-12 py-7 rounded-3xl flex items-center justify-center gap-4">
+          <i class="fas fa-phone text-4xl"></i> 050-6530471
         </a>
       </div>
 
-      <!-- Facebook -->
       <div class="mt-12">
-        <a href="https://www.facebook.com/share/1DpZnCkJRn/" target="_blank" 
-           class="inline-flex items-center gap-3 text-zinc-400 hover:text-blue-400 transition-colors text-lg">
+        <a href="https://www.facebook.com/share/1DpZnCkJRn/" target="_blank" class="inline-flex items-center gap-3 text-zinc-400 hover:text-blue-400 transition-colors text-lg">
           <i class="fab fa-facebook text-4xl"></i>
           <span>עקבו אחרינו בפייסבוק</span>
         </a>
@@ -234,15 +246,11 @@
   <footer class="bg-black py-12 border-t border-zinc-800">
     <div class="max-w-6xl mx-auto px-6 text-center">
       <p class="text-amber-300 text-2xl mb-2">Car Pro Service</p>
-      <p class="text-zinc-500">© 2026 • כל הזכויות שמורות</p>
+      <p class="text-zinc-500">© 2026 • כל הזכויות שמורות • ירושלים והסביבה</p>
       
       <div class="flex justify-center gap-8 mt-8">
-        <a href="https://wa.me/972506530471" target="_blank" class="text-green-500 hover:text-green-400 text-3xl">
-          <i class="fab fa-whatsapp"></i>
-        </a>
-        <a href="https://www.facebook.com/share/1DpZnCkJRn/" target="_blank" class="text-blue-500 hover:text-blue-400 text-3xl">
-          <i class="fab fa-facebook"></i>
-        </a>
+        <a href="https://wa.me/972506530471" target="_blank" class="text-green-500 hover:text-green-400 text-3xl"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.facebook.com/share/1DpZnCkJRn/" target="_blank" class="text-blue-500 hover:text-blue-400 text-3xl"><i class="fab fa-facebook"></i></a>
       </div>
     </div>
   </footer>
