@@ -5,18 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Car Pro Service | מומחה למולטימדיה לרכב בירושלים</title>
   
-  <!-- Tailwind CSS - גרסה יציבה יותר -->
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  <!-- Structured Data for Google (Rich Results) -->
+  <!-- Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "AutoRepair",
     "name": "Car Pro Service",
-    "description": "מומחה להתקנת מערכות מולטימדיה לרכב - Netflix, YouTube, Waze ועוד. שירות מקצועי לרכבים חשמליים ומקוריים בירושלים והסביבה.",
+    "description": "מומחה להתקנת מערכות מולטימדיה לרכב - Netflix, YouTube, Waze ועוד. שירות מקצועי לרכבים חשמליים ומקוריים בירושלים.",
     "url": "https://pro-eveasy.github.io/carpro-site/",
     "telephone": "+972506530471",
     "address": {
@@ -24,28 +22,33 @@
       "addressLocality": "ירושלים",
       "addressCountry": "IL"
     },
-    "image": "https://pro-eveasy.github.io/carpro-site/eveasy.jpg"
+    "image": "https://pro-eveasy.github.io/carpro-site/tiger.jpg"
   }
   </script>
 
   <style>
     .glow-text { 
-      text-shadow: 0 0 20px rgb(255 215 0 / 0.6); 
+      text-shadow: 0 0 25px rgb(255 215 0 / 0.7); 
     }
-    .hero-bg {
-      background-image: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)), 
-                        url('https://picsum.photos/id/1015/2000/1200');
+    
+    body {
+      background-image: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.9)), url('tiger.jpg');
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
     }
+
+    .hero-bg {
+      background: transparent;
+    }
+
     video {
       border-radius: 24px;
-      box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.4);
+      box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.5);
     }
   </style>
 </head>
-<body class="bg-zinc-950 text-white font-sans">
+<body class="bg-zinc-950 text-white font-sans min-h-screen">
 
   <!-- Navigation -->
   <nav class="bg-zinc-950/90 backdrop-blur-md border-b border-zinc-800 sticky top-0 z-50">
@@ -59,19 +62,17 @@
       </div>
 
       <div class="hidden md:flex items-center gap-10 text-lg">
-        <a href="#" onclick="document.getElementById('home').scrollIntoView({behavior: 'smooth'})" class="nav-link hover:text-amber-300">בית</a>
-        <a href="#services" onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'})" class="nav-link hover:text-amber-300">שירותים</a>
-        <a href="#work" onclick="document.getElementById('work').scrollIntoView({behavior: 'smooth'})" class="nav-link hover:text-amber-300">עבודות</a>
-        <a href="#contact" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})" class="nav-link hover:text-amber-300">צור קשר</a>
+        <a href="#" onclick="document.getElementById('home').scrollIntoView({behavior: 'smooth'})" class="hover:text-amber-300">בית</a>
+        <a href="#services" onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'})" class="hover:text-amber-300">שירותים</a>
+        <a href="#work" onclick="document.getElementById('work').scrollIntoView({behavior: 'smooth'})" class="hover:text-amber-300">עבודות</a>
+        <a href="#contact" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})" class="hover:text-amber-300">צור קשר</a>
       </div>
 
       <div class="hidden md:flex items-center gap-4">
-        <a href="https://wa.me/972506530471" target="_blank" 
-           class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-2xl flex items-center gap-2 transition-all">
+        <a href="https://wa.me/972506530471" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-2xl flex items-center gap-2 transition-all">
           <i class="fab fa-whatsapp text-2xl"></i> WhatsApp
         </a>
-        <a href="tel:0506530471" 
-           class="bg-amber-400 hover:bg-amber-500 text-black font-semibold px-6 py-3 rounded-2xl flex items-center gap-2 transition-all">
+        <a href="tel:0506530471" class="bg-amber-400 hover:bg-amber-500 text-black font-semibold px-6 py-3 rounded-2xl flex items-center gap-2 transition-all">
           <i class="fas fa-phone"></i> 050-6530471
         </a>
       </div>
@@ -122,7 +123,7 @@
   </section>
 
   <!-- About -->
-  <section class="py-20 bg-zinc-900">
+  <section class="py-20 bg-black/70">
     <div class="max-w-4xl mx-auto px-6 text-center">
       <h2 class="text-4xl font-bold mb-6">שלום, אני יצחק פרץ</h2>
       <p class="text-lg leading-relaxed text-zinc-300">
@@ -133,34 +134,34 @@
   </section>
 
   <!-- Services -->
-  <section id="services" class="py-24 bg-black">
+  <section id="services" class="py-24 bg-black/70">
     <div class="max-w-6xl mx-auto px-6">
       <div class="text-center mb-16">
         <h2 class="text-5xl font-bold mb-4 glow-text">מה אני מציע לכם? 🔥</h2>
         <p class="text-xl text-zinc-400">שדרוג מקצועי ואמין למערכת המולטימדיה</p>
       </div>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="bg-zinc-900 p-8 rounded-3xl hover:bg-zinc-800 transition-all border border-zinc-800">
+        <div class="bg-zinc-900/90 p-8 rounded-3xl hover:bg-zinc-800 transition-all border border-zinc-800">
           <i class="fas fa-tv text-4xl text-amber-400 mb-6"></i>
           <h3 class="text-2xl font-semibold mb-3">Netflix לרכב</h3>
         </div>
-        <div class="bg-zinc-900 p-8 rounded-3xl hover:bg-zinc-800 transition-all border border-zinc-800">
+        <div class="bg-zinc-900/90 p-8 rounded-3xl hover:bg-zinc-800 transition-all border border-zinc-800">
           <i class="fas fa-youtube text-4xl text-red-500 mb-6"></i>
           <h3 class="text-2xl font-semibold mb-3">YouTube ללא פרסומות</h3>
         </div>
-        <div class="bg-zinc-900 p-8 rounded-3xl hover:bg-zinc-800 transition-all border border-zinc-800">
+        <div class="bg-zinc-900/90 p-8 rounded-3xl hover:bg-zinc-800 transition-all border border-zinc-800">
           <i class="fas fa-map text-4xl text-blue-400 mb-6"></i>
           <h3 class="text-2xl font-semibold mb-3">Waze עם שליטה קולית</h3>
         </div>
-        <div class="bg-zinc-900 p-8 rounded-3xl hover:bg-zinc-800 transition-all border border-zinc-800">
+        <div class="bg-zinc-900/90 p-8 rounded-3xl hover:bg-zinc-800 transition-all border border-zinc-800">
           <i class="fas fa-cogs text-4xl text-emerald-400 mb-6"></i>
           <h3 class="text-2xl font-semibold mb-3">התאמת אפליקציות למסך</h3>
         </div>
-        <div class="bg-zinc-900 p-8 rounded-3xl hover:bg-zinc-800 transition-all border border-zinc-800">
+        <div class="bg-zinc-900/90 p-8 rounded-3xl hover:bg-zinc-800 transition-all border border-zinc-800">
           <i class="fas fa-tools text-4xl text-amber-400 mb-6"></i>
           <h3 class="text-2xl font-semibold mb-3">טיפול בתקלות מולטימדיה</h3>
         </div>
-        <div class="bg-zinc-900 p-8 rounded-3xl hover:bg-zinc-800 transition-all border border-zinc-800">
+        <div class="bg-zinc-900/90 p-8 rounded-3xl hover:bg-zinc-800 transition-all border border-zinc-800">
           <i class="fas fa-shield-alt text-4xl text-emerald-400 mb-6"></i>
           <h3 class="text-2xl font-semibold mb-3">ללא פגיעה באחריות</h3>
         </div>
@@ -169,39 +170,37 @@
   </section>
 
   <!-- Work Videos -->
-  <section id="work" class="py-24 bg-zinc-900">
+  <section id="work" class="py-24 bg-black/70">
     <div class="max-w-6xl mx-auto px-6">
       <div class="text-center mb-12">
         <h2 class="text-5xl font-bold mb-4 glow-text">צפו בעבודות שלנו 👍</h2>
-        <p class="text-xl text-zinc-400">התקנות מולטימדיה מקצועיות ברכבים חשמליים</p>
+        <p class="text-xl text-zinc-400">התקנות מולטימדיה מקצועיות</p>
       </div>
 
       <div class="grid md:grid-cols-2 gap-10">
-        <div class="bg-zinc-950 p-4 rounded-3xl border border-zinc-800">
+        <div class="bg-zinc-950/90 p-4 rounded-3xl border border-zinc-800">
           <video class="w-full" controls autoplay muted loop playsinline>
             <source src="eveasy.mp4" type="video/mp4">
           </video>
           <p class="text-center mt-6 text-amber-300 text-xl font-medium">eveasy.mp4</p>
-          <p class="text-center text-zinc-400">התקנה מקצועית – EV Baby</p>
         </div>
 
-        <div class="bg-zinc-950 p-4 rounded-3xl border border-zinc-800">
+        <div class="bg-zinc-950/90 p-4 rounded-3xl border border-zinc-800">
           <video class="w-full" controls autoplay muted loop playsinline>
             <source src="eveasynew.mp4" type="video/mp4">
           </video>
           <p class="text-center mt-6 text-amber-300 text-xl font-medium">eveasynew.mp4</p>
-          <p class="text-center text-zinc-400">גרסה משודרגת – EV Baby New</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Contact -->
-  <section id="contact" class="py-28 bg-gradient-to-b from-black to-zinc-950 text-center">
+  <section id="contact" class="py-28 bg-black/70 text-center">
     <div class="max-w-2xl mx-auto px-6">
       <i class="fas fa-phone-volume text-7xl text-amber-400 mb-8"></i>
       <h2 class="text-5xl font-bold mb-6">מוכנים לשדרג את הרכב?</h2>
-      <p class="text-2xl text-zinc-300 mb-10">צרו קשר עכשיו – שירות מהיר ומקצועי</p>
+      <p class="text-2xl text-zinc-300 mb-10">צרו קשר עכשיו</p>
       
       <div class="flex flex-col sm:flex-row gap-6 justify-center">
         <a href="https://wa.me/972506530471" target="_blank" 
@@ -216,7 +215,7 @@
 
       <div class="mt-12">
         <a href="https://www.facebook.com/share/1DpZnCkJRn/" target="_blank" 
-           class="inline-flex items-center gap-3 text-zinc-400 hover:text-blue-400 transition-colors text-lg">
+           class="inline-flex items-center gap-3 text-zinc-400 hover:text-blue-400 text-lg">
           <i class="fab fa-facebook text-4xl"></i>
           <span>עקבו אחרינו בפייסבוק</span>
         </a>
@@ -225,20 +224,14 @@
   </section>
 
   <!-- Footer -->
-  <footer class="bg-black py-12 border-t border-zinc-800">
+  <footer class="bg-black/80 py-12 border-t border-zinc-800">
     <div class="max-w-6xl mx-auto px-6 text-center">
       <p class="text-amber-300 text-2xl mb-2">Car Pro Service</p>
       <p class="text-zinc-500">© 2026 • כל הזכויות שמורות • ירושלים והסביבה</p>
-      
-      <div class="flex justify-center gap-8 mt-8">
-        <a href="https://wa.me/972506530471" target="_blank" class="text-green-500 hover:text-green-400 text-3xl"><i class="fab fa-whatsapp"></i></a>
-        <a href="https://www.facebook.com/share/1DpZnCkJRn/" target="_blank" class="text-blue-500 hover:text-blue-400 text-3xl"><i class="fab fa-facebook"></i></a>
-      </div>
     </div>
   </footer>
 
   <script>
-    // Mobile menu
     const mobileBtn = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
     
