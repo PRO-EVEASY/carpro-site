@@ -29,15 +29,13 @@
     }
     .hero-bg {
       background-image: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)), 
-                        url('https://i.imgur.com/PLACEHOLDER1.jpg'); /* ← החלף בתמונה הראשונה של 4 המכוניות */
+                        url('https://i.imgur.com/PLACEHOLDER1.jpg'); /* ← החלף בתמונת 4 המכוניות */
       background-size: cover;
       background-position: center;
     }
-    .car-float {
-      transition: transform 0.6s ease;
-    }
-    .car-float:hover {
-      transform: translateY(-15px) scale(1.03);
+    video {
+      border-radius: 24px;
+      box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.4);
     }
   </style>
 </head>
@@ -46,7 +44,6 @@
   <!-- Navigation -->
   <nav class="bg-zinc-950/90 backdrop-blur-md border-b border-zinc-800 sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-      <!-- Logo -->
       <div class="flex items-center gap-3">
         <div class="w-9 h-9 bg-amber-400 rounded-2xl flex items-center justify-center text-black font-bold text-2xl">🚗</div>
         <div>
@@ -55,39 +52,32 @@
         </div>
       </div>
 
-      <!-- Desktop Menu -->
       <div class="hidden md:flex items-center gap-10 text-lg">
-        <a href="#" onclick="document.getElementById('home').scrollIntoView({behavior: 'smooth'})" class="nav-link text-white hover:text-amber-300">בית</a>
-        <a href="#services" onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'})" class="nav-link text-white hover:text-amber-300">שירותים</a>
-        <a href="#work" onclick="document.getElementById('work').scrollIntoView({behavior: 'smooth'})" class="nav-link text-white hover:text-amber-300">עבודות</a>
-        <a href="#contact" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})" class="nav-link text-white hover:text-amber-300">צור קשר</a>
+        <a href="#" onclick="document.getElementById('home').scrollIntoView({behavior: 'smooth'})" class="nav-link">בית</a>
+        <a href="#services" onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'})" class="nav-link">שירותים</a>
+        <a href="#work" onclick="document.getElementById('work').scrollIntoView({behavior: 'smooth'})" class="nav-link">עבודות</a>
+        <a href="#contact" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})" class="nav-link">צור קשר</a>
       </div>
 
-      <!-- CTA Button -->
       <div class="hidden md:block">
-        <a href="tel:0506530471" 
-           class="bg-amber-400 hover:bg-amber-500 text-black font-semibold px-8 py-3 rounded-2xl flex items-center gap-2 transition-all">
+        <a href="tel:0506530471" class="bg-amber-400 hover:bg-amber-500 text-black font-semibold px-8 py-3 rounded-2xl flex items-center gap-2 transition-all">
           <i class="fas fa-phone"></i>
           050-6530471
         </a>
       </div>
 
-      <!-- Mobile Hamburger -->
       <button id="mobile-menu-button" class="md:hidden text-3xl">
         <i class="fas fa-bars"></i>
       </button>
     </div>
 
-    <!-- Mobile Menu -->
     <div id="mobile-menu" class="hidden md:hidden bg-zinc-900 border-t border-zinc-800 py-6">
       <div class="flex flex-col gap-6 px-8 text-xl">
         <a href="#" onclick="toggleMobileMenu()" class="hover:text-amber-300">בית</a>
         <a href="#services" onclick="toggleMobileMenu()" class="hover:text-amber-300">שירותים</a>
         <a href="#work" onclick="toggleMobileMenu()" class="hover:text-amber-300">עבודות</a>
         <a href="#contact" onclick="toggleMobileMenu()" class="hover:text-amber-300">צור קשר</a>
-        
-        <a href="tel:0506530471" 
-           class="bg-amber-400 text-black font-semibold py-4 rounded-2xl text-center mt-4 flex items-center justify-center gap-3">
+        <a href="tel:0506530471" class="bg-amber-400 text-black font-semibold py-4 rounded-2xl text-center mt-4 flex items-center justify-center gap-3">
           <i class="fas fa-phone"></i>
           התקשר: 050-6530471
         </a>
@@ -95,29 +85,17 @@
     </div>
   </nav>
 
-  <!-- Hero Section -->
+  <!-- Hero -->
   <section id="home" class="hero-bg h-screen flex items-center relative">
     <div class="max-w-7xl mx-auto px-6 text-center">
-      <h1 class="text-6xl md:text-7xl font-bold tracking-tighter mb-4 glow-text">
-        Car Pro Service
-      </h1>
+      <h1 class="text-6xl md:text-7xl font-bold tracking-tighter mb-4 glow-text">Car Pro Service</h1>
       <p class="text-3xl md:text-4xl text-amber-300 mb-8">מומחה למערכות מולטימדיה לרכב</p>
-      
-      <div class="max-w-2xl mx-auto text-xl mb-12 leading-relaxed">
-        רוצים לשדרג את הרכב שלכם?<br>
-        <span class="text-amber-400">בלי לפגוע באחריות – בלי פשרות על איכות</span>
-      </div>
-
+      <div class="max-w-2xl mx-auto text-xl mb-12">רוצים לשדרג את הרכב שלכם?<br><span class="text-amber-400">בלי לפגוע באחריות – בלי פשרות</span></div>
       <div class="flex flex-col sm:flex-row gap-6 justify-center">
-        <a href="tel:0506530471" 
-           class="bg-amber-400 hover:bg-amber-500 text-black font-semibold text-xl px-10 py-5 rounded-2xl transition-all flex items-center justify-center gap-3">
-          <i class="fas fa-phone"></i>
-          התקשר עכשיו
+        <a href="tel:0506530471" class="bg-amber-400 hover:bg-amber-500 text-black font-semibold text-xl px-10 py-5 rounded-2xl flex items-center justify-center gap-3">
+          <i class="fas fa-phone"></i> התקשר עכשיו
         </a>
-        <a href="#services" 
-           class="border border-amber-400 hover:bg-amber-400/10 text-amber-400 font-semibold text-xl px-10 py-5 rounded-2xl transition-all">
-          גלו את השירותים
-        </a>
+        <a href="#services" class="border border-amber-400 hover:bg-amber-400/10 text-amber-400 font-semibold text-xl px-10 py-5 rounded-2xl transition-all">גלו את השירותים</a>
       </div>
     </div>
   </section>
@@ -126,11 +104,7 @@
   <section class="py-20 bg-zinc-900">
     <div class="max-w-4xl mx-auto px-6 text-center">
       <h2 class="text-4xl font-bold mb-6">שלום, אני יצחק פרץ</h2>
-      <p class="text-lg leading-relaxed text-zinc-300">
-        מומחה למערכות מולטימדיה לרכב עם ניסיון של מעל שנתיים בתחום.<br>
-        מתמחה בהתקנת אפליקציות מתקדמות לרכבים חשמליים ומקוריים – 
-        בלי לפגוע באחריות היצרן.
-      </p>
+      <p class="text-lg leading-relaxed text-zinc-300">מומחה למערכות מולטימדיה לרכב עם ניסיון של מעל שנתיים בתחום.<br>מתמחה בהתקנת אפליקציות לרכבים חשמליים ומקוריים – בלי לפגוע באחריות.</p>
     </div>
   </section>
 
@@ -139,71 +113,58 @@
     <div class="max-w-6xl mx-auto px-6">
       <div class="text-center mb-16">
         <h2 class="text-5xl font-bold mb-4 glow-text">מה אני מציע לכם? 🔥</h2>
-        <p class="text-xl text-zinc-400">שדרוג מקצועי ואמין למערכת המולטימדיה של הרכב שלכם</p>
+        <p class="text-xl text-zinc-400">שדרוג מקצועי ואמין למערכת המולטימדיה</p>
       </div>
-
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="bg-zinc-900 p-8 rounded-3xl hover:bg-zinc-800 transition-all car-float border border-zinc-800">
-          <i class="fas fa-tv text-4xl text-amber-400 mb-6"></i>
-          <h3 class="text-2xl font-semibold mb-3">Netflix לרכב</h3>
-          <p class="text-zinc-400">צפייה נוחה ונעימה בדרך</p>
-        </div>
-        <div class="bg-zinc-900 p-8 rounded-3xl hover:bg-zinc-800 transition-all car-float border border-zinc-800">
-          <i class="fas fa-youtube text-4xl text-red-500 mb-6"></i>
-          <h3 class="text-2xl font-semibold mb-3">YouTube ללא פרסומות</h3>
-          <p class="text-zinc-400">חווית צפייה נקייה ומהנה</p>
-        </div>
-        <div class="bg-zinc-900 p-8 rounded-3xl hover:bg-zinc-800 transition-all car-float border border-zinc-800">
-          <i class="fas fa-map text-4xl text-blue-400 mb-6"></i>
-          <h3 class="text-2xl font-semibold mb-3">Waze עם שליטה קולית</h3>
-          <p class="text-zinc-400">ניווט חכם ובטוח</p>
-        </div>
-        <div class="bg-zinc-900 p-8 rounded-3xl hover:bg-zinc-800 transition-all car-float border border-zinc-800">
-          <i class="fas fa-cogs text-4xl text-emerald-400 mb-6"></i>
-          <h3 class="text-2xl font-semibold mb-3">התאמת אפליקציות למסך</h3>
-          <p class="text-zinc-400">מותאם בדיוק לרכב שלכם</p>
-        </div>
-        <div class="bg-zinc-900 p-8 rounded-3xl hover:bg-zinc-800 transition-all car-float border border-zinc-800">
-          <i class="fas fa-tools text-4xl text-amber-400 mb-6"></i>
-          <h3 class="text-2xl font-semibold mb-3">טיפול בתקלות מולטימדיה</h3>
-          <p class="text-zinc-400">פתרון מהיר ומקצועי</p>
-        </div>
-        <div class="bg-zinc-900 p-8 rounded-3xl hover:bg-zinc-800 transition-all car-float border border-zinc-800">
-          <i class="fas fa-shield-alt text-4xl text-emerald-400 mb-6"></i>
-          <h3 class="text-2xl font-semibold mb-3">ללא פגיעה במערכת</h3>
-          <p class="text-zinc-400">שמירה מלאה על האחריות</p>
-        </div>
+        <div class="bg-zinc-900 p-8 rounded-3xl hover:bg-zinc-800 transition-all border border-zinc-800"> <i class="fas fa-tv text-4xl text-amber-400 mb-6"></i> <h3 class="text-2xl font-semibold mb-3">Netflix לרכב</h3> </div>
+        <div class="bg-zinc-900 p-8 rounded-3xl hover:bg-zinc-800 transition-all border border-zinc-800"> <i class="fas fa-youtube text-4xl text-red-500 mb-6"></i> <h3 class="text-2xl font-semibold mb-3">YouTube ללא פרסומות</h3> </div>
+        <div class="bg-zinc-900 p-8 rounded-3xl hover:bg-zinc-800 transition-all border border-zinc-800"> <i class="fas fa-map text-4xl text-blue-400 mb-6"></i> <h3 class="text-2xl font-semibold mb-3">Waze עם שליטה קולית</h3> </div>
+        <div class="bg-zinc-900 p-8 rounded-3xl hover:bg-zinc-800 transition-all border border-zinc-800"> <i class="fas fa-cogs text-4xl text-emerald-400 mb-6"></i> <h3 class="text-2xl font-semibold mb-3">התאמת אפליקציות למסך</h3> </div>
+        <div class="bg-zinc-900 p-8 rounded-3xl hover:bg-zinc-800 transition-all border border-zinc-800"> <i class="fas fa-tools text-4xl text-amber-400 mb-6"></i> <h3 class="text-2xl font-semibold mb-3">טיפול בתקלות מולטימדיה</h3> </div>
+        <div class="bg-zinc-900 p-8 rounded-3xl hover:bg-zinc-800 transition-all border border-zinc-800"> <i class="fas fa-shield-alt text-4xl text-emerald-400 mb-6"></i> <h3 class="text-2xl font-semibold mb-3">ללא פגיעה במערכת</h3> </div>
       </div>
     </div>
   </section>
 
-  <!-- Work Example -->
+  <!-- WORK SECTION WITH VIDEOS -->
   <section id="work" class="py-24 bg-zinc-900">
-    <div class="max-w-6xl mx-auto px-6 text-center">
-      <h2 class="text-5xl font-bold mb-4 glow-text">צפו בעבודות שלנו 👍</h2>
-      <div class="mt-12 rounded-3xl overflow-hidden border border-zinc-700 shadow-2xl">
-        <img src="https://i.imgur.com/PLACEHOLDER2.jpg" 
-             alt="עבודה על מסך רכב" 
-             class="w-full">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <h2 class="text-5xl font-bold mb-4 glow-text">צפו בעבודות שלנו 👍</h2>
+        <p class="text-xl text-zinc-400">התקנות מולטימדיה מקצועיות ברכבים חשמליים</p>
       </div>
-      <p class="mt-8 text-zinc-400 text-lg">התקנה מקצועית של אפליקציות במערכת המולטימדיה המקורית</p>
+
+      <div class="grid md:grid-cols-2 gap-10">
+        <!-- Video 1 -->
+        <div class="bg-zinc-950 p-4 rounded-3xl border border-zinc-800">
+          <video class="w-full" controls autoplay muted loop playsinline>
+            <source src="eveasy.mp4" type="video/mp4">
+            הדפדפן שלך לא תומך בווידאו.
+          </video>
+          <p class="text-center mt-6 text-amber-300 text-xl font-medium">eveasy.mp4</p>
+          <p class="text-center text-zinc-400">התקנה מקצועית – EV Baby</p>
+        </div>
+
+        <!-- Video 2 -->
+        <div class="bg-zinc-950 p-4 rounded-3xl border border-zinc-800">
+          <video class="w-full" controls autoplay muted loop playsinline>
+            <source src="eveasynew.mp4" type="video/mp4">
+            הדפדפן שלך לא תומך בווידאו.
+          </video>
+          <p class="text-center mt-6 text-amber-300 text-xl font-medium">eveasynew.mp4</p>
+          <p class="text-center text-zinc-400">גרסה משודרגת – EV Baby New</p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- CTA / Contact -->
+  <!-- CTA -->
   <section id="contact" class="py-28 bg-gradient-to-b from-black to-zinc-950 text-center">
     <div class="max-w-xl mx-auto px-6">
       <i class="fas fa-phone-volume text-7xl text-amber-400 mb-8"></i>
       <h2 class="text-5xl font-bold mb-6">מוכנים לשדרג את הרכב?</h2>
       <p class="text-2xl text-zinc-300 mb-10">צרו קשר עכשיו לקבלת הצעה אישית</p>
-      
-      <a href="tel:0506530471" 
-         class="inline-flex items-center gap-4 bg-amber-400 hover:bg-amber-500 text-black text-3xl font-bold px-16 py-8 rounded-3xl transition-all shadow-xl shadow-amber-400/30">
-        <i class="fas fa-phone"></i>
-        050-6530471
-      </a>
-      
-      <p class="mt-10 text-zinc-500">שירות מהיר • מקצועי • אמין • בירושלים ובסביבה</p>
+      <a href="tel:0506530471" class="inline-flex items-center gap-4 bg-amber-400 hover:bg-amber-500 text-black text-3xl font-bold px-16 py-8 rounded-3xl transition-all">050-6530471</a>
     </div>
   </section>
 
@@ -212,27 +173,17 @@
     <div class="max-w-6xl mx-auto px-6 text-center">
       <p class="text-amber-300 text-2xl mb-2">Car Pro Service</p>
       <p class="text-zinc-500">© 2026 • כל הזכויות שמורות</p>
-      <p class="text-zinc-600 mt-6 text-sm">מומחה להתקנת אפליקציות לרכבים חשמליים ומקוריים בירושלים</p>
+      <p class="text-zinc-600 mt-6 text-sm">ירושלים והסביבה</p>
     </div>
   </footer>
 
   <script>
-    // Mobile menu toggle
     const mobileBtn = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
-
     function toggleMobileMenu() {
       mobileMenu.classList.toggle('hidden');
     }
-
     mobileBtn.addEventListener('click', toggleMobileMenu);
-
-    // Close mobile menu when clicking a link
-    document.querySelectorAll('#mobile-menu a').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-      });
-    });
   </script>
 </body>
 </html>
