@@ -18,6 +18,31 @@ State is persisted locally on-device with Jetpack DataStore (no backend, no
 real vehicle integration — this is a UI/architecture learning exercise, not a
 production DMS app).
 
+## Dashboard notification (car-launcher-style quick actions)
+
+Also included: a lightweight, non-privileged take on the "quick popup"
+pattern used by full car-launcher apps (the kind that replace an Android
+head unit's home screen) — **without** any of the system/privileged
+permissions those apps use (no device admin, no accessibility-service screen
+takeover, no notification-listener snooping, no silent background installs).
+Everything here uses permissions a user grants through a normal Settings
+toggle:
+
+- `CarDashboardService` — a foreground service (`FOREGROUND_SERVICE_SPECIAL_USE`)
+  that posts a persistent, low-priority notification with three quick-action
+  buttons: **Driver**, **A/C**, **Drive Mode**.
+- Each button opens a small translucent popup Activity (`popup/`) —
+  `DriverSelectPopupActivity` (backed by the real, persisted driver list),
+  `AcPopupActivity` (power + temperature, demo state), and
+  `DriveModePopupActivity` (Normal/Eco/Sport/Snow + EV-Hybrid toggle, demo
+  state). They're plain translucent activities, not `SYSTEM_ALERT_WINDOW`
+  overlays.
+- `BootReceiver` restarts the dashboard notification on device boot
+  (`RECEIVE_BOOT_COMPLETED`) once you've started it manually at least once
+  from the Settings tab.
+- Posting the notification asks for `POST_NOTIFICATIONS` (Android 13+) the
+  normal way, via a runtime permission prompt.
+
 ## Stack
 
 - Kotlin 2.0, Jetpack Compose (Material 3)

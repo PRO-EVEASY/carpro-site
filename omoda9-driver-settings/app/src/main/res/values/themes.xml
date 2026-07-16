@@ -1,3 +1,4 @@
 <resources>
     <style name="Theme.DriverSettings" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="Theme.Popup" parent="android:Theme.Translucent.NoTitleBar" />
 </resources>

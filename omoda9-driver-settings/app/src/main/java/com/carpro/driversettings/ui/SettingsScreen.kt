@@ -1,5 +1,12 @@
 package com.carpro.driversettings.ui
 
+import android.Manifest
+import android.content.Context
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -16,7 +23,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import androidx.core.content.ContextCompat
+import com.carpro.driversettings.CarDashboardService
 import com.carpro.driversettings.data.AppState
 
 @Composable
@@ -82,5 +92,40 @@ fun SettingsScreen(
                 style = MaterialTheme.typography.bodySmall,
             )
         }
+
+        HorizontalDivider(modifier = Modifier.padding(vertical = 16.dp))
+
+        Text("Dashboard notification", style = MaterialTheme.typography.bodyLarge)
+        Text(
+            "Starts a persistent notification with quick actions for Driver / A/C / Drive Mode — " +
+                "a non-privileged stand-in for an always-on car dashboard. It also starts " +
+                "automatically on boot once you've started it here at least once.",
+            style = MaterialTheme.typography.bodySmall,
+        )
+        Spacer(modifier = Modifier.height(8.dp))
+
+        val context = LocalContext.current
+        val notificationPermissionLauncher = rememberLauncherForActivityResult(
+            ActivityResultContracts.RequestPermission(),
+        ) { granted ->
+            if (granted) startDashboardService(context)
+        }
+
+        Button(onClick = {
+            val needsRuntimePermission = Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
+                ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) !=
+                PackageManager.PERMISSION_GRANTED
+            if (needsRuntimePermission) {
+                notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+            } else {
+                startDashboardService(context)
+            }
+        }) {
+            Text("Start Dashboard Notification")
+        }
     }
+}
+
+private fun startDashboardService(context: Context) {
+    ContextCompat.startForegroundService(context, Intent(context, CarDashboardService::class.java))
 }
