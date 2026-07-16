@@ -38,3 +38,7 @@ Android Studio configure `local.properties` for you. This project was
 authored in a sandboxed environment without the Android SDK or access to
 Google's Maven repo, so it has **not** been built/run here — review it in
 Android Studio before relying on it.
+
+A GitHub Actions workflow (`.github/workflows/build-omoda9-driver-settings-apk.yml`)
+builds a debug APK on every push to this branch under this path, and
+uploads it as a workflow run artifact.
