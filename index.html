@@ -3,137 +3,155 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Car Pro Service | התקנת אפליקציות לאומודה ג'אקו וצ'רי | השרון</title>
-  <meta name="description" content="התקנת אפליקציות מלאה לרכבי Omoda, Jaecoo ו-Chery: YouTube ללא פרסומות, Netflix, Spotify, Waze, הגדרות נהג CockpitPro. שירות באזור השרון והסביבה.">
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <title>Car Pro Service | שדרוג מולטימדיה לאומודה ג'אקו וצ'רי</title>
+  <meta name="description" content="התקנת אפליקציות פרימיום לרכבי Omoda, Jaecoo ו-Chery: Netflix, YouTube ללא פרסומות, Waze, Spotify והגדרות נהג CockpitPro. שירות יוקרתי באזור השרון.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": ["AutoRepair", "LocalBusiness"],
+    "@type": "AutoRepair",
     "name": "Car Pro Service",
-    "description": "התקנת אפליקציות ומערכות מולטימדיה לרכבי Omoda, Jaecoo ו-Chery באזור השרון והסביבה.",
     "url": "https://carservicespronetcoil.org/",
     "telephone": "+972506530471",
     "areaServed": "השרון והסביבה",
-    "address": { "@type": "PostalAddress", "addressRegion": "השרון", "addressCountry": "IL" },
-    "image": "https://carservicespronetcoil.org/tiger.jpg",
+    "address": {"@type":"PostalAddress","addressRegion":"השרון","addressCountry":"IL"},
     "sameAs": ["https://www.facebook.com/share/1DpZnCkJRn/"]
   }
   </script>
   <style>
-    .glow-text { text-shadow: 0 0 22px rgb(255 215 0 / .7); }
+    :root { --gold: #f3c56b; --gold2: #ffe7a8; --bg: #07070a; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
-      background: linear-gradient(rgba(0,0,0,.88), rgba(0,0,0,.93)), url('tiger.jpg') center/cover fixed;
+      font-family: Heebo, Arial, sans-serif; color: #f6f3ea;
+      background: radial-gradient(1200px 600px at 80% -10%, rgba(243,197,107,.18), transparent 55%),
+        linear-gradient(rgba(5,5,8,.86), rgba(5,5,8,.93)), url("tiger.jpg") center/cover fixed;
+      min-height: 100vh;
     }
-    video { border-radius: 20px; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1180px, calc(100% - 32px)); margin: 0 auto; }
+    .nav { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(18px); background: rgba(7,7,10,.72); border-bottom: 1px solid rgba(243,197,107,.18); }
+    .nav-in { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; gap: 16px; }
+    .brand { font-weight: 900; letter-spacing: -.03em; }
+    .brand small { display: block; color: var(--gold); font-weight: 600; font-size: 12px; }
+    .links { display: flex; gap: 22px; font-weight: 600; opacity: .9; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; border: 0; border-radius: 999px; font-weight: 800; cursor: pointer; transition: transform .2s ease, box-shadow .2s ease; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-gold { background: linear-gradient(135deg, #ffe7a8, #d7a441); color: #1a1408; box-shadow: 0 10px 30px rgba(243,197,107,.28); }
+    .btn-green { background: #22c55e; color: #04210d; }
+    .hero { min-height: 92vh; display: grid; place-items: center; text-align: center; padding: 70px 0 50px; }
+    .kicker { display: inline-block; margin-bottom: 18px; padding: 8px 16px; border-radius: 999px; border: 1px solid rgba(243,197,107,.35); color: var(--gold); font-weight: 700; letter-spacing: .08em; }
+    h1 { font-size: clamp(2.4rem, 7vw, 5.4rem); line-height: .95; font-weight: 900; letter-spacing: -.04em; text-shadow: 0 0 40px rgba(243,197,107,.35); }
+    h1 span { color: var(--gold); }
+    .lead { max-width: 740px; margin: 22px auto 34px; font-size: 1.2rem; color: #ddd6c6; }
+    .cta { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .cta .btn { padding: 16px 28px; font-size: 1.05rem; }
+    .brands { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-top: 48px; }
+    .brand-card { padding: 22px 10px; border-radius: 20px; background: rgba(255,255,255,.04); border: 1px solid rgba(243,197,107,.2); font-weight: 900; letter-spacing: .12em; }
+    section { padding: 84px 0; }
+    .glass { background: rgba(10,10,14,.72); border: 1px solid rgba(243,197,107,.16); border-radius: 28px; box-shadow: 0 20px 60px rgba(0,0,0,.35); }
+    h2 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 900; margin-bottom: 12px; }
+    .sub { color: #cfc6b4; margin-bottom: 34px; }
+    .grid4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
+    .card { padding: 22px; border-radius: 22px; background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02)); border: 1px solid rgba(255,255,255,.08); min-height: 140px; }
+    .card i { color: var(--gold); font-size: 1.4rem; margin-bottom: 12px; }
+    .two { display: grid; grid-template-columns: 1.1fr .9fr; gap: 24px; align-items: center; }
+    .checks { list-style: none; display: grid; gap: 12px; font-size: 1.08rem; }
+    .checks li { background: rgba(255,255,255,.03); border-radius: 14px; padding: 12px 14px; }
+    .vids { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    video { width: 100%; border-radius: 20px; background: #000; }
+    footer { padding: 40px 0 110px; text-align: center; color: #9d9586; }
+    .float-wa { position: fixed; left: 18px; bottom: 18px; z-index: 60; width: 62px; height: 62px; border-radius: 50%; display: grid; place-items: center; background: #22c55e; box-shadow: 0 12px 30px rgba(34,197,94,.45); font-size: 28px; color: #fff; }
+    .burger { display: none; background: none; border: 0; color: #fff; font-size: 26px; }
+    @media (max-width: 900px) {
+      .links { display: none; }
+      .burger { display: block; }
+      .brands, .grid4, .two, .vids { grid-template-columns: 1fr; }
+      .links.open { display: flex; flex-direction: column; position: absolute; top: 68px; right: 16px; left: 16px; background: #111; padding: 18px; border-radius: 16px; border: 1px solid rgba(243,197,107,.2); }
+      .nav-in { position: relative; }
+    }
   </style>
 </head>
-<body class="text-white font-sans">
-  <nav class="sticky top-0 z-50 bg-black/85 backdrop-blur border-b border-zinc-800">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-      <div>
-        <div class="text-2xl font-bold glow-text">Car Pro Service</div>
-        <div class="text-amber-300 text-sm">Omoda · Jaecoo · Chery</div>
-      </div>
-      <div class="hidden md:flex gap-8">
-        <a href="#home">בית</a>
-        <a href="#brands">מותגים</a>
-        <a href="#apps">אפליקציות</a>
+<body>
+  <nav class="nav">
+    <div class="wrap nav-in">
+      <div class="brand">Car Pro Service<small>Omoda · Jaecoo · Chery</small></div>
+      <div class="links" id="menu">
+        <a href="#apps">החבילה</a>
         <a href="#driver">הגדרות נהג</a>
         <a href="#work">עבודות</a>
         <a href="#contact">צור קשר</a>
       </div>
-      <a href="https://wa.me/972506530471" class="bg-green-500 px-5 py-2 rounded-2xl font-semibold">WhatsApp</a>
+      <a class="btn btn-green" href="https://wa.me/972506530471" style="padding:10px 16px">WhatsApp</a>
+      <button class="burger" onclick="document.getElementById('menu').classList.toggle('open')">☰</button>
     </div>
   </nav>
-
-  <section id="home" class="min-h-[85vh] flex items-center text-center px-6">
-    <div class="max-w-4xl mx-auto">
-      <p class="text-amber-400 mb-3 font-semibold">בשורה לבעלי אומודה, ג'אקו וצ'רי</p>
-      <h1 class="text-5xl md:text-7xl font-bold glow-text mb-6">התקנת אפליקציות מלאה לרכב</h1>
-      <p class="text-xl text-zinc-200 mb-8">YouTube ללא פרסומות · Netflix · Spotify · Waze · הגדרות נהג שנשמרות בזיכרון הרכב</p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="https://wa.me/972506530471" class="bg-green-500 hover:bg-green-600 px-10 py-5 rounded-2xl text-xl font-bold">שלח הודעה בוואטסאפ</a>
-        <a href="tel:0506530471" class="bg-amber-400 text-black px-10 py-5 rounded-2xl text-xl font-bold">050-6530471</a>
+  <header class="hero wrap" id="home">
+    <div>
+      <div class="kicker">בשורה לבעלי אומודה · ג'אקו · צ'רי</div>
+      <h1>המסך שלך.<br><span>חוויה אחרת לגמרי.</span></h1>
+      <p class="lead">התקנת אפליקציות פרימיום על המערכת המקורית: Netflix, YouTube נקי מפרסומות, Spotify, Waze, ופרופיל נהג שנשמר בזיכרון הרכב.</p>
+      <div class="cta">
+        <a class="btn btn-green" href="https://wa.me/972506530471">שלח הודעה</a>
+        <a class="btn btn-gold" href="tel:0506530471">050-6530471</a>
+      </div>
+      <div class="brands">
+        <div class="brand-card">OMODA</div>
+        <div class="brand-card">JAECOO</div>
+        <div class="brand-card">CHERY</div>
       </div>
     </div>
-  </section>
-
-  <section id="brands" class="py-20 bg-black/70">
-    <div class="max-w-5xl mx-auto px-6 text-center">
-      <h2 class="text-4xl font-bold mb-4">מותגים שאנחנו מתקינים עליהם</h2>
-      <p class="text-zinc-300 mb-10">התמחות במערכות המקוריות של משפחת Chery — כולל CockpitPro, Android Auto ומסך הבית.</p>
-      <div class="grid md:grid-cols-3 gap-6 text-2xl font-bold">
-        <div class="bg-zinc-900/90 border border-amber-400/30 rounded-3xl p-8">OMODA</div>
-        <div class="bg-zinc-900/90 border border-amber-400/30 rounded-3xl p-8">JAECOO</div>
-        <div class="bg-zinc-900/90 border border-amber-400/30 rounded-3xl p-8">CHERY</div>
-      </div>
+  </header>
+  <section id="apps"><div class="wrap">
+    <h2>מה נכנס למערכת</h2>
+    <p class="sub">התאמה למסך המקורי. בלי להחליף יחידה.</p>
+    <div class="grid4">
+      <div class="card"><b>YouTube</b><br>ללא פרסומות</div>
+      <div class="card"><b>Netflix</b><br>צפייה בדרך</div>
+      <div class="card"><b>Spotify</b><br>מוזיקה מלאה</div>
+      <div class="card"><b>Waze</b><br>שליטה קולית</div>
+      <div class="card"><b>חנות אפליקציות</b><br>עוד לפי בקשה</div>
+      <div class="card"><b>מסך בית</b><br>סדר אישי ונקי</div>
+      <div class="card"><b>טלוויזיה בלייב</b><br>ערוצים במסך</div>
+      <div class="card"><b>CockpitPro</b><br>Android Auto ופרופיל נהג</div>
     </div>
-  </section>
-
-  <section id="apps" class="py-20 bg-black/75">
-    <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-4xl font-bold text-center glow-text mb-4">מה מקבלים במערכת</h2>
-      <p class="text-center text-zinc-400 mb-12">התאמה למסך המקורי — בלי להחליף יחידה</p>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        <div class="bg-zinc-900 p-6 rounded-3xl">YouTube ללא פרסומות</div>
-        <div class="bg-zinc-900 p-6 rounded-3xl">Netflix</div>
-        <div class="bg-zinc-900 p-6 rounded-3xl">Spotify</div>
-        <div class="bg-zinc-900 p-6 rounded-3xl">Waze + שליטה קולית</div>
-        <div class="bg-zinc-900 p-6 rounded-3xl">חנות אפליקציות</div>
-        <div class="bg-zinc-900 p-6 rounded-3xl">מסך בית מותאם</div>
-        <div class="bg-zinc-900 p-6 rounded-3xl">ערוצי טלוויזיה בלייב</div>
-        <div class="bg-zinc-900 p-6 rounded-3xl">Android Auto / CockpitPro</div>
-      </div>
-    </div>
-  </section>
-
-  <section id="driver" class="py-20 bg-black/70">
-    <div class="max-w-4xl mx-auto px-6">
-      <h2 class="text-4xl font-bold text-center mb-4">הדגש: הגדרות נהג</h2>
-      <p class="text-center text-zinc-300 mb-8">כמו בפרופיל CockpitPro — ההגדרות נשמרות בזיכרון הרכב גם אחרי התנעה מחדש.</p>
-      <ul class="space-y-3 text-lg bg-zinc-900/90 rounded-3xl p-8 border border-amber-400/20">
-        <li>✓ שמירת הגדרות הנהג בזיכרון הרכב</li>
+  </div></section>
+  <section id="driver"><div class="wrap two glass" style="padding:28px">
+    <div>
+      <h2>הגדרות נהג שנשארות</h2>
+      <p class="sub">כמו בפרופיל CockpitPro — הרכב זוכר אותך גם אחרי כיבוי.</p>
+      <ul class="checks">
+        <li>✓ שמירת הגדרות בזיכרון הרכב</li>
         <li>✓ ביטול צפצופים מציקים</li>
-        <li>✓ שמירת העדפות אישיות ונוחות שימוש</li>
+        <li>✓ העדפות אישיות ונוחות שימוש</li>
         <li>✓ פחות התעסקות בכל נסיעה</li>
-        <li>✓ אפשרות לפרופיל אישי (למשל «ההגדרות של יצחק»)</li>
+        <li>✓ פרופיל אישי על המסך</li>
       </ul>
     </div>
-  </section>
-
-  <section id="work" class="py-20 bg-black/75">
-    <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-4xl font-bold text-center glow-text mb-10">צפו בעבודות שלנו</h2>
-      <div class="grid md:grid-cols-2 gap-8">
-        <div class="bg-zinc-950 p-4 rounded-3xl border border-zinc-800">
-          <video class="w-full" controls muted loop playsinline>
-            <source src="eveasy.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="bg-zinc-950 p-4 rounded-3xl border border-zinc-800">
-          <video class="w-full" controls muted loop playsinline>
-            <source src="eveasynew.mp4" type="video/mp4">
-          </video>
-        </div>
-      </div>
-      <p class="text-center text-zinc-400 mt-6">מסך בית עם Waze, YouTube, CockpitPro ועוד — על מערכת מקורית</p>
+    <div class="card" style="min-height:260px; display:grid; place-items:center; text-align:center">
+      <div><div style="color:var(--gold); font-weight:800; margin-bottom:8px">CockpitPro</div>
+      <div style="font-size:1.6rem; font-weight:900">ההגדרות שלך.<br>הרכב זוכר.</div></div>
     </div>
-  </section>
-
-  <section id="contact" class="py-24 text-center bg-black/80">
-    <h2 class="text-5xl font-bold mb-4">מוכנים לשדרג את האומודה / הג'אקו?</h2>
-    <p class="text-xl text-zinc-300 mb-8">שירות באזור השרון והסביבה · 24/6 לפי תיאום</p>
-    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <a href="https://wa.me/972506530471" class="bg-green-500 px-12 py-6 rounded-3xl text-2xl font-bold">וואטסאפ</a>
-      <a href="tel:0506530471" class="bg-amber-400 text-black px-12 py-6 rounded-3xl text-2xl font-bold">050-6530471</a>
+  </div></section>
+  <section id="work"><div class="wrap">
+    <h2>העבודות מדברות</h2>
+    <p class="sub">מסכים חיים על מערכות מקוריות.</p>
+    <div class="vids">
+      <video controls muted loop playsinline poster="tiger.jpg"><source src="eveasy.mp4" type="video/mp4"></video>
+      <video controls muted loop playsinline poster="tiger.jpg"><source src="eveasynew.mp4" type="video/mp4"></video>
     </div>
-    <a href="https://www.facebook.com/share/1DpZnCkJRn/" class="inline-block mt-8 text-blue-400">פייסבוק</a>
-  </section>
-
-  <footer class="py-10 text-center text-zinc-500 border-t border-zinc-800">
-    Car Pro Service · © 2026 · אזור השרון והסביבה
-  </footer>
+  </div></section>
+  <section id="contact"><div class="wrap glass" style="padding:48px; text-align:center">
+    <h2>מוכנים שהרכב ירגיש אחרת?</h2>
+    <p class="sub">שירות באזור השרון והסביבה</p>
+    <div class="cta">
+      <a class="btn btn-green" href="https://wa.me/972506530471" style="padding:18px 32px; font-size:1.2rem">וואטסאפ עכשיו</a>
+      <a class="btn btn-gold" href="tel:0506530471" style="padding:18px 32px; font-size:1.2rem">050-6530471</a>
+    </div>
+  </div></section>
+  <footer>Car Pro Service · © 2026 · השרון והסביבה</footer>
+  <a class="float-wa" href="https://wa.me/972506530471">WA</a>
 </body>
 </html>
