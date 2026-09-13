@@ -1,250 +1,139 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VWEYBPDGVL"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag("js", new Date());
-    gtag("config", "G-VWEYBPDGVL");
-  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Car Pro Service | מומחה למולטימדיה לרכב בשרון</title>
-  
+  <title>Car Pro Service | התקנת אפליקציות לאומודה ג'אקו וצ'רי | השרון</title>
+  <meta name="description" content="התקנת אפליקציות מלאה לרכבי Omoda, Jaecoo ו-Chery: YouTube ללא פרסומות, Netflix, Spotify, Waze, הגדרות נהג CockpitPro. שירות באזור השרון והסביבה.">
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-  <!-- Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "AutoRepair",
+    "@type": ["AutoRepair", "LocalBusiness"],
     "name": "Car Pro Service",
-    "description": "מומחה להתקנת מערכות מולטימדיה לרכב - Netflix, YouTube, Waze ועוד. שירות מקצועי לרכבים חשמליים ומקוריים באזור השרון והסביבה.",
-    "url": "https://carservicspronetcoil.org",
+    "description": "התקנת אפליקציות ומערכות מולטימדיה לרכבי Omoda, Jaecoo ו-Chery באזור השרון והסביבה.",
+    "url": "https://carservicespronetcoil.org/",
     "telephone": "+972506530471",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "השרון",
-      "addressCountry": "IL"
-    },
-    "image": "https://carservicspronetcoil.orgtiger.jpg"
+    "areaServed": "השרון והסביבה",
+    "address": { "@type": "PostalAddress", "addressRegion": "השרון", "addressCountry": "IL" },
+    "image": "https://carservicespronetcoil.org/tiger.jpg",
+    "sameAs": ["https://www.facebook.com/share/1DpZnCkJRn/"]
   }
   </script>
-
   <style>
-    .glow-text { 
-      text-shadow: 0 0 25px rgb(255 215 0 / 0.7); 
-    }
-    
+    .glow-text { text-shadow: 0 0 22px rgb(255 215 0 / .7); }
     body {
-      background-image: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.92)), url('tiger.jpg');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
+      background: linear-gradient(rgba(0,0,0,.88), rgba(0,0,0,.93)), url('tiger.jpg') center/cover fixed;
     }
-
-    video {
-      border-radius: 24px;
-      box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.5);
-    }
+    video { border-radius: 20px; }
   </style>
-<link rel="canonical" href="https://carservicspronetcoil.org/">
 </head>
-<body class="bg-zinc-950 text-white font-sans min-h-screen">
-
-  <!-- Navigation -->
-  <nav class="bg-zinc-950/90 backdrop-blur-md border-b border-zinc-800 sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <div class="w-9 h-9 bg-amber-400 rounded-2xl flex items-center justify-center text-black font-bold text-2xl">🚗</div>
-        <div>
-          <span class="text-2xl font-bold tracking-tighter glow-text">Car Pro</span>
-          <span class="text-amber-300 text-sm block -mt-1">Service</span>
-        </div>
+<body class="text-white font-sans">
+  <nav class="sticky top-0 z-50 bg-black/85 backdrop-blur border-b border-zinc-800">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div>
+        <div class="text-2xl font-bold glow-text">Car Pro Service</div>
+        <div class="text-amber-300 text-sm">Omoda · Jaecoo · Chery</div>
       </div>
-
-      <div class="hidden md:flex items-center gap-10 text-lg">
-        <a href="#" onclick="document.getElementById('home').scrollIntoView({behavior: 'smooth'})" class="hover:text-amber-300">בית</a>
-        <a href="#services" onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'})" class="hover:text-amber-300">שירותים</a>
-        <a href="#work" onclick="document.getElementById('work').scrollIntoView({behavior: 'smooth'})" class="hover:text-amber-300">עבודות</a>
-        <a href="#contact" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})" class="hover:text-amber-300">צור קשר</a>
+      <div class="hidden md:flex gap-8">
+        <a href="#home">בית</a>
+        <a href="#brands">מותגים</a>
+        <a href="#apps">אפליקציות</a>
+        <a href="#driver">הגדרות נהג</a>
+        <a href="#work">עבודות</a>
+        <a href="#contact">צור קשר</a>
       </div>
-
-      <div class="hidden md:flex items-center gap-4">
-        <a href="https://wa.me/972506530471" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-2xl flex items-center gap-2 transition-all">
-          <i class="fab fa-whatsapp text-2xl"></i> WhatsApp
-        </a>
-        <a href="tel:0506530471" class="bg-amber-400 hover:bg-amber-500 text-black font-semibold px-6 py-3 rounded-2xl flex items-center gap-2 transition-all">
-          <i class="fas fa-phone"></i> 050-6530471
-        </a>
-      </div>
-
-      <button id="mobile-menu-button" class="md:hidden text-3xl">
-        <i class="fas fa-bars"></i>
-      </button>
-    </div>
-
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden bg-zinc-900 border-t border-zinc-800 py-6">
-      <div class="flex flex-col gap-6 px-8 text-xl">
-        <a href="#" onclick="toggleMobileMenu()" class="hover:text-amber-300">בית</a>
-        <a href="#services" onclick="toggleMobileMenu()" class="hover:text-amber-300">שירותים</a>
-        <a href="#work" onclick="toggleMobileMenu()" class="hover:text-amber-300">עבודות</a>
-        <a href="#contact" onclick="toggleMobileMenu()" class="hover:text-amber-300">צור קשר</a>
-        
-        <div class="flex flex-col gap-4 mt-6">
-          <a href="https://wa.me/972506530471" target="_blank" class="bg-green-500 text-white font-semibold py-4 rounded-2xl flex items-center justify-center gap-3">
-            <i class="fab fa-whatsapp text-3xl"></i> שלח הודעה בווטסאפ
-          </a>
-          <a href="tel:0506530471" class="bg-amber-400 text-black font-semibold py-4 rounded-2xl flex items-center justify-center gap-3">
-            <i class="fas fa-phone"></i> התקשר: 050-6530471
-          </a>
-        </div>
-      </div>
+      <a href="https://wa.me/972506530471" class="bg-green-500 px-5 py-2 rounded-2xl font-semibold">WhatsApp</a>
     </div>
   </nav>
 
-  <!-- Hero -->
-  <section id="home" class="h-screen flex items-center relative">
-    <div class="max-w-7xl mx-auto px-6 text-center">
-      <h1 class="text-6xl md:text-7xl font-bold tracking-tighter mb-4 glow-text">Car Pro Service</h1>
-      <p class="text-3xl md:text-4xl text-amber-300 mb-8">מומחה למערכות מולטימדיה לרכב</p>
-      <div class="max-w-2xl mx-auto text-xl mb-12">רוצים לשדרג את הרכב שלכם?<br><span class="text-amber-400">בלי לפגוע באחריות – בלי פשרות</span></div>
-      
-      <div class="flex flex-col sm:flex-row gap-6 justify-center">
-        <a href="https://wa.me/972506530471" target="_blank" 
-           class="bg-green-500 hover:bg-green-600 text-white font-semibold text-xl px-10 py-5 rounded-2xl flex items-center justify-center gap-3">
-          <i class="fab fa-whatsapp text-3xl"></i> שלח הודעה בווטסאפ
-        </a>
-        <a href="tel:0506530471" 
-           class="bg-amber-400 hover:bg-amber-500 text-black font-semibold text-xl px-10 py-5 rounded-2xl flex items-center justify-center gap-3">
-          <i class="fas fa-phone"></i> התקשר עכשיו
-        </a>
+  <section id="home" class="min-h-[85vh] flex items-center text-center px-6">
+    <div class="max-w-4xl mx-auto">
+      <p class="text-amber-400 mb-3 font-semibold">בשורה לבעלי אומודה, ג'אקו וצ'רי</p>
+      <h1 class="text-5xl md:text-7xl font-bold glow-text mb-6">התקנת אפליקציות מלאה לרכב</h1>
+      <p class="text-xl text-zinc-200 mb-8">YouTube ללא פרסומות · Netflix · Spotify · Waze · הגדרות נהג שנשמרות בזיכרון הרכב</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="https://wa.me/972506530471" class="bg-green-500 hover:bg-green-600 px-10 py-5 rounded-2xl text-xl font-bold">שלח הודעה בוואטסאפ</a>
+        <a href="tel:0506530471" class="bg-amber-400 text-black px-10 py-5 rounded-2xl text-xl font-bold">050-6530471</a>
       </div>
     </div>
   </section>
 
-  <!-- About -->
-  <section class="py-20 bg-black/70">
-    <div class="max-w-4xl mx-auto px-6 text-center">
-      <h2 class="text-4xl font-bold mb-6">שלום, אני יצחק פרץ</h2>
-      <p class="text-lg leading-relaxed text-zinc-300">
-        מומחה למערכות מולטימדיה לרכב עם ניסיון של מעל שנתיים.<br>
-        מתמחה בהתקנת אפליקציות לרכבים חשמליים ומקוריים **באזור השרון והסביבה** – בלי לפגוע באחריות.
-      </p>
+  <section id="brands" class="py-20 bg-black/70">
+    <div class="max-w-5xl mx-auto px-6 text-center">
+      <h2 class="text-4xl font-bold mb-4">מותגים שאנחנו מתקינים עליהם</h2>
+      <p class="text-zinc-300 mb-10">התמחות במערכות המקוריות של משפחת Chery — כולל CockpitPro, Android Auto ומסך הבית.</p>
+      <div class="grid md:grid-cols-3 gap-6 text-2xl font-bold">
+        <div class="bg-zinc-900/90 border border-amber-400/30 rounded-3xl p-8">OMODA</div>
+        <div class="bg-zinc-900/90 border border-amber-400/30 rounded-3xl p-8">JAECOO</div>
+        <div class="bg-zinc-900/90 border border-amber-400/30 rounded-3xl p-8">CHERY</div>
+      </div>
     </div>
   </section>
 
-  <!-- Services -->
-  <section id="services" class="py-24 bg-black/70">
+  <section id="apps" class="py-20 bg-black/75">
     <div class="max-w-6xl mx-auto px-6">
-      <div class="text-center mb-16">
-        <h2 class="text-5xl font-bold mb-4 glow-text">מה אני מציע לכם? 🔥</h2>
-        <p class="text-xl text-zinc-400">שדרוג מקצועי ואמין למערכת המולטימדיה</p>
-      </div>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="bg-zinc-900/90 p-8 rounded-3xl hover:bg-zinc-800 transition-all border border-zinc-800">
-          <i class="fas fa-tv text-4xl text-amber-400 mb-6"></i>
-          <h3 class="text-2xl font-semibold mb-3">Netflix לרכב</h3>
-        </div>
-        <div class="bg-zinc-900/90 p-8 rounded-3xl hover:bg-zinc-800 transition-all border border-zinc-800">
-          <i class="fas fa-youtube text-4xl text-red-500 mb-6"></i>
-          <h3 class="text-2xl font-semibold mb-3">YouTube ללא פרסומות</h3>
-        </div>
-        <div class="bg-zinc-900/90 p-8 rounded-3xl hover:bg-zinc-800 transition-all border border-zinc-800">
-          <i class="fas fa-map text-4xl text-blue-400 mb-6"></i>
-          <h3 class="text-2xl font-semibold mb-3">Waze עם שליטה קולית</h3>
-        </div>
-        <div class="bg-zinc-900/90 p-8 rounded-3xl hover:bg-zinc-800 transition-all border border-zinc-800">
-          <i class="fas fa-cogs text-4xl text-emerald-400 mb-6"></i>
-          <h3 class="text-2xl font-semibold mb-3">התאמת אפליקציות למסך</h3>
-        </div>
-        <div class="bg-zinc-900/90 p-8 rounded-3xl hover:bg-zinc-800 transition-all border border-zinc-800">
-          <i class="fas fa-tools text-4xl text-amber-400 mb-6"></i>
-          <h3 class="text-2xl font-semibold mb-3">טיפול בתקלות מולטימדיה</h3>
-        </div>
-        <div class="bg-zinc-900/90 p-8 rounded-3xl hover:bg-zinc-800 transition-all border border-zinc-800">
-          <i class="fas fa-shield-alt text-4xl text-emerald-400 mb-6"></i>
-          <h3 class="text-2xl font-semibold mb-3">ללא פגיעה באחריות</h3>
-        </div>
+      <h2 class="text-4xl font-bold text-center glow-text mb-4">מה מקבלים במערכת</h2>
+      <p class="text-center text-zinc-400 mb-12">התאמה למסך המקורי — בלי להחליף יחידה</p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="bg-zinc-900 p-6 rounded-3xl">YouTube ללא פרסומות</div>
+        <div class="bg-zinc-900 p-6 rounded-3xl">Netflix</div>
+        <div class="bg-zinc-900 p-6 rounded-3xl">Spotify</div>
+        <div class="bg-zinc-900 p-6 rounded-3xl">Waze + שליטה קולית</div>
+        <div class="bg-zinc-900 p-6 rounded-3xl">חנות אפליקציות</div>
+        <div class="bg-zinc-900 p-6 rounded-3xl">מסך בית מותאם</div>
+        <div class="bg-zinc-900 p-6 rounded-3xl">ערוצי טלוויזיה בלייב</div>
+        <div class="bg-zinc-900 p-6 rounded-3xl">Android Auto / CockpitPro</div>
       </div>
     </div>
   </section>
 
-  <!-- Work Videos -->
-  <section id="work" class="py-24 bg-black/70">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="text-center mb-12">
-        <h2 class="text-5xl font-bold mb-4 glow-text">צפו בעבודות שלנו 👍</h2>
-        <p class="text-xl text-zinc-400">התקנות מולטימדיה מקצועיות באזור השרון</p>
-      </div>
+  <section id="driver" class="py-20 bg-black/70">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-4">הדגש: הגדרות נהג</h2>
+      <p class="text-center text-zinc-300 mb-8">כמו בפרופיל CockpitPro — ההגדרות נשמרות בזיכרון הרכב גם אחרי התנעה מחדש.</p>
+      <ul class="space-y-3 text-lg bg-zinc-900/90 rounded-3xl p-8 border border-amber-400/20">
+        <li>✓ שמירת הגדרות הנהג בזיכרון הרכב</li>
+        <li>✓ ביטול צפצופים מציקים</li>
+        <li>✓ שמירת העדפות אישיות ונוחות שימוש</li>
+        <li>✓ פחות התעסקות בכל נסיעה</li>
+        <li>✓ אפשרות לפרופיל אישי (למשל «ההגדרות של יצחק»)</li>
+      </ul>
+    </div>
+  </section>
 
-      <div class="grid md:grid-cols-2 gap-10">
-        <div class="bg-zinc-950/90 p-4 rounded-3xl border border-zinc-800">
-          <video class="w-full" controls autoplay muted loop playsinline>
+  <section id="work" class="py-20 bg-black/75">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center glow-text mb-10">צפו בעבודות שלנו</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-zinc-950 p-4 rounded-3xl border border-zinc-800">
+          <video class="w-full" controls muted loop playsinline>
             <source src="eveasy.mp4" type="video/mp4">
           </video>
-          <p class="text-center mt-6 text-amber-300 text-xl font-medium">eveasy.mp4</p>
         </div>
-
-        <div class="bg-zinc-950/90 p-4 rounded-3xl border border-zinc-800">
-          <video class="w-full" controls autoplay muted loop playsinline>
+        <div class="bg-zinc-950 p-4 rounded-3xl border border-zinc-800">
+          <video class="w-full" controls muted loop playsinline>
             <source src="eveasynew.mp4" type="video/mp4">
           </video>
-          <p class="text-center mt-6 text-amber-300 text-xl font-medium">eveasynew.mp4</p>
         </div>
       </div>
+      <p class="text-center text-zinc-400 mt-6">מסך בית עם Waze, YouTube, CockpitPro ועוד — על מערכת מקורית</p>
     </div>
   </section>
 
-  <!-- Contact -->
-  <section id="contact" class="py-28 bg-black/70 text-center">
-    <div class="max-w-2xl mx-auto px-6">
-      <i class="fas fa-phone-volume text-7xl text-amber-400 mb-8"></i>
-      <h2 class="text-5xl font-bold mb-6">מוכנים לשדרג את הרכב?</h2>
-      <p class="text-2xl text-zinc-300 mb-10">צרו קשר עכשיו – שירות באזור השרון והסביבה</p>
-      
-      <div class="flex flex-col sm:flex-row gap-6 justify-center">
-        <a href="https://wa.me/972506530471" target="_blank" 
-           class="bg-green-500 hover:bg-green-600 text-white font-semibold text-2xl px-12 py-7 rounded-3xl flex items-center justify-center gap-4">
-          <i class="fab fa-whatsapp text-4xl"></i> ווטסאפ
-        </a>
-        <a href="tel:0506530471" 
-           class="bg-amber-400 hover:bg-amber-500 text-black font-semibold text-2xl px-12 py-7 rounded-3xl flex items-center justify-center gap-4">
-          <i class="fas fa-phone text-4xl"></i> 050-6530471
-        </a>
-      </div>
-
-      <div class="mt-12">
-        <a href="https://www.facebook.com/share/1DpZnCkJRn/" target="_blank" 
-           class="inline-flex items-center gap-3 text-zinc-400 hover:text-blue-400 text-lg">
-          <i class="fab fa-facebook text-4xl"></i>
-          <span>עקבו אחרינו בפייסבוק</span>
-        </a>
-      </div>
+  <section id="contact" class="py-24 text-center bg-black/80">
+    <h2 class="text-5xl font-bold mb-4">מוכנים לשדרג את האומודה / הג'אקו?</h2>
+    <p class="text-xl text-zinc-300 mb-8">שירות באזור השרון והסביבה · 24/6 לפי תיאום</p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="https://wa.me/972506530471" class="bg-green-500 px-12 py-6 rounded-3xl text-2xl font-bold">וואטסאפ</a>
+      <a href="tel:0506530471" class="bg-amber-400 text-black px-12 py-6 rounded-3xl text-2xl font-bold">050-6530471</a>
     </div>
+    <a href="https://www.facebook.com/share/1DpZnCkJRn/" class="inline-block mt-8 text-blue-400">פייסבוק</a>
   </section>
 
-  <!-- Footer -->
-  <footer class="bg-black/80 py-12 border-t border-zinc-800">
-    <div class="max-w-6xl mx-auto px-6 text-center">
-      <p class="text-amber-300 text-2xl mb-2">Car Pro Service</p>
-      <p class="text-zinc-500">© 2026 • כל הזכויות שמורות • אזור השרון והסביבה</p>
-    </div>
+  <footer class="py-10 text-center text-zinc-500 border-t border-zinc-800">
+    Car Pro Service · © 2026 · אזור השרון והסביבה
   </footer>
-
-  <script>
-    const mobileBtn = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    
-    function toggleMobileMenu() {
-      mobileMenu.classList.toggle('hidden');
-    }
-    
-    mobileBtn.addEventListener('click', toggleMobileMenu);
-  </script>
 </body>
 </html>
