@@ -4,111 +4,92 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cockpit Pro | שדרוג מולטימדיה לאומודה ג'אקו וצ'רי</title>
-  <meta name="description" content="התקנת אפליקציות לרכבי Jaecoo, Omoda ו-Chery: Netflix, YouTube, Waze, CockpitPro. 500₪. השרון.">
-  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    *{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
-    body{font-family:Heebo,Arial,sans-serif;background:#05060a;color:#f4f1ea}
+    *{box-sizing:border-box;margin:0;padding:0}body{font-family:Heebo,Arial,sans-serif;background:#05060a;color:#f4f1ea}
     a{color:inherit;text-decoration:none}.wrap{width:min(1120px,calc(100% - 28px));margin:0 auto}
-    nav{position:sticky;top:0;z-index:40;backdrop-filter:blur(16px);background:rgba(5,6,10,.75);border-bottom:1px solid rgba(80,220,255,.15)}
-    .nav-in{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
-    .logo{font-weight:900}.logo small{display:block;color:#6ee7ff;font-size:11px;letter-spacing:.12em}
+    nav{position:sticky;top:0;z-index:40;background:rgba(5,6,10,.8);backdrop-filter:blur(16px)}
+    .nav-in{display:flex;justify-content:space-between;align-items:center;padding:14px 0}
+    .logo{font-weight:900}.logo small{display:block;color:#6ee7ff;font-size:11px}
     .hero{position:relative;min-height:100vh;display:grid;place-items:center;overflow:hidden;text-align:center}
     .hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-    .hero .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,6,10,.35),rgba(5,6,10,.82))}
-    .hero .content{position:relative;z-index:2;padding:80px 16px}
-    .kicker{color:#7ddfff;font-weight:800;letter-spacing:.14em;margin-bottom:14px}
-    h1{font-size:clamp(2.3rem,8vw,5rem);line-height:.95;font-weight:900}h1 b{color:#67e8f9}
-    .lead{max-width:620px;margin:18px auto 28px;color:#d7e7ee;font-size:1.15rem}
-    .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 24px;border-radius:999px;font-weight:800}
+    .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,6,10,.3),rgba(5,6,10,.85))}
+    .content{position:relative;z-index:2;padding:80px 16px}
+    h1{font-size:clamp(2.2rem,8vw,4.6rem);font-weight:900;line-height:.95}h1 b{color:#67e8f9}
+    .lead{margin:16px auto 24px;max-width:620px;color:#d7e7ee}
+    .btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+    .btn{padding:14px 22px;border-radius:999px;font-weight:800;display:inline-flex;gap:8px;align-items:center}
     .wa{background:#22c55e;color:#04210d}.call{background:#67e8f9;color:#04202a}
-    .price{margin-top:26px;display:inline-block;padding:16px 22px;border:1px solid rgba(103,232,249,.35);border-radius:18px;background:rgba(0,0,0,.35)}
-    .price b{font-size:2rem}section{padding:78px 0}
-    h2{font-size:clamp(1.8rem,5vw,2.8rem);font-weight:900;margin-bottom:10px}.sub{color:#9fb3be;margin-bottom:28px}
-    .apps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-    .app{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:22px;padding:18px;text-align:center;min-height:128px}
-    .ico{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;margin:0 auto 10px;font-size:22px;color:#fff}
-    .yt{background:#ff0000}.nf{background:#e50914}.sp{background:#1db954}.wz{background:#33ccff;color:#083344}
-    .gp{background:#34a853}.hz{background:#6366f1}.eq{background:#3b82f6}.cp{background:#06b6d4}
-    .tv{background:#f59e0b}.fm{background:#f97316}.aa{background:#0ea5e9}.mb{background:#8b5cf6}
-    .two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-    .glass{background:rgba(12,16,24,.8);border:1px solid rgba(103,232,249,.16);border-radius:24px;padding:24px}
-    .checks{list-style:none;display:grid;gap:10px}.checks li{background:rgba(255,255,255,.03);border-radius:12px;padding:10px 12px}
-    .vids{display:grid;grid-template-columns:1fr 1fr;gap:16px}video.clip{width:100%;border-radius:18px;background:#000}
-    footer{padding:30px 0 100px;text-align:center;color:#7b8790}
-    .float{position:fixed;left:16px;bottom:16px;width:60px;height:60px;border-radius:50%;background:#22c55e;display:grid;place-items:center;font-size:28px;color:#fff;z-index:50}
+    .price{margin-top:22px;padding:14px 20px;border:1px solid rgba(103,232,249,.35);border-radius:16px;display:inline-block}.price b{font-size:1.8rem}
+    section{padding:70px 0}h2{font-size:clamp(1.7rem,5vw,2.6rem);font-weight:900;margin-bottom:12px}
+    .apps{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    .app{background:rgba(255,255,255,.04);border-radius:20px;padding:16px;text-align:center}
+    .ico{width:48px;height:48px;border-radius:14px;margin:0 auto 8px;display:grid;place-items:center;color:#fff}
+    .yt{background:#ff0000}.nf{background:#e50914}.wz{background:#33ccff;color:#083344}.sp{background:#1db954}
+    .gp{background:#34a853}.aa{background:#0ea5e9}.cp{background:#06b6d4}.hz{background:#6366f1}
+    .eq{background:#3b82f6}.tv{background:#f59e0b}.mb{background:#8b5cf6}.fm{background:#f97316}
+    .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .glass{background:rgba(12,16,24,.85);border:1px solid rgba(103,232,249,.16);border-radius:22px;padding:22px}
+    .checks{list-style:none}.checks li{padding:8px 0}
+    .vids{display:grid;grid-template-columns:1fr 1fr;gap:14px}video.clip{width:100%;border-radius:16px;background:#000}
+    footer{padding:24px 0 96px;text-align:center;color:#7b8790}
+    .float{position:fixed;left:16px;bottom:16px;width:58px;height:58px;border-radius:50%;background:#22c55e;display:grid;place-items:center;color:#fff;font-size:26px}
     @media(max-width:800px){.apps,.two,.vids{grid-template-columns:1fr 1fr}}
   </style>
 </head>
 <body>
-<nav><div class="wrap nav-in"><div class="logo">COCKPIT PRO<small>JAECOO · OMODA · CHERY</small></div><a class="btn wa" href="https://wa.me/972506530471">WhatsApp</a></div></nav>
+<nav><div class="wrap nav-in"><div class="logo">COCKPIT PRO<small>JAECOO · OMODA · CHERY</small></div>
+<a class="btn wa" href="https://wa.me/972533022636">WhatsApp</a></div></nav>
 <header class="hero">
-  <video autoplay muted loop playsinline poster="tiger.jpg"><source src="amazing.mp4" type="video/mp4"><source src="eveasy.mp4" type="video/mp4"></video>
+  <video autoplay muted loop playsinline poster="tiger.jpg">
+    <source src="combo-cockpit.mp4" type="video/mp4">
+    <source src="amazing.mp4" type="video/mp4">
+  </video>
   <div class="shade"></div>
   <div class="content">
-    <div class="kicker">שדרוג מולטימדיה לרכב</div>
     <h1>רוצים לשדרג<br><b>את חוויית הנסיעה?</b></h1>
-    <p class="lead">הופכים את המסך המקורי לחכם יותר: YouTube בלי פרסומות, Netflix, Waze, והגדרות נהג שנשמרות בזיכרון.</p>
+    <p class="lead">מסך מקורי חכם יותר — YouTube, Netflix, Waze, CockpitPro.</p>
     <div class="btns">
-      <a class="btn wa" href="https://wa.me/972506530471">שלחו הודעה</a>
-      <a class="btn call" href="tel:0506530471">050-6530471</a>
+      <a class="btn wa" href="https://wa.me/972533022636">שלחו הודעה</a>
+      <a class="btn call" href="tel:0533022636">053-302-2636</a>
     </div>
-    <div class="price">כל החוויה במחיר אחד · <b>500₪</b><br><small>כולל אחריות · זמינות 24/6</small></div>
+    <div class="price">כל החוויה · <b>500₪</b><br><small>כולל אחריות · 24/6</small></div>
   </div>
 </header>
 <section class="wrap">
   <h2>הכול במסך אחד</h2>
-  <p class="sub">האייקונים שנכנסים למערכת המקורית.</p>
   <div class="apps">
-    <div class="app"><div class="ico yt"><i class="fab fa-youtube"></i></div>YouTube<br><small>ללא פרסומות</small></div>
+    <div class="app"><div class="ico yt"><i class="fab fa-youtube"></i></div>YouTube</div>
     <div class="app"><div class="ico nf"><i class="fas fa-film"></i></div>Netflix</div>
     <div class="app"><div class="ico wz"><i class="fas fa-location-arrow"></i></div>Waze</div>
     <div class="app"><div class="ico sp"><i class="fab fa-spotify"></i></div>Spotify</div>
-    <div class="app"><div class="ico gp"><i class="fab fa-google-play"></i></div>חנות אפליקציות</div>
+    <div class="app"><div class="ico gp"><i class="fab fa-google-play"></i></div>חנות</div>
     <div class="app"><div class="ico aa"><i class="fab fa-android"></i></div>Android Auto</div>
     <div class="app"><div class="ico cp"><i class="fas fa-gauge-high"></i></div>CockpitPro</div>
-    <div class="app"><div class="ico hz"><i class="fas fa-mountain"></i></div>Cockpit Horizon</div>
-    <div class="app"><div class="ico eq"><i class="fas fa-sliders"></i></div>XEQ Equalizer</div>
-    <div class="app"><div class="ico tv"><i class="fas fa-tv"></i></div>ערוצי טלוויזיה</div>
+    <div class="app"><div class="ico hz"><i class="fas fa-mountain"></i></div>Horizon</div>
+    <div class="app"><div class="ico eq"><i class="fas fa-sliders"></i></div>XEQ</div>
+    <div class="app"><div class="ico tv"><i class="fas fa-tv"></i></div>טלוויזיה</div>
     <div class="app"><div class="ico mb"><i class="fas fa-photo-film"></i></div>Media Box</div>
-    <div class="app"><div class="ico fm"><i class="fas fa-folder-open"></i></div>File Manager+</div>
+    <div class="app"><div class="ico fm"><i class="fas fa-folder-open"></i></div>Files</div>
   </div>
 </section>
 <section class="wrap"><div class="two">
-  <div class="glass">
-    <h2>ההגדרות שלכם. נשמרות בזיכרון.</h2>
-    <ul class="checks">
-      <li>✓ 17 הגדרות אומתו אחרי כיבוי</li>
-      <li>✓ ניטור נהג / שמירת נתיב</li>
-      <li>✓ אזהרת התנגשות ובלמת חירום</li>
-      <li>✓ זיהוי ילדים בתוך הרכב</li>
-      <li>✓ חימום ואוורור מושבים</li>
-      <li>✓ HUD לשעונים + Waze</li>
-    </ul>
+  <div class="glass"><h2>הגדרות נהג</h2>
+    <ul class="checks"><li>✓ 17 הגדרות בזיכרון</li><li>✓ שמירת נתיב / FCW</li><li>✓ זיהוי ילדים</li><li>✓ מושבים + HUD + Waze</li></ul>
   </div>
-  <div class="glass">
-    <h2>עוד בחבילה</h2>
-    <ul class="checks">
-      <li>NOVA Vehicle + גלגל צף</li>
-      <li>Horizon Launcher Studio</li>
-      <li>סאונד חזק יותר דרך XEQ</li>
-      <li>טלוויזיה כשהרכב חונה</li>
-    </ul>
+  <div class="glass"><h2>צור קשר</h2>
+    <p>053-302-2636</p>
+    <div class="btns" style="margin-top:14px"><a class="btn wa" href="https://wa.me/972533022636">וואטסאפ</a></div>
   </div>
 </div></section>
 <section class="wrap">
-  <h2>העבודות</h2>
+  <h2>סרטונים</h2>
   <div class="vids">
-    <video class="clip" controls muted loop playsinline poster="mycar.jpg"><source src="eveasy.mp4" type="video/mp4"></video>
-    <video class="clip" controls muted loop playsinline poster="eveasy.jpg"><source src="eveasynew.mp4" type="video/mp4"></video>
+    <video class="clip" controls muted loop playsinline><source src="combo-cockpit.mp4" type="video/mp4"></video>
+    <video class="clip" controls muted loop playsinline><source src="eveasy.mp4" type="video/mp4"></video>
   </div>
 </section>
-<section class="wrap"><div class="glass" style="text-align:center;padding:42px 20px">
-  <h2>מוכנים לשדרג?</h2>
-  <div class="btns"><a class="btn wa" href="https://wa.me/972506530471">וואטסאפ</a><a class="btn call" href="tel:0506530471">050-653-0471</a></div>
-</div></section>
-<footer>Car Pro Service · Cockpit Pro · © 2026 · השרון</footer>
-<a class="float" href="https://wa.me/972506530471"><i class="fab fa-whatsapp"></i></a>
+<footer>Car Pro Service · 053-302-2636 · השרון</footer>
+<a class="float" href="https://wa.me/972533022636"><i class="fab fa-whatsapp"></i></a>
 </body></html>
