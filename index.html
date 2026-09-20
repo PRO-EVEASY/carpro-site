@@ -43,6 +43,22 @@
     .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
     .glass{background:rgba(12,16,24,.85);border:1px solid rgba(103,232,249,.16);border-radius:22px;padding:22px;transition:border-color .25s,transform .25s}
     .glass:hover{border-color:rgba(103,232,249,.4);transform:translateY(-4px)}
+    .adb-service{position:relative;overflow:hidden;background:linear-gradient(135deg,#071925,#0b0d14 58%,#231b0b);border:1px solid rgba(103,232,249,.3);border-radius:28px;padding:clamp(24px,5vw,52px);box-shadow:0 26px 80px rgba(0,0,0,.38)}
+    .adb-service:before{content:"";position:absolute;width:260px;height:260px;left:-100px;top:-130px;border-radius:50%;background:#22d3ee;filter:blur(100px);opacity:.18}
+    .adb-grid{position:relative;display:grid;grid-template-columns:1.3fr .7fr;gap:30px;align-items:center}
+    .adb-tag{display:inline-flex;gap:8px;align-items:center;color:#67e8f9;font-size:12px;font-weight:900;letter-spacing:.12em}
+    .adb-tag:before{content:"";width:8px;height:8px;border-radius:50%;background:#4ade80;box-shadow:0 0 14px #4ade80}
+    .adb-service h2{margin:12px 0;font-size:clamp(2rem,5vw,3.5rem)}
+    .adb-service p{max-width:650px;color:#b9cbd4;line-height:1.8}
+    .adb-points{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0}
+    .adb-points span{padding:8px 12px;border:1px solid rgba(255,255,255,.1);border-radius:999px;background:rgba(255,255,255,.04);font-size:13px}
+    .adb-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+    .adb-login{background:#67e8f9;color:#04202a;box-shadow:0 8px 24px rgba(103,232,249,.22)}
+    .telegram{background:#229ed9;color:white;box-shadow:0 8px 24px rgba(34,158,217,.22)}
+    .adb-price{text-align:center;padding:28px;border:1px solid rgba(216,180,106,.38);border-radius:22px;background:rgba(216,180,106,.06)}
+    .adb-price small{display:block;color:#d8b46a;font-weight:900;letter-spacing:.12em}
+    .adb-price strong{display:block;margin:10px 0;font-size:4.5rem;line-height:1;color:#fff}
+    .adb-price span{color:#9fb0ba}
     .checks{list-style:none}.checks li{padding:8px 0}
     .vids{display:grid;grid-template-columns:1fr 1fr;gap:14px}
     video.clip{width:100%;border-radius:16px;background:#000;transition:transform .25s,box-shadow .25s}
@@ -50,7 +66,8 @@
     footer{padding:24px 0 96px;text-align:center;color:#7b8790}
     .float{position:fixed;left:16px;bottom:16px;width:58px;height:58px;border-radius:50%;background:#22c55e;display:grid;place-items:center;color:#fff;font-size:26px;animation:wiggle 2.4s ease-in-out infinite;box-shadow:0 0 0 0 rgba(34,197,94,.5)}
     @keyframes wiggle{0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(34,197,94,.45)}50%{transform:scale(1.08);box-shadow:0 0 0 12px rgba(34,197,94,0)}}
-    @media(max-width:800px){.apps,.two,.vids{grid-template-columns:1fr 1fr}}
+    @media(max-width:800px){.apps,.two,.vids,.adb-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:620px){.adb-grid{grid-template-columns:1fr}.adb-actions .btn{width:100%;justify-content:center}.adb-price{order:-1}.adb-service{text-align:center}.adb-tag,.adb-points,.adb-actions{justify-content:center}}
   </style>
 </head>
 <body>
@@ -87,6 +104,24 @@
     <div class="app"><div class="ico tv"><i class="fas fa-tv"></i></div>טלוויזיה</div>
     <div class="app"><div class="ico mb"><i class="fas fa-photo-film"></i></div>Media Box</div>
     <div class="app"><div class="ico fm"><i class="fas fa-folder-open"></i></div>Files</div>
+  </div>
+</section>
+<section class="wrap" id="adb-auth">
+  <div class="adb-service">
+    <div class="adb-grid">
+      <div>
+        <div class="adb-tag">גישה מאובטחת ללקוחות מורשים</div>
+        <h2>ADB Auth Key by PROCAR</h2>
+        <p>פורטל מקצועי ליצירת הרשאות ADB עבור מכשירים שבבעלותכם או שקיבלתם הרשאה מפורשת לטפל בהם. הכניסה מתבצעת באמצעות משתמש וסיסמה אישיים שרוכשים ישירות מ־PROCAR.</p>
+        <div class="adb-points"><span>✓ חשבון אישי</span><span>✓ מערכת קרדיטים</span><span>✓ זמין מכל טלפון</span></div>
+        <div class="adb-actions">
+          <a class="btn adb-login" href="https://adbkeys.carservicspronetcoil.org/">כניסה לאתר המפתחות</a>
+          <a class="btn wa" href="https://wa.me/972533022636?text=שלום%20PROCAR%2C%20אני%20רוצה%20לרכוש%20גישה%20ל-ADB%20Auth%20Key">רכישת גישה ב־WhatsApp</a>
+          <a class="btn telegram" href="https://t.me/pertz2641">Telegram @pertz2641</a>
+        </div>
+      </div>
+      <div class="adb-price"><small>חבילת PRO</small><strong>$50</strong><span>20 מפתחות הרשאה</span></div>
+    </div>
   </div>
 </section>
 <section class="wrap"><div class="two">
