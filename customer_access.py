@@ -173,6 +173,12 @@ class CustomerAccess:
             row = db.execute('SELECT * FROM customers WHERE id=?', (customer_id,)).fetchone()
             return self.public(row) if row else None
 
+    def keys(self, customer_id):
+        with self.db() as db:
+            rows = db.execute("""SELECT serial,day,key_text FROM issues
+                WHERE customer_id=? AND state='done' ORDER BY created DESC LIMIT 100""", (customer_id,))
+            return [{'serial': row['serial'], 'date': row['day'], 'authorizationCode': row['key_text']} for row in rows]
+
     def logout(self, token):
         with self.db() as db:
             db.execute('DELETE FROM sessions WHERE digest=?', (token_hash(token or ''),))

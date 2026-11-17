@@ -160,6 +160,8 @@ class CustomerAccessTests(unittest.TestCase):
         self.store.finish(issue['issue_id'], key_text='synthetic-private-result')
         other = self.store.provision('Another synthetic customer', 1)
         self.assertNotIn('cached', self.store.reserve(other['id'], '12345678', '20261117'))
+        self.assertEqual(self.store.keys(other['id']), [])
+        self.assertEqual(self.store.keys(self.client['id'])[0]['authorizationCode'], 'synthetic-private-result')
 
 
 class CustomerHTTPTests(unittest.TestCase):
@@ -241,6 +243,11 @@ class CustomerHTTPTests(unittest.TestCase):
         self.assertEqual(status, 200); result = json.loads(body)
         self.assertEqual(result['authorizationCode'], 'SYNTHETIC_TEST_CODE_ONLY')
         self.assertEqual(result['remainingUses'], 0)
+        status, _, history = self.request('/api/my-keys', cookie=cookie)
+        self.assertEqual(status, 200)
+        self.assertEqual(json.loads(history)['keys'][0]['authorizationCode'], result['authorizationCode'])
+        _, other_cookie, _ = self.provision_and_login()
+        self.assertEqual(json.loads(self.request('/api/my-keys?customerId=someone-else', cookie=other_cookie)[2])['keys'], [])
         first_calls = self.count.read_text()
         status, _, body = self.request('/api/generate', request, cookie=cookie, action='generate-key')
         self.assertEqual(status, 200); self.assertEqual(json.loads(body)['authorizationCode'], result['authorizationCode'])
@@ -269,6 +276,10 @@ class CustomerHTTPTests(unittest.TestCase):
             self.assertIsNone(response.getheader('Access-Control-Allow-Origin'))
             response.read()
         finally: c.close()
+
+    def test_key_download_history_requires_a_customer_session(self):
+        self.assertEqual(self.request('/api/my-keys')[0], 401)
+        self.assertEqual(self.request('/api/my-keys', admin=True)[0], 403)
 
 
 if __name__ == '__main__': unittest.main()

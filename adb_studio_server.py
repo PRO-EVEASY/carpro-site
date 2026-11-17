@@ -174,6 +174,12 @@ class Handler(BaseHTTPRequestHandler):
             self.customer = None
         elif not self.allowed():
             return
+        if path == '/api/my-keys':
+            if not CUSTOMERS or not self.customer:
+                self.send_data({'error': 'customer_login_required'}, 403)
+            else:
+                self.send_data({'keys': CUSTOMERS.keys(self.customer['id'])})
+            return
         if path == "/api/status":
             result = {
                 "ok": True,
