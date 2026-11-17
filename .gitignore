@@ -1,6 +1,6 @@
 # Local credentials, proxy settings, logs and preview runtime data.
 .local-preview/
-.local-provider/
+.local-provider
 .env
 .env.*
 *.env
