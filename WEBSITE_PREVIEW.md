@@ -2,7 +2,7 @@
 
 This development branch redesigns the existing marketing homepage in the charcoal and red visual language of CockpitPro Toolbox. It retains the COCKPITPRO wordmark, the existing domain, application offering and ADB Studio routes.
 
-The owner requested and supplied the following commercial copy: 500 ILS once for life, free reinstallation after accidental deletion, four years of experience and more than 100 installations. The owner confirmed 050-653-0471 as the contact number. Driver settings are described only for Chery, Omoda and Jaecoo, subject to model support. ADBAUTH pricing remains $20 for one key and $50 for ten keys.
+The owner requested and supplied the following commercial copy: 500 ILS once for life, free reinstallation after accidental deletion, four years of experience and more than 100 installations. The owner confirmed 050-653-0471 as the contact number. Driver settings are described only for Chery, Omoda and Jaecoo, subject to model support. ADBAUTH pricing, updated at the owner’s request, is $20 for one key, $180 for ten keys and $300 for twenty keys.
 
 ## Reviewed video library
 
