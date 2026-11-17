@@ -17,64 +17,29 @@ echo "Downloading CockpitPro ADB Studio preview..."
 curl -fLsS --retry 2 --max-time 45 "$BASE/adb-studio.html" -o "$ROOT/index.html"
 test -s "$ROOT/index.html"
 
-cat > "$ROOT/auth_server.py" <<'PY'
-import base64
-import hmac
-import os
-from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
-from urllib.parse import urlsplit
+echo "Downloading private API backend..."
+curl -fLsS --retry 2 --max-time 45 "$BASE/adb_studio_server.py" -o "$ROOT/auth_server.py"
+test -s "$ROOT/auth_server.py"
 
-html_file = os.environ["PREVIEW_HTML_FILE"]
-username = os.environ["PREVIEW_LOGIN_USER"]
-password = os.environ["PREVIEW_LOGIN_PASSWORD"]
-expected = "Basic " + base64.b64encode(f"{username}:{password}".encode()).decode()
+# Only the local private file contains upstream addresses/credentials.
+ENV_FILE="$HOME/.cockpitpro-adb.env"
+if [ -f "$ENV_FILE" ]; then
+  chmod 600 "$ENV_FILE"
+  set -a
+  # shellcheck disable=SC1090
+  source "$ENV_FILE"
+  set +a
+  echo "Private configuration loaded from $ENV_FILE"
+else
+  echo "No private upstream configuration found; preview mode remains available."
+fi
 
-class Handler(BaseHTTPRequestHandler):
-    def log_message(self, *_args):
-        pass
-
-    def serve_page(self, head=False):
-        if not hmac.compare_digest(self.headers.get("Authorization", ""), expected):
-            self.send_response(401)
-            self.send_header("WWW-Authenticate", 'Basic realm="CockpitPro Preview", charset="UTF-8"')
-            self.send_header("Cache-Control", "no-store")
-            self.send_header("Content-Length", "0")
-            self.end_headers()
-            return
-        path = urlsplit(self.path).path
-        if path not in ("/", "/index.html"):
-            self.send_error(404, "Not Found")
-            return
-        data = open(html_file, "rb").read()
-        self.send_response(200)
-        self.send_header("Content-Type", "text/html; charset=utf-8")
-        self.send_header("Content-Length", str(len(data)))
-        self.send_header("Cache-Control", "no-store")
-        self.send_header("X-Content-Type-Options", "nosniff")
-        self.send_header("X-Frame-Options", "DENY")
-        self.send_header("Referrer-Policy", "no-referrer")
-        self.end_headers()
-        if not head:
-            self.wfile.write(data)
-
-    def do_GET(self):
-        self.serve_page()
-
-    def do_HEAD(self):
-        self.serve_page(head=True)
-
-    def do_POST(self):
-        self.send_error(405, "Method Not Allowed")
-
-server = ThreadingHTTPServer(("127.0.0.1", int(os.environ["PORT"])), Handler)
-server.serve_forever()
-PY
 export PREVIEW_HTML_FILE="$ROOT/index.html"
 export PREVIEW_LOGIN_USER="procar"
 export PREVIEW_LOGIN_PASSWORD
 PREVIEW_LOGIN_PASSWORD="$(python -c 'import secrets; print(secrets.token_urlsafe(24))')"
 export PORT
-echo "Starting password-protected preview on http://127.0.0.1:$PORT ..."
+echo "Starting password-protected ADB Studio on http://127.0.0.1:$PORT ..."
 python "$ROOT/auth_server.py" > "$ROOT/server.log" 2>&1 &
 SERVER_PID=$!
 cleanup() { kill "$SERVER_PID" 2>/dev/null || true; }
@@ -93,12 +58,12 @@ fi
 
 echo
 echo "========================================="
-echo "CockpitPro ADB Studio Preview"
+echo "CockpitPro ADB Studio · Private API"
 echo "Login username: $PREVIEW_LOGIN_USER"
 echo "Login password: $PREVIEW_LOGIN_PASSWORD"
 echo "========================================="
 echo "Do NOT share the password or terminal output."
-echo "Cloudflare Quick Tunnel URL will appear below."
+echo "Cloudflare Quick Tunnel URL will appear below."\necho "Issuance enabled: ${ADBAUTH_ENABLE_ISSUE:-0} (server-side only)"
 echo "Press Ctrl+C to stop both processes."
 echo
 # cloudflared in Termux 2026.6.1 does not support --allowed-mail.
