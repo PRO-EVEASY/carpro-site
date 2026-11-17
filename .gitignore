@@ -1,0 +1,26 @@
+# Local credentials, proxy settings, logs and preview runtime data.
+.local-preview/
+.local-provider/
+.env
+.env.*
+*.env
+*.env.*
+*.log
+*.pid
+*.sqlite
+*.sqlite-*
+*.db
+*.db-*
+
+# Device/customer authorization files must never be published.
+*.key
+*.pem
+*.p12
+*.pfx
+
+# Local tooling.
+__pycache__/
+*.py[cod]
+.venv/
+node_modules/
+.DS_Store
