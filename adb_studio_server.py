@@ -47,6 +47,7 @@ PUBLIC_FILES = {
     "/adb-studio.html": (BASE, "text/html; charset=utf-8"),
     "/login": (BASE.parent / 'customer-login.html', 'text/html; charset=utf-8'),
     "/admin": (BASE.parent / 'customer-admin.html', 'text/html; charset=utf-8'),
+    '/assets/images/adbauthkey-cars.png': (BASE.parent / 'assets/images/adbauthkey-cars.png', 'image/png'),
     "/assets/vendor/qrcode.min.js": (
         BASE.parent / "assets/vendor/qrcode.min.js", "text/javascript; charset=utf-8"
     ),
@@ -168,7 +169,7 @@ class Handler(BaseHTTPRequestHandler):
             if path == '/api/admin/customers':
                 self.send_data(CUSTOMERS.list_customers() if CUSTOMERS else {'error': 'customer_access_disabled'}, 200 if CUSTOMERS else 503)
                 return
-        elif path == '/login' and CUSTOMERS:
+        elif path in ('/login', '/assets/images/adbauthkey-cars.png') and CUSTOMERS:
             self.customer = None
         elif not self.allowed():
             return
