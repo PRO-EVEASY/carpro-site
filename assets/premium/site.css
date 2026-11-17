@@ -16,3 +16,6 @@
 @media(min-width:601px) and (max-width:950px){.video-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.hero-bottom{flex-direction:column;align-items:stretch;gap:15px;padding-top:28px}.hero-film{max-width:none;min-height:68px;justify-content:space-between}.hero-film>img{width:62px;height:68px}.hero-film>span{margin-inline-end:auto}.hero-film i{margin-inline:0 12px}.video-grid{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){:root{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}.button:hover,.service-card:hover,.video-open:hover>img{transform:none}}
+
+.video-wide{grid-column:span 2}.video-wide .video-open{aspect-ratio:16/9}.video-card{align-self:start}.video-info h3{font-size:18px}.video-wide .video-info{padding-block:24px}
+@media(max-width:600px){.video-wide{grid-column:span 1}.filter{min-height:40px}.video-open{aspect-ratio:3/4}.video-wide .video-open{aspect-ratio:16/9}}

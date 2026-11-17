@@ -8,13 +8,146 @@
   document.querySelectorAll('[data-phone]').forEach(a => { a.href = `tel:${contact.national}`; const s = a.querySelector('span[dir]'); if (s) s.textContent = contact.label; else a.textContent = contact.label; });
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Reviewed existing footage plus one locally available owner brand film.
-  // The VOYAH film is labelled as an advertisement, not an installation demo.
+  // Reviewed owner footage; brand films are explicitly identified.
   const videos = [
-    { id:'applications', file:'eveasynew.mp4', poster:'assets/premium/apps-poster.jpg', filter:'apps', category:'יישומים ומולטימדיה', title:'האפליקציות. על המסך שלכם.', subtitle:'הצצה למערכת היישומים המותקנת ברכב', duration:'0:17', caption:'סרטון קיים של העסק: מסך האפליקציות במערכת הרכב. האפשרויות בפועל תלויות בהתאמה לרכב.' },
-    { id:'home', file:'eveasy.mp4', poster:'assets/premium/home-poster.jpg', filter:'interface', category:'מסך הבית', title:'ממשק שמרגיש אישי.', subtitle:'מסך בית בעיצוב שעושה את ההבדל', duration:'0:24', caption:'סרטון קיים של העסק: ממשק הבית על מסך המולטימדיה. הממשק המוצג הוא דוגמה להתקנה קיימת.' },
-    { id:'voyah', file:'assets/premium/voyah-brand-film.mp4', poster:'assets/premium/voyah-poster.jpg', filter:'brand', category:'VOYAH · סרטון תדמית', title:'VOYAH. חוויית CockpitPro.', subtitle:'סרטון תדמית לחבילת ההתקנה', duration:'0:03', caption:'סרטון תדמית של CockpitPro ל־VOYAH. התאמת חבילת האפליקציות נבדקת לפי דגם הרכב וגרסת המערכת.' }
-  ];
+  {
+    "id": "chery-split",
+    "file": "assets/premium/installations/chery-split.mp4",
+    "poster": "assets/premium/chery-split-poster.jpg",
+    "filter": "chery",
+    "category": "CHERY · פיצול מסך",
+    "title": "ניווט ווידאו. זה לצד זה.",
+    "subtitle": "שני שימושים על המסך המקורי",
+    "duration": "0:12",
+    "caption": "תיעוד ברכב צ׳רי: מפת ניווט לצד וידאו על המסך הראשי. אפשרויות התצוגה מותאמות לדגם ולמערכת.",
+    "wide": false,
+    "start": 0
+  },
+  {
+    "id": "chery-controls",
+    "file": "assets/premium/installations/chery-controls.mp4",
+    "poster": "assets/premium/chery-controls-poster.jpg",
+    "filter": "chery",
+    "category": "CHERY · המסך ולוח השעונים",
+    "title": "מהמסך אל לוח השעונים.",
+    "subtitle": "אפליקציות, מגע ומעבר בין תצוגות",
+    "duration": "0:34",
+    "caption": "תיעוד ברכב צ׳רי: בחירת יישום, הפעלת וידאו ותצוגה גם בלוח השעונים. התמיכה תלויה בדגם הרכב ובמערכת.",
+    "wide": false,
+    "start": 0
+  },
+  {
+    "id": "aiways-full-tour",
+    "file": "assets/premium/installations/aiways-full-tour.mp4",
+    "poster": "assets/premium/aiways-full-tour-poster.jpg",
+    "filter": "aiways",
+    "category": "AIWAYS U5 · סיור בחבילה",
+    "title": "AIWAYS U5. כל החוויה.",
+    "subtitle": "אפליקציות, ניווט, מוזיקה וטלוויזיה",
+    "duration": "0:40",
+    "caption": "סקירת CockpitPro ב־AIWAYS U5: רשת יישומים, ניווט ומוזיקה ותיעוד CockpitPro TV.",
+    "wide": false,
+    "start": 0
+  },
+  {
+    "id": "aiways-cockpit-tv",
+    "file": "assets/premium/installations/aiways-cockpit-tv.mp4",
+    "poster": "assets/premium/aiways-cockpit-tv-poster.jpg",
+    "filter": "aiways",
+    "category": "AIWAYS U5 · CockpitPro TV",
+    "title": "טלוויזיה שמותאמת למסך.",
+    "subtitle": "ממשק CockpitPro TV בפעולה",
+    "duration": "0:32",
+    "caption": "תיעוד ערוך של CockpitPro TV ב־AIWAYS U5, כולל תפריטי תוכן ובחירה במסך המגע.",
+    "wide": true,
+    "start": 0
+  },
+  {
+    "id": "chery-night-navigation",
+    "file": "assets/premium/installations/chery-night-navigation.mp4",
+    "poster": "assets/premium/chery-night-navigation-poster.jpg",
+    "filter": "chery",
+    "category": "CHERY · ניווט בלוח השעונים",
+    "title": "הניווט מול העיניים.",
+    "subtitle": "מפה בלוח השעונים, וידאו במסך הראשי",
+    "duration": "0:14",
+    "caption": "תיעוד לילה ברכב צ׳רי: מפת ניווט בלוח השעונים בזמן שהמסך הראשי מציג וידאו. התאמה לפי הדגם.",
+    "wide": false,
+    "start": 0
+  },
+  {
+    "id": "aiways-tv-demo",
+    "file": "assets/premium/installations/aiways-tv-demo.mp4",
+    "poster": "assets/premium/aiways-tv-demo-poster.jpg",
+    "filter": "aiways",
+    "category": "AIWAYS U5 · מסך המגע",
+    "title": "בוחרים תוכן. ונכנסים לצפות.",
+    "subtitle": "מבט מקרוב על ממשק הטלוויזיה",
+    "duration": "0:29",
+    "caption": "תיעוד של ממשק הטלוויזיה ובחירת תכנים במסך הרכב. זהו אותו ממשק המוצג בסרטון CockpitPro הערוך של AIWAYS U5.",
+    "wide": true,
+    "start": 0
+  },
+  {
+    "id": "chery-cluster",
+    "file": "assets/premium/installations/chery-cluster.mp4",
+    "poster": "assets/premium/chery-cluster-poster.jpg",
+    "filter": "chery",
+    "category": "CHERY · תצוגת ניווט",
+    "title": "שתי תצוגות. רכב אחד.",
+    "subtitle": "וידאו במסך הראשי וניווט בלוח השעונים",
+    "duration": "0:18",
+    "caption": "תיעוד ברכב צ׳רי של הווידאו במסך הראשי ומפת הניווט בלוח השעונים. הדגם המדויק אינו מצוין בתיעוד.",
+    "wide": false,
+    "start": 0
+  },
+  {
+    "id": "applications",
+    "file": "eveasynew.mp4",
+    "poster": "assets/premium/apps-poster.jpg",
+    "filter": "apps",
+    "category": "יישומים ומולטימדיה",
+    "title": "האפליקציות. על המסך שלכם.",
+    "subtitle": "הצצה למערכת היישומים המותקנת ברכב",
+    "duration": "0:17",
+    "caption": "מסך האפליקציות בהתקנה קיימת. האפשרויות בפועל תלויות בהתאמה לרכב."
+  },
+  {
+    "id": "home",
+    "file": "eveasy.mp4",
+    "poster": "assets/premium/home-poster.jpg",
+    "filter": "apps",
+    "category": "מסך הבית",
+    "title": "ממשק שמרגיש אישי.",
+    "subtitle": "מסך בית בעיצוב שעושה את ההבדל",
+    "duration": "0:24",
+    "caption": "ממשק הבית על מסך המולטימדיה בהתקנה קיימת."
+  },
+  {
+    "id": "night-screen",
+    "file": "assets/premium/installations/night-screen.mp4",
+    "poster": "assets/premium/night-screen-poster.jpg",
+    "filter": "apps",
+    "category": "תיעוד נוסף · צילום לילה",
+    "title": "עוד מבט אל מסך הרכב.",
+    "subtitle": "צילום מתוך תא הנהג בלילה",
+    "duration": "0:21",
+    "caption": "צילום לילה מתוך הרכב. הסרטון נפתח סמוך לסוף, בקטע שבו המסך נראה בבירור. ניתן לצפות גם בתיעוד המלא.",
+    "wide": false,
+    "start": 18.7
+  },
+  {
+    "id": "voyah",
+    "file": "assets/premium/voyah-brand-film.mp4",
+    "poster": "assets/premium/voyah-poster.jpg",
+    "filter": "brand",
+    "category": "VOYAH · סרטון תדמית",
+    "title": "VOYAH. חוויית CockpitPro.",
+    "subtitle": "סרטון תדמית לחבילת ההתקנה",
+    "duration": "0:03",
+    "caption": "סרטון תדמית של CockpitPro ל־VOYAH. התאמת חבילת האפליקציות נבדקת לפי דגם הרכב וגרסת המערכת."
+  }
+];
   const grid = document.getElementById('video-grid');
   const count = document.getElementById('gallery-count');
   const dialog = document.getElementById('video-dialog');
@@ -29,7 +162,7 @@
   function openVideo(video, trigger) {
     activeTrigger=trigger;title.textContent=video.title;category.textContent=video.category;caption.textContent=video.caption;error.hidden=true;
     document.getElementById('video-direct').href=video.file;
-    player.poster=video.poster;player.src=video.file;
+    player.poster=video.poster;player.onloadedmetadata=()=>{if(video.start)player.currentTime=Math.min(video.start,Math.max(0,player.duration-.5));};player.src=video.file;
     dialog.showModal();document.documentElement.style.overflow='hidden';
     player.play().catch(()=>{});
   }
@@ -38,7 +171,7 @@
     if(video)button.addEventListener('click',()=>openVideo(video,button));
   });
   for(const video of videos) {
-    const card=element('article','video-card');card.dataset.category=video.filter;
+    const card=element('article','video-card');card.dataset.category=video.filter;if(video.wide)card.classList.add('video-wide');
     const button=element('button','video-open');button.type='button';button.setAttribute('aria-label',`ניגון סרטון: ${video.title}`);
     const image=element('img');image.src=video.poster;image.alt=video.subtitle;image.loading='lazy';image.decoding='async';image.width=576;image.height=1024;
     button.style.setProperty('--poster',`url("${new URL(video.poster,document.baseURI).href}")`);
@@ -56,7 +189,7 @@
   });
   dialog.querySelector('.close-dialog').addEventListener('click',()=>dialog.close());
   dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close();}});
-  dialog.addEventListener('close',()=>{player.pause();player.removeAttribute('src');player.load();document.documentElement.style.overflow='';if(activeTrigger)activeTrigger.focus();});
+  dialog.addEventListener('close',()=>{player.pause();player.onloadedmetadata=null;player.removeAttribute('src');player.load();document.documentElement.style.overflow='';if(activeTrigger)activeTrigger.focus();});
   player.addEventListener('error',()=>{if(dialog.open&&player.hasAttribute('src'))error.hidden=false;});
 
   const form=document.getElementById('contact-form');
