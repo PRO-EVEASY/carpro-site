@@ -188,3 +188,14 @@ tunnel process must remain running. Its public app address may be included in
 the entry link; provider addresses, proxy settings and credentials must not.
 A stable production connection still requires the domain owner's Cloudflare
 account and a named tunnel.
+
+
+## Authorization download bundle
+
+After a successful provider response, the customer can download one ZIP containing
+exactly `adbauth.key` and `svtasklist.flag` at the archive root, or download each
+file separately. The key text is preserved exactly. The flag contains the
+operator-supplied PnScreen task with null PartNumber/IPCScreenType/IVIScreenType
+parameters and action `eu_debugmode`. Packaging happens in the browser without
+an additional provider request. ZIP interoperability and CRCs are checked using
+Python's independent ZIP reader. Vehicle-side activation is a separate check.

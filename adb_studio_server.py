@@ -48,6 +48,7 @@ PUBLIC_FILES = {
     "/login": (BASE.parent / 'customer-login.html', 'text/html; charset=utf-8'),
     "/admin": (BASE.parent / 'customer-admin.html', 'text/html; charset=utf-8'),
     '/assets/images/adbauthkey-cars.png': (BASE.parent / 'assets/images/adbauthkey-cars.png', 'image/png'),
+    '/assets/authorization-files.js': (BASE.parent / 'assets/authorization-files.js', 'text/javascript; charset=utf-8'),
     "/assets/vendor/qrcode.min.js": (
         BASE.parent / "assets/vendor/qrcode.min.js", "text/javascript; charset=utf-8"
     ),
