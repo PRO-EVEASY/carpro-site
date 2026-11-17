@@ -3,110 +3,134 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cockpit Pro | שדרוג מולטימדיה לאומודה ג'אקו וצ'רי</title>
-  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <style>
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:Heebo,Arial,sans-serif;background:#05060a;color:#f4f1ea}
-    a{color:inherit;text-decoration:none}
-    .wrap{width:min(1120px,calc(100% - 28px));margin:0 auto}
-    nav{position:sticky;top:0;z-index:40;background:rgba(5,6,10,.8);backdrop-filter:blur(16px)}
-    .nav-in{display:flex;justify-content:space-between;align-items:center;padding:14px 0}
-    .logo{font-weight:900}.logo small{display:block;color:#6ee7ff;font-size:11px;letter-spacing:.14em}
-    .hero{position:relative;min-height:100vh;display:grid;place-items:center;overflow:hidden;text-align:center}
-    .hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.06);animation:ken 18s ease-in-out infinite alternate}
-    @keyframes ken{from{transform:scale(1.04)}to{transform:scale(1.14)}}
-    .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,6,10,.28),rgba(5,6,10,.88))}
-    .content{position:relative;z-index:2;padding:80px 16px}
-    h1{font-size:clamp(2.2rem,8vw,4.6rem);font-weight:900;line-height:.95}
-    h1 b{color:#67e8f9;text-shadow:0 0 18px rgba(103,232,249,.55),0 0 48px rgba(103,232,249,.25);animation:glow 2.8s ease-in-out infinite}
-    @keyframes glow{0%,100%{text-shadow:0 0 16px rgba(103,232,249,.4)}50%{text-shadow:0 0 32px rgba(103,232,249,.85),0 0 60px rgba(56,189,248,.35)}}
-    .lead{margin:16px auto 24px;max-width:620px;color:#d7e7ee}
-    .btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-    .btn{padding:14px 22px;border-radius:999px;font-weight:800;display:inline-flex;gap:8px;align-items:center;transition:transform .2s,box-shadow .2s}
-    .btn:hover{transform:translateY(-3px)}
-    .wa{background:#22c55e;color:#04210d;box-shadow:0 8px 24px rgba(34,197,94,.35)}
-    .call{background:#67e8f9;color:#04202a;box-shadow:0 8px 24px rgba(103,232,249,.28)}
-    .price{margin-top:22px;padding:14px 20px;border:1px solid rgba(103,232,249,.35);border-radius:16px;display:inline-block;animation:pulse 2.6s ease-in-out infinite}
-    .price b{font-size:1.8rem}
-    @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(103,232,249,.15)}50%{box-shadow:0 0 0 10px rgba(103,232,249,0)}}
-    section{padding:70px 0}h2{font-size:clamp(1.7rem,5vw,2.6rem);font-weight:900;margin-bottom:12px}
-    .apps{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-    .app{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:20px;padding:16px;text-align:center;transition:transform .25s,box-shadow .25s,border-color .25s}
-    .app:hover{transform:translateY(-8px) scale(1.04);box-shadow:0 18px 36px rgba(103,232,249,.18);border-color:rgba(103,232,249,.35)}
-    .ico{width:48px;height:48px;border-radius:14px;margin:0 auto 8px;display:grid;place-items:center;color:#fff;transition:transform .25s}
-    .app:hover .ico{transform:rotate(-8deg) scale(1.12)}
-    .yt{background:#ff0000}.nf{background:#e50914}.wz{background:#33ccff;color:#083344}.sp{background:#1db954}
-    .gp{background:#34a853}.aa{background:#0ea5e9}.cp{background:#06b6d4}.hz{background:#6366f1}
-    .eq{background:#3b82f6}.tv{background:#f59e0b}.mb{background:#8b5cf6}.fm{background:#f97316}
-    .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-    .glass{background:rgba(12,16,24,.85);border:1px solid rgba(103,232,249,.16);border-radius:22px;padding:22px;transition:border-color .25s,transform .25s}
-    .glass:hover{border-color:rgba(103,232,249,.4);transform:translateY(-4px)}
-    .adb-service{position:relative;overflow:hidden;background:linear-gradient(135deg,#071925,#0b0d14 58%,#231b0b);border:1px solid rgba(103,232,249,.3);border-radius:28px;padding:clamp(24px,5vw,52px);box-shadow:0 26px 80px rgba(0,0,0,.38)}
-    .adb-service:before{content:"";position:absolute;width:260px;height:260px;left:-100px;top:-130px;border-radius:50%;background:#22d3ee;filter:blur(100px);opacity:.18}
-    .adb-grid{position:relative;display:grid;grid-template-columns:1.3fr .7fr;gap:30px;align-items:center}
-    .adb-tag{display:inline-flex;gap:8px;align-items:center;color:#67e8f9;font-size:12px;font-weight:900;letter-spacing:.12em}
-    .adb-tag:before{content:"";width:8px;height:8px;border-radius:50%;background:#4ade80;box-shadow:0 0 14px #4ade80}
-    .adb-service h2{margin:12px 0;font-size:clamp(2rem,5vw,3.5rem)}
-    .adb-service p{max-width:650px;color:#b9cbd4;line-height:1.8}
-    .adb-points{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0}
-    .adb-points span{padding:8px 12px;border:1px solid rgba(255,255,255,.1);border-radius:999px;background:rgba(255,255,255,.04);font-size:13px}
-    .adb-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
-    .adb-login{background:#67e8f9;color:#04202a;box-shadow:0 8px 24px rgba(103,232,249,.22)}
-    .telegram{background:#229ed9;color:white;box-shadow:0 8px 24px rgba(34,158,217,.22)}
-    .adb-price{text-align:center;padding:28px;border:1px solid rgba(216,180,106,.38);border-radius:22px;background:rgba(216,180,106,.06)}
-    .adb-price small{display:block;color:#d8b46a;font-weight:900;letter-spacing:.12em}
-    .adb-price strong{display:block;margin:10px 0;font-size:4.5rem;line-height:1;color:#fff}
-    .adb-price span{color:#9fb0ba}
-    .checks{list-style:none}.checks li{padding:8px 0}
-    .vids{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-    video.clip{width:100%;border-radius:16px;background:#000;transition:transform .25s,box-shadow .25s}
-    video.clip:hover{transform:scale(1.02);box-shadow:0 16px 40px rgba(0,0,0,.45)}
-    footer{padding:24px 0 96px;text-align:center;color:#7b8790}
-    .float{position:fixed;left:16px;bottom:16px;width:58px;height:58px;border-radius:50%;background:#22c55e;display:grid;place-items:center;color:#fff;font-size:26px;animation:wiggle 2.4s ease-in-out infinite;box-shadow:0 0 0 0 rgba(34,197,94,.5)}
-    @keyframes wiggle{0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(34,197,94,.45)}50%{transform:scale(1.08);box-shadow:0 0 0 12px rgba(34,197,94,0)}}
-    @media(max-width:800px){.apps,.two,.vids,.adb-grid{grid-template-columns:1fr 1fr}}
-    @media(max-width:620px){.adb-grid{grid-template-columns:1fr}.adb-actions .btn{width:100%;justify-content:center}.adb-price{order:-1}.adb-service{text-align:center}.adb-tag,.adb-points,.adb-actions{justify-content:center}}
-  </style>
+  <meta name="theme-color" content="#090d12">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <title>CockpitPro | המסך המקורי. חוויה חדשה.</title>
+  <meta name="description" content="CockpitPro — שדרוג חוויית המולטימדיה במסך הרכב המקורי. סרטונים, אפליקציות, הגדרות נהג וכניסה ל־ADB Studio. לתיאום: 053-302-2636.">
+  <link rel="canonical" href="https://carservicspronetcoil.org/">
+  <meta property="og:title" content="CockpitPro | המסך המקורי. חוויה חדשה.">
+  <meta property="og:description" content="שדרוג המולטימדיה ברכב, גלריית סרטונים ושירות אישי. גלו את CockpitPro.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://carservicspronetcoil.org/">
+  <meta property="og:image" content="https://carservicspronetcoil.org/eveasy.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="assets/site.css">
+  <script src="assets/gallery.js" defer></script>
 </head>
 <body>
-<nav><div class="wrap nav-in"><div class="logo">COCKPIT PRO<small>JAECOO · OMODA · CHERY</small></div>
-<a class="btn wa" href="https://wa.me/972533022636">WhatsApp</a></div></nav>
-<header class="hero">
-  <video autoplay muted loop playsinline poster="tiger.jpg">
-    <source src="combo-cockpit.mp4" type="video/mp4">
-    <source src="amazing.mp4" type="video/mp4">
-  </video>
-  <div class="shade"></div>
-  <div class="content">
-    <h1>רוצים לשדרג<br><b>את חוויית הנסיעה?</b></h1>
-    <p class="lead">מסך מקורי חכם יותר — YouTube, Netflix, Waze, CockpitPro.</p>
-    <div class="btns">
-      <a class="btn wa" href="https://wa.me/972533022636">שלחו הודעה</a>
-      <a class="btn call" href="tel:0533022636">053-302-2636</a>
+<a class="skip" href="#main">דילוג לתוכן הראשי</a>
+<nav class="site-nav" aria-label="ניווט ראשי">
+  <div class="wrap nav-inner">
+    <a class="logo" href="#top" aria-label="CockpitPro — ראש העמוד" dir="ltr">COCKPIT<em>PRO</em><small>JAECOO · OMODA · CHERY</small></a>
+    <div class="nav-links">
+      <a href="#gallery">הסרטונים שלנו</a><a href="#experience">החוויה ברכב</a><a href="./adb-studio.html" dir="ltr">ADB Studio ↗</a><a href="#contact">צור קשר</a>
     </div>
-    <div class="price">כל החוויה · <b>500₪</b><br><small>כולל אחריות · 24/6</small></div>
+    <a class="btn btn-outline nav-contact" href="https://wa.me/972533022636">נדבר ב־WhatsApp ↖</a>
   </div>
-</header>
-<section class="wrap">
-  <h2>הכול במסך אחד</h2>
-  <div class="apps">
-    <div class="app"><div class="ico yt"><i class="fab fa-youtube"></i></div>YouTube</div>
-    <div class="app"><div class="ico nf"><i class="fas fa-film"></i></div>Netflix</div>
-    <div class="app"><div class="ico wz"><i class="fas fa-location-arrow"></i></div>Waze</div>
-    <div class="app"><div class="ico sp"><i class="fab fa-spotify"></i></div>Spotify</div>
-    <div class="app"><div class="ico gp"><i class="fab fa-google-play"></i></div>חנות</div>
-    <div class="app"><div class="ico aa"><i class="fab fa-android"></i></div>Android Auto</div>
-    <div class="app"><div class="ico cp"><i class="fas fa-gauge-high"></i></div>CockpitPro</div>
-    <div class="app"><div class="ico hz"><i class="fas fa-mountain"></i></div>Horizon</div>
-    <div class="app"><div class="ico eq"><i class="fas fa-sliders"></i></div>XEQ</div>
-    <div class="app"><div class="ico tv"><i class="fas fa-tv"></i></div>טלוויזיה</div>
-    <div class="app"><div class="ico mb"><i class="fas fa-photo-film"></i></div>Media Box</div>
-    <div class="app"><div class="ico fm"><i class="fas fa-folder-open"></i></div>Files</div>
-  </div>
-</section>
-<section class="wrap" id="adb-auth">
+</nav>
+<main id="main">
+  <header class="hero" id="top">
+    <img class="hero-image" src="eveasy.jpg" alt="רכב כסוף בעמדת טעינה" width="1935" height="1547" fetchpriority="high">
+    <div class="wrap hero-content"><div class="hero-copy">
+      <span class="eyebrow" dir="ltr">YOUR CAR. YOUR EXPERIENCE.</span>
+      <h1>המסך המקורי.<br><span>חוויה חדשה.</span></h1>
+      <p class="lead">האפליקציות שאתם אוהבים, על המסך של הרכב.<br>YouTube, Netflix, Waze ו־CockpitPro — הכול מתחבר לחוויה שלכם.</p>
+      <div class="btns"><a class="btn btn-primary" href="https://wa.me/972533022636">בואו נשדרג את הרכב <span aria-hidden="true">↖</span></a><a class="btn btn-outline" href="#gallery"><span aria-hidden="true">▷</span> לצפייה בסרטונים</a></div>
+      <p class="hero-note">התאמה אישית לדגם הרכב ולמערכת המולטימדיה.</p>
+      <a class="hero-scroll" href="#experience"><span aria-hidden="true">↓</span> הכירו את החוויה</a>
+    </div></div>
+    <div class="hero-foot" dir="ltr" aria-hidden="true">COCKPITPRO / IN-CAR EXPERIENCE</div>
+  </header>
+  <div class="offer"><div class="wrap offer-in">
+    <div class="offer-price"><span>כל החוויה</span><strong>500₪</strong></div>
+    <div class="offer-details">כולל אחריות · 24/6</div>
+    <a href="tel:0533022636">לפרטים ולתיאום <bdi>053-302-2636</bdi> <span aria-hidden="true">↖</span></a>
+  </div></div>
+  <section class="wrap section" id="gallery" aria-labelledby="gallery-heading">
+    <div class="section-head"><div><span class="eyebrow" dir="ltr">THE VIDEO COLLECTION</span><h2 id="gallery-heading">החוויה, בתנועה.</h2></div><p>מבט למסך, לאפליקציות ולעולם של CockpitPro.<br>בחרו סרטון והפעילו בקצב שלכם.</p></div>
+    <div class="gallery-tools" hidden>
+      <div class="filters" role="group" aria-label="סינון סרטונים">
+        <button type="button" class="filter" data-filter="all" aria-pressed="true" aria-controls="video-grid">כל הסרטונים</button>
+        <button type="button" class="filter" data-filter="screens" aria-pressed="false" aria-controls="video-grid">על המסך</button>
+        <button type="button" class="filter" data-filter="campaign" aria-pressed="false" aria-controls="video-grid">תדמית ואנימציה</button>
+      </div>
+      <span class="gallery-count" id="gallery-count" role="status" aria-live="polite">3 סרטונים לצפייה</span>
+    </div>
+    <div class="video-grid" id="video-grid"><!-- GALLERY START -->
+      <article class="video-card" data-category="campaign" data-original="831652.mp4" aria-labelledby="title-831652">
+        <div class="video-stage">
+          <button class="video-launch" type="button" aria-label="ניגון: אפליקציות ברכב. חוויה חדשה." aria-controls="video-831652">
+            <img src="assets/media/831652.jpg" alt="" width="720" height="1280" loading="lazy" decoding="async">
+            <span class="video-label">סרטון תדמית</span>
+            <span class="play-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 3.5v17L20 12Z"/></svg></span>
+            <span class="video-duration" aria-label="משך הסרטון 3 שניות">0:03</span>
+          </button>
+          <video id="video-831652" class="gallery-video" controls playsinline preload="none" poster="assets/media/831652.jpg" data-src="assets/media/831652.mp4" aria-label="אפליקציות ברכב. חוויה חדשה." aria-describedby="summary-831652" tabindex="0" hidden></video>
+        </div>
+        <p class="video-error" role="status" hidden>הסרטון לא נטען. <a href="assets/media/831652.mp4">נסו לפתוח אותו ישירות</a>.</p>
+        <div class="video-meta"><h3 id="title-831652">אפליקציות ברכב. חוויה חדשה.</h3><p>סרטון התדמית של CockpitPro להתקנת אפליקציות ברכב.</p>
+          <details><summary>על הסרטון ופתיחה ישירה</summary><p id="summary-831652">מודעת CockpitPro המציגה רכב לבן, כיתוב על התקנת אפליקציות לרכבים חשמליים, ומחיר של 500 ₪ בכפוף להתאמת הדגם והמערכת. אין בסרטון הדגמה של אפליקציה פועלת.</p><p><a href="assets/media/831652.mp4">פתיחת הסרטון המלא</a> · <bdi>831652.mp4</bdi></p></details>
+          <noscript><p><a href="assets/media/831652.mp4">לצפייה בסרטון: אפליקציות ברכב. חוויה חדשה.</a></p></noscript>
+        </div>
+      </article>
+      <article class="video-card" data-category="screens" data-original="eveasy.mp4" aria-labelledby="title-eveasy">
+        <div class="video-stage">
+          <button class="video-launch" type="button" aria-label="ניגון: ממשק אפליקציות ומפת ניווט" aria-controls="video-eveasy">
+            <img src="assets/media/eveasy.jpg" alt="" width="576" height="1024" loading="lazy" decoding="async">
+            <span class="video-label">מהארכיון</span>
+            <span class="play-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 3.5v17L20 12Z"/></svg></span>
+            <span class="video-duration" aria-label="משך הסרטון 24 שניות">0:24</span>
+          </button>
+          <video id="video-eveasy" class="gallery-video" controls playsinline preload="none" poster="assets/media/eveasy.jpg" data-src="assets/media/eveasy.mp4" aria-label="ממשק אפליקציות ומפת ניווט" aria-describedby="summary-eveasy" tabindex="0" hidden></video>
+        </div>
+        <p class="video-error" role="status" hidden>הסרטון לא נטען. <a href="assets/media/eveasy.mp4">נסו לפתוח אותו ישירות</a>.</p>
+        <div class="video-meta"><h3 id="title-eveasy">ממשק אפליקציות ומפת ניווט</h3><p>מעבר בין רשימת האפליקציות לתצוגת מפה על מסך הרכב.</p>
+          <details><summary>על הסרטון ופתיחה ישירה</summary><p id="summary-eveasy">הסרטון הקיים באתר מציג פתיח פרסומי, מסך עם רשימת אפליקציות ומפה בין שני שעונים עגולים. על הסרטון מוטבע מספר טלפון ארכיוני; פרטי הקשר העדכניים מופיעים באתר. לא נקבע דגם רכב מהצילומים.</p><p><a href="assets/media/eveasy.mp4">פתיחת הסרטון המלא</a> · <bdi>eveasy.mp4</bdi></p></details>
+          <noscript><p><a href="assets/media/eveasy.mp4">לצפייה בסרטון: ממשק אפליקציות ומפת ניווט</a></p></noscript>
+        </div>
+      </article>
+      <article class="video-card" data-category="campaign" data-original="amazing.mp4" aria-labelledby="title-amazing">
+        <div class="video-stage">
+          <button class="video-launch" type="button" aria-label="ניגון: פתיח בתנועה" aria-controls="video-amazing">
+            <img src="assets/media/amazing.jpg" alt="" width="1168" height="784" loading="lazy" decoding="async">
+            <span class="video-label">אנימציה</span>
+            <span class="play-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 3.5v17L20 12Z"/></svg></span>
+            <span class="video-duration" aria-label="משך הסרטון 2 שניות">0:02</span>
+          </button>
+          <video id="video-amazing" class="gallery-video" controls playsinline preload="none" poster="assets/media/amazing.jpg" data-src="assets/media/amazing.mp4" aria-label="פתיח בתנועה" aria-describedby="summary-amazing" tabindex="0" hidden></video>
+        </div>
+        <p class="video-error" role="status" hidden>הסרטון לא נטען. <a href="assets/media/amazing.mp4">נסו לפתוח אותו ישירות</a>.</p>
+        <div class="video-meta"><h3 id="title-amazing">פתיח בתנועה</h3><p>אנימציית רכב בסביבת אור עתידנית, מתוך מדיית האתר.</p>
+          <details><summary>על הסרטון ופתיחה ישירה</summary><p id="summary-amazing">רכב ספורט מונפש מתקרב על רקע קווי אור סגולים וכחולים. זהו פתיח חזותי; לא מוצגת כאן התקנה או יכולת של מערכת ברכב.</p><p><a href="assets/media/amazing.mp4">פתיחת הסרטון המלא</a> · <bdi>amazing.mp4</bdi></p></details>
+          <noscript><p><a href="assets/media/amazing.mp4">לצפייה בסרטון: פתיח בתנועה</a></p></noscript>
+        </div>
+      </article>
+    <!-- GALLERY END --></div>
+    <div class="gallery-tip"><span>בחרו ▶ לניגון · אפשר להגדיל למסך מלא דרך הנגן</span><a href="https://wa.me/972533022636">רוצים לדעת מה מתאים לרכב שלכם? ↖</a></div>
+  </section>
+  <section class="experience section" id="experience" aria-labelledby="experience-heading"><div class="wrap experience-grid">
+    <div class="experience-copy"><span class="eyebrow" dir="ltr">EVERYTHING, CONNECTED.</span><h2 id="experience-heading">הכול.<br>במסך אחד.</h2><p>ניווט, מוזיקה, אפליקציות ומולטימדיה. החוויה המוכרת שלכם, עם אפשרויות נוספות למסך המקורי של הרכב.</p><a class="text-link" href="https://wa.me/972533022636">בדיקת התאמה ב־WhatsApp ↖</a><p class="service-note">האפליקציות והאפשרויות הזמינות תלויות בדגם הרכב ובגרסת המערכת.</p></div>
+    <div class="apps" aria-label="אפליקציות ושירותים">
+      <div class="app"><span class="app-icon" style="--app-color:#ff6969" aria-hidden="true">▶</span>YouTube</div>
+      <div class="app"><span class="app-icon" style="--app-color:#ff5366" aria-hidden="true">N</span>Netflix</div>
+      <div class="app"><span class="app-icon" style="--app-color:#69d8ff" aria-hidden="true">↗</span>Waze</div>
+      <div class="app"><span class="app-icon" style="--app-color:#5ee99b" aria-hidden="true">♫</span>Spotify</div>
+      <div class="app"><span class="app-icon" style="--app-color:#a5dfab" aria-hidden="true">▷</span>חנות</div>
+      <div class="app"><span class="app-icon" style="--app-color:#7cb2ff" aria-hidden="true">A</span>Android Auto</div>
+      <div class="app"><span class="app-icon" aria-hidden="true">C</span>CockpitPro</div>
+      <div class="app"><span class="app-icon" style="--app-color:#e7cb9a" aria-hidden="true">△</span>Horizon</div>
+      <div class="app"><span class="app-icon" style="--app-color:#89baff" aria-hidden="true">≋</span>XEQ</div>
+      <div class="app"><span class="app-icon" style="--app-color:#f4c37c" aria-hidden="true">▣</span>טלוויזיה</div>
+      <div class="app"><span class="app-icon" style="--app-color:#bfb8ff" aria-hidden="true">▧</span>Media Box</div>
+      <div class="app"><span class="app-icon" style="--app-color:#e3af88" aria-hidden="true">▱</span>Files</div>
+    </div>
+  </div></section>
+  <section class="wrap section driver" aria-labelledby="driver-heading">
+    <div><span class="eyebrow" dir="ltr">MAKE IT YOURS.</span><h2 id="driver-heading">הרכב שלכם.<br>ההעדפות שלכם.</h2><p>הגדרות נהג במקום אחד — לחוויית שימוש שמתאימה לכם.</p></div>
+    <ul class="checks" aria-label="הגדרות נהג"><li><span>01</span> 17 הגדרות בזיכרון <b aria-hidden="true">↖</b></li><li><span>02</span> שמירת נתיב / FCW <b aria-hidden="true">↖</b></li><li><span>03</span> זיהוי ילדים <b aria-hidden="true">↖</b></li><li><span>04</span> מושבים + HUD + Waze <b aria-hidden="true">↖</b></li></ul>
+  </section>
+  <section class="wrap" id="adb-auth">
   <div class="adb-service">
     <div class="adb-grid">
       <div>
@@ -124,22 +148,12 @@
     </div>
   </div>
 </section>
-<section class="wrap"><div class="two">
-  <div class="glass"><h2>הגדרות נהג</h2>
-    <ul class="checks"><li>✓ 17 הגדרות בזיכרון</li><li>✓ שמירת נתיב / FCW</li><li>✓ זיהוי ילדים</li><li>✓ מושבים + HUD + Waze</li></ul>
-  </div>
-  <div class="glass"><h2>צור קשר</h2>
-    <p>053-302-2636</p>
-    <div class="btns" style="margin-top:14px"><a class="btn wa" href="https://wa.me/972533022636">וואטסאפ</a></div>
-  </div>
-</div></section>
-<section class="wrap">
-  <h2>סרטונים</h2>
-  <div class="vids">
-    <video class="clip" controls muted loop playsinline><source src="combo-cockpit.mp4" type="video/mp4"></video>
-    <video class="clip" controls muted loop playsinline><source src="eveasy.mp4" type="video/mp4"></video>
-  </div>
-</section>
-<footer>Car Pro Service · 053-302-2636 · השרון</footer>
-<a class="float" href="https://wa.me/972533022636"><i class="fab fa-whatsapp"></i></a>
-</body></html>
+  <section class="contact" id="contact" aria-labelledby="contact-heading"><div class="wrap contact-in">
+    <div><span class="eyebrow" dir="ltr">LET'S CONNECT.</span><h2 id="contact-heading">מוכנים לחוויה חדשה?</h2><p>שלחו לנו את דגם הרכב, ונבדוק יחד את אפשרויות השדרוג.</p></div>
+    <div class="btns"><a class="btn wa" href="https://wa.me/972533022636">נדבר ב־WhatsApp ↖</a><a class="btn btn-outline" href="tel:0533022636"><bdi>053-302-2636</bdi></a></div>
+  </div></section>
+</main>
+<footer class="site-footer"><div class="wrap footer-in"><a class="logo" href="#top" dir="ltr">COCKPIT<em>PRO</em><small>YOUR CAR. YOUR EXPERIENCE.</small></a><p>Car Pro Service · <bdi>053-302-2636</bdi> · השרון</p><a href="./adb-studio.html" dir="ltr">ADB Studio ↗</a></div></footer>
+<a class="float" href="https://wa.me/972533022636" aria-label="יצירת קשר עם CockpitPro ב־WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M20.5 11.6a8.5 8.5 0 0 1-12.7 7.4L3 20.5l1.5-4.7A8.5 8.5 0 1 1 20.5 11.6Z"/><path d="m8.5 7.5 1.7 2-1 1.5a9 9 0 0 0 3.3 3.2l1.5-1 2 1.8c-1 3-5.1.4-6.9-1.4-1.9-1.9-3.8-5.5-.6-6.1Z"/></svg></a>
+</body>
+</html>
