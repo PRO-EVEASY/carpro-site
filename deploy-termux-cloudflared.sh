@@ -63,7 +63,8 @@ echo "Login username: $PREVIEW_LOGIN_USER"
 echo "Login password: $PREVIEW_LOGIN_PASSWORD"
 echo "========================================="
 echo "Do NOT share the password or terminal output."
-echo "Cloudflare Quick Tunnel URL will appear below."\necho "Issuance enabled: ${ADBAUTH_ENABLE_ISSUE:-0} (server-side only)"
+echo "Cloudflare Quick Tunnel URL will appear below."
+echo "Issuance enabled: ${ADBAUTH_ENABLE_ISSUE:-0} (server-side only)"
 echo "Press Ctrl+C to stop both processes."
 echo
 # cloudflared in Termux 2026.6.1 does not support --allowed-mail.
