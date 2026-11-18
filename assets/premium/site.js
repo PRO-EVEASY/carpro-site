@@ -11,6 +11,19 @@
   // Reviewed owner footage; brand films are explicitly identified.
   const videos = [
   {
+    "id": "skywell-et5",
+    "file": "assets/premium/installations/skywell-et5.mp4",
+    "poster": "assets/premium/skywell-et5-poster.jpg",
+    "filter": "skywell",
+    "category": "SKYWELL ET5 · מולטימדיה",
+    "title": "SKYWELL ET5. החבילה בפעולה.",
+    "subtitle": "מסך בית בעברית, סרטונים ומוזיקה",
+    "duration": "1:45",
+    "caption": "הדגמה ערוכה מתוך SKYWELL ET5: מסך הבית בעברית, KosherTube ו־YouTube Music. קטעי המתנה לטעינה הוסרו מהסרטון. התאמת האפליקציות נבדקת לפי גרסת המערכת.",
+    "wide": false,
+    "start": 0
+  },
+  {
     "id": "chery-split",
     "file": "assets/premium/installations/chery-split.mp4",
     "poster": "assets/premium/chery-split-poster.jpg",
@@ -138,13 +151,13 @@
   },
   {
     "id": "voyah",
-    "file": "assets/premium/voyah-brand-film.mp4",
-    "poster": "assets/premium/voyah-poster.jpg",
+    "file": "assets/premium/voyah-500-brand-film.mp4",
+    "poster": "assets/premium/voyah-500-poster.jpg",
     "filter": "brand",
     "category": "VOYAH · סרטון תדמית",
     "title": "VOYAH. חוויית CockpitPro.",
-    "subtitle": "סרטון תדמית לחבילת ההתקנה",
-    "duration": "0:03",
+    "subtitle": "סרטון התדמית המעודכן לחבילת ההתקנה",
+    "duration": "0:24",
     "caption": "סרטון תדמית של CockpitPro ל־VOYAH. התאמת חבילת האפליקציות נבדקת לפי דגם הרכב וגרסת המערכת."
   }
 ];
@@ -195,6 +208,7 @@
   const form=document.getElementById('contact-form');
   const brand=document.getElementById('brand');
   const note=document.getElementById('brand-note');
-  brand.addEventListener('change',()=>{const driver=['צ׳רי','אומודה','ג׳אקו'].includes(brand.value);note.classList.toggle('driver',driver);note.textContent=driver?'כולל בדיקת התאמה לאפליקציית הגדרות נהג בדגם שלכם.':'נתאים חבילת מולטימדיה לרכב שלכם, בהתאם לדגם ולגרסת המערכת.';});
+  brand.addEventListener('change',()=>{const driver=['צ׳רי','אומודה','ג׳אקו'].includes(brand.value);note.classList.toggle('driver',driver);note.textContent=driver?'כולל בדיקת התאמה לאפליקציית הגדרות נהג בדגם שלכם.':brand.value==='סקייוול'?'חבילת מולטימדיה ל־SKYWELL ET5, לפי גרסת המערכת.':'נתאים חבילת מולטימדיה לרכב שלכם, בהתאם לדגם ולגרסת המערכת.';});
+  document.querySelectorAll('[data-contact-brand]').forEach(link=>link.addEventListener('click',()=>{brand.value=link.dataset.contactBrand;form.elements.model.value=link.dataset.contactModel||'';brand.dispatchEvent(new Event('change'));}));
   form.addEventListener('submit',e=>{e.preventDefault();if(!form.reportValidity())return;const values=new FormData(form);const message=`שלום CockpitPro, אשמח לשדרג את המולטימדיה ברכב שלי.\nמותג: ${values.get('brand')}\nדגם: ${String(values.get('model')).trim()}\nשנת ייצור: ${values.get('year')}\nעיר: ${String(values.get('city')).trim()}\nאשמח לפרטים על החבילה ב־500 ₪ בתשלום חד־פעמי לכל החיים.`;window.location.assign(waUrl(message));});
 })();
