@@ -5,6 +5,7 @@ No proxy addresses, supplier URLs, or credentials belong in this source file.
 """
 import base64
 from datetime import datetime
+import hashlib
 import hmac
 import json
 import os
@@ -65,7 +66,31 @@ if PROXY and urlsplit(PROXY).scheme not in ("http", "https", "socks5", "socks5h"
 last_issue = 0.0
 issue_lock = threading.Lock()
 
+
+def content_security_policy(page=b"", content_type=""):
+    # Hash only this response's bundled inline scripts. Customer pages never
+    # need to connect to a supplier, analytics host, or external script CDN.
+    scripts = ["'none'"]
+    if content_type.startswith("text/html"):
+        scripts = ["'self'"]
+        for attributes, source in re.findall(rb"<script\b([^>]*)>(.*?)</script\s*>", page, re.I | re.S):
+            if not re.search(rb"\bsrc\s*=", attributes, re.I):
+                digest = base64.b64encode(hashlib.sha256(source).digest()).decode("ascii")
+                scripts.append("'sha256-" + digest + "'")
+    return "; ".join((
+        "default-src 'self'", "connect-src 'self'",
+        "script-src " + " ".join(scripts), "script-src-attr 'none'",
+        "style-src 'self' 'unsafe-inline'", "img-src 'self' data:",
+        "font-src 'self'", "object-src 'none'", "base-uri 'none'",
+        "form-action 'self'", "frame-src 'none'", "frame-ancestors 'none'",
+        "worker-src 'none'",
+    ))
+
+
 class Handler(BaseHTTPRequestHandler):
+    def version_string(self):
+        return "ADBAUTHKEY"
+
     def log_message(self, *_args):
         # Do not log keys, serial numbers, auth headers, or supplier URL.
         pass
@@ -80,13 +105,29 @@ class Handler(BaseHTTPRequestHandler):
         if self.command != "HEAD":
             self.wfile.write(body)
 
-    def common_headers(self):
+    def common_headers(self, page=b"", content_type=""):
         self.send_header("Cache-Control", "no-store")
         self.send_header("X-Content-Type-Options", "nosniff")
         self.send_header("X-Frame-Options", "DENY")
         self.send_header("Referrer-Policy", "no-referrer")
-        self.send_header("Content-Security-Policy", "frame-ancestors 'none'")
+        self.send_header("Content-Security-Policy", content_security_policy(page, content_type))
         self.send_header("Permissions-Policy", "camera=(), microphone=(), geolocation=()")
+        if self.headers.get('X-Forwarded-Proto', '').lower() == 'https':
+            self.send_header("Strict-Transport-Security", "max-age=31536000")
+
+    def secure_transport(self):
+        # Plain HTTP is permitted only for local Mac administration. Public
+        # tunnel requests must carry Cloudflare's HTTPS transport indication.
+        forwarded = self.headers.get('X-Forwarded-Proto', '').lower()
+        try:
+            host = urlsplit('//' + self.headers.get('Host', '')).hostname
+        except ValueError:
+            host = None
+        local = host in ('127.0.0.1', 'localhost', '::1') and not self.headers.get('CF-Connecting-IP')
+        if forwarded == 'https' or (not forwarded and local):
+            return True
+        self.send_data({'error': 'https_required'}, 400)
+        return False
 
     def allowed(self):
         self.customer = None
@@ -162,6 +203,8 @@ class Handler(BaseHTTPRequestHandler):
         self.wfile.write(body)
 
     def do_GET(self):
+        if not self.secure_transport():
+            return
         path = urlsplit(self.path).path
         if path in ('/admin', '/api/admin/customers'):
             if not self.require_admin():
@@ -191,6 +234,9 @@ class Handler(BaseHTTPRequestHandler):
             }
             if self.customer:
                 # Customers see only their own quota, never the upstream account balance.
+                result.pop('providerConfigured')
+                result.pop('proxyConfigured')
+                result['server'] = 'ADBAUTHKEY'
                 result['customer'] = self.customer
                 result['generationEnabled'] = result['generationEnabled'] and self.customer['remainingKeys'] > 0
             elif CUSTOMERS:
@@ -209,13 +255,15 @@ class Handler(BaseHTTPRequestHandler):
         self.send_response(200)
         self.send_header("Content-Type", content_type)
         self.send_header("Content-Length", str(len(page)))
-        self.common_headers()
+        self.common_headers(page, content_type)
         self.end_headers()
         if self.command != "HEAD":
             self.wfile.write(page)
 
     def do_POST(self):
         global last_issue
+        if not self.secure_transport():
+            return
         path = urlsplit(self.path).path
         if CUSTOMERS and path in ('/api/login', '/api/logout', '/api/admin/customers'):
             try:
@@ -376,6 +424,8 @@ class Handler(BaseHTTPRequestHandler):
         self.do_GET()
 
     def do_OPTIONS(self):
+        if not self.secure_transport():
+            return
         self.send_data({"error": "not_supported"}, 405)
 
 if __name__ == "__main__":
