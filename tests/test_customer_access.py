@@ -1,10 +1,12 @@
 """Security and accounting checks use synthetic customers and a fake provider."""
 import base64
 from concurrent.futures import ThreadPoolExecutor
+import hashlib
 import http.client
 import json
 import os
 from pathlib import Path
+import re
 import socket
 import subprocess
 import sys
@@ -171,7 +173,7 @@ class CustomerHTTPTests(unittest.TestCase):
         directory = Path(cls.temp.name)
         cls.count = directory / 'fake-curl-calls'
         curl = directory / 'curl'
-        curl.write_text("#!/bin/sh\nprintf x >> \"${0%/*}/fake-curl-calls\"\nprintf '%s\\n' '{\"data\":\"SYNTHETIC_TEST_CODE_ONLY\",\"num\":999}' '--CP-HTTP:200'\n")
+        curl.write_text("#!/bin/sh\nprintf x >> \"${0%/*}/fake-curl-calls\"\nprintf '%s\\n' '{\"data\":\"SYNTHETIC_TEST_CODE_ONLY\",\"num\":999,\"debugUrl\":\"https://provider.example.invalid/private\",\"account\":\"synthetic-user\"}' '--CP-HTTP:200'\n")
         curl.chmod(0o700)
         with socket.socket() as s:
             s.bind(('127.0.0.1', 0)); cls.port = s.getsockname()[1]
@@ -194,7 +196,7 @@ class CustomerHTTPTests(unittest.TestCase):
     def tearDownClass(cls):
         cls.server.terminate(); cls.server.wait(timeout=5); cls.server.stderr.close(); cls.temp.cleanup()
 
-    def request(self, path, data=None, admin=False, cookie=None, action=None, content_type='application/json'):
+    def request(self, path, data=None, admin=False, cookie=None, action=None, content_type='application/json', extra_headers=None):
         headers = {}
         if admin: headers['Authorization'] = self.auth
         if cookie: headers['Cookie'] = cookie
@@ -202,6 +204,7 @@ class CustomerHTTPTests(unittest.TestCase):
             headers.update({'Content-Type': content_type, 'X-Forwarded-Proto': 'https'})
             if action is not False:
                 headers['X-CockpitPro-Action'] = action or 'manage-customers'
+        headers.update(extra_headers or {})
         c = http.client.HTTPConnection('127.0.0.1', self.port, timeout=3)
         try:
             c.request('POST' if data is not None else 'GET', path, body=json.dumps(data) if data is not None else None, headers=headers)
@@ -230,6 +233,8 @@ class CustomerHTTPTests(unittest.TestCase):
         self.assertEqual(status, 200); data = json.loads(body)
         self.assertEqual(data['customer']['id'], customer['id']); self.assertNotIn('admin', data)
         self.assertNotIn('secret', body.decode()); self.assertNotIn('setupUri', body.decode())
+        self.assertNotIn('providerConfigured', data); self.assertNotIn('proxyConfigured', data)
+        self.assertNotIn('provider.example.invalid', body.decode()); self.assertNotIn('synthetic-user', body.decode())
         self.assertEqual(self.request('/api/admin/customers', cookie=cookie)[0], 401)
         self.assertEqual(self.request('/api/admin/customers', {'action': 'create', 'name': 'not allowed', 'quota': 1}, cookie=cookie)[0], 401)
         self.assertEqual(self.request('/admin', cookie=cookie)[0], 401)
@@ -243,6 +248,8 @@ class CustomerHTTPTests(unittest.TestCase):
         self.assertEqual(status, 200); result = json.loads(body)
         self.assertEqual(result['authorizationCode'], 'SYNTHETIC_TEST_CODE_ONLY')
         self.assertEqual(result['remainingUses'], 0)
+        self.assertEqual(set(result), {'ok', 'authorizationCode', 'remainingUses', 'filename'})
+        self.assertNotIn('provider.example.invalid', body.decode()); self.assertNotIn('synthetic-user', body.decode())
         status, _, history = self.request('/api/my-keys', cookie=cookie)
         self.assertEqual(status, 200)
         self.assertEqual(json.loads(history)['keys'][0]['authorizationCode'], result['authorizationCode'])
@@ -280,6 +287,51 @@ class CustomerHTTPTests(unittest.TestCase):
     def test_key_download_history_requires_a_customer_session(self):
         self.assertEqual(self.request('/api/my-keys')[0], 401)
         self.assertEqual(self.request('/api/my-keys', admin=True)[0], 403)
+
+    def test_browser_policy_limits_connections_and_allows_each_bundled_script(self):
+        for path in ('/login', '/', '/admin'):
+            with self.subTest(path=path):
+                status, headers, body = self.request(path, admin=True, extra_headers={'X-Forwarded-Proto': 'https'})
+                self.assertEqual(status, 200)
+                policy = dict(part.strip().split(' ', 1) for part in headers['Content-Security-Policy'].split(';'))
+                for directive, expected in [('connect-src', "'self'"), ('form-action', "'self'"),
+                                            ('object-src', "'none'"), ('base-uri', "'none'"),
+                                            ('frame-ancestors', "'none'"), ('script-src-attr', "'none'")]:
+                    self.assertEqual(policy[directive], expected)
+                self.assertNotIn("'unsafe-inline'", policy['script-src'])
+                self.assertNotIn("'unsafe-eval'", policy['script-src'])
+                sources = re.findall(rb'<script\b([^>]*)>(.*?)</script\s*>', body, re.I | re.S)
+                self.assertTrue(sources)
+                for attrs, source in sources:
+                    if not re.search(rb'\bsrc\s*=', attrs, re.I):
+                        digest = base64.b64encode(hashlib.sha256(source).digest()).decode()
+                        self.assertIn("'sha256-" + digest + "'", policy['script-src'])
+                self.assertEqual(headers['Strict-Transport-Security'], 'max-age=31536000')
+                self.assertEqual(headers['Referrer-Policy'], 'no-referrer')
+                self.assertNotIn('Python', headers['Server'])
+
+    def test_public_http_cannot_log_in_or_issue_even_with_valid_session(self):
+        customer, cookie, _ = self.provision_and_login()
+        before = self.count.read_bytes() if self.count.exists() else b''
+        for path, data in [('/login', None), ('/api/login', {'intent': 'customer-login'}),
+                           ('/api/generate', {'serial': '12345678', 'date': '20261117', 'intent': 'generate-key'})]:
+            with self.subTest(path=path):
+                status, headers, body = self.request(path, data, cookie=cookie, action=False,
+                    extra_headers={'X-Forwarded-Proto': 'http'})
+                self.assertEqual(status, 400)
+                self.assertEqual(json.loads(body), {'error': 'https_required'})
+                self.assertNotIn('Set-Cookie', headers)
+        self.assertEqual(self.count.read_bytes() if self.count.exists() else b'', before)
+        status, _, body = self.request('/api/status', cookie=cookie)
+        self.assertEqual(json.loads(body)['customer']['remainingKeys'], customer['quota'])
+
+    def test_missing_transport_indication_is_only_allowed_on_loopback(self):
+        self.assertEqual(self.request('/login')[0], 200)
+        for headers in ({'Host': 'public.example.invalid'}, {'CF-Connecting-IP': '192.0.2.1'}):
+            status, _, body = self.request('/login', extra_headers=headers)
+            self.assertEqual(status, 400)
+            self.assertEqual(json.loads(body), {'error': 'https_required'})
+        self.assertNotIn('Strict-Transport-Security', self.request('/login')[1])
 
 
 if __name__ == '__main__': unittest.main()
