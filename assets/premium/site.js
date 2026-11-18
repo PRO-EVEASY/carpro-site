@@ -137,19 +137,6 @@
     "caption": "ממשק הבית על מסך המולטימדיה בהתקנה קיימת."
   },
   {
-    "id": "night-screen",
-    "file": "assets/premium/installations/night-screen.mp4",
-    "poster": "assets/premium/night-screen-poster.jpg",
-    "filter": "apps",
-    "category": "תיעוד נוסף · צילום לילה",
-    "title": "עוד מבט אל מסך הרכב.",
-    "subtitle": "צילום מתוך תא הנהג בלילה",
-    "duration": "0:21",
-    "caption": "צילום לילה מתוך הרכב. הסרטון נפתח סמוך לסוף, בקטע שבו המסך נראה בבירור. ניתן לצפות גם בתיעוד המלא.",
-    "wide": false,
-    "start": 18.7
-  },
-  {
     "id": "voyah",
     "file": "assets/premium/voyah-500-brand-film.mp4",
     "poster": "assets/premium/voyah-500-poster.jpg",
