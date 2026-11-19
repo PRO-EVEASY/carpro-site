@@ -18,6 +18,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from http.cookies import SimpleCookie
 from urllib.parse import urlsplit
 from customer_access import CustomerAccess, AccessError, SESSION_SECONDS
+from proxy_headers import client_address
 
 BASE = Path(os.environ.get("PREVIEW_HTML_FILE", Path(__file__).with_name("adb-studio.html"))).resolve()
 USER = os.environ.get("PREVIEW_LOGIN_USER", "")
@@ -29,6 +30,9 @@ if not BASE.is_file():
 AUTH = "Basic " + base64.b64encode(f"{USER}:{PASSWORD}".encode()).decode()
 # The local launcher forces this mode. Ignore even inherited live configuration.
 PREVIEW_ONLY = os.environ.get("ADBAUTH_PREVIEW_ONLY", "0") == "1"
+INGRESS_PROXY = os.environ.get("ADBAUTH_INGRESS_PROXY", "cloudflare")
+if INGRESS_PROXY not in ("cloudflare", "tailscale"):
+    raise SystemExit("Unsupported public ingress configuration")
 PROVIDER = "" if PREVIEW_ONLY else os.environ.get("ADBAUTH_PROVIDER_URL", "").strip()
 PROXY = "" if PREVIEW_ONLY else os.environ.get("ADBAUTH_PROXY_URL", "").strip()
 VENDOR_USERNAME = "" if PREVIEW_ONLY else os.environ.get("ADBAUTH_USERNAME", "").strip()
@@ -269,8 +273,7 @@ class Handler(BaseHTTPRequestHandler):
             try:
                 if path == '/api/login':
                     values = self.json_body('customer-login')
-                    # cloudflared is loopback-only; its address is the edge-supplied client address.
-                    address = self.headers.get('CF-Connecting-IP', self.client_address[0])[:128]
+                    address = client_address(self.headers, self.client_address[0], INGRESS_PROXY)
                     token, _customer = CUSTOMERS.login(values.get('customerId'), values.get('code'), address)
                     self.cookie_response(token, SESSION_SECONDS)
                 elif path == '/api/logout':

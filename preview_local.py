@@ -77,6 +77,12 @@ def run_server(args, provider_settings=None):
         env["ADBAUTH_PREVIEW_ONLY"] = "0"
         env["ADBAUTH_ENABLE_ISSUE"] = "1"
         env['ADBAUTH_CUSTOMER_DB'] = str(private / 'customers.sqlite')
+        ingress_file = private / 'public-studio.json'
+        if ingress_file.exists():
+            ingress = json.loads(ingress_file.read_text()).get('ingress_proxy', 'cloudflare')
+            if ingress not in ('cloudflare', 'tailscale'):
+                raise SystemExit('Unsupported private ingress configuration')
+            env['ADBAUTH_INGRESS_PROXY'] = ingress
     url = f"http://127.0.0.1:{args.port}"
     auth = "Basic " + base64.b64encode(f"{login['username']}:{login['password']}".encode()).decode()
     opener = build_opener(ProxyHandler({}))

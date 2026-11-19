@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
-"""Connect a phone's loopback SOCKS5 listener to this Mac over USB."""
+"""Maintain the selected device's SOCKS5 bridge over Wi-Fi or USB."""
 import argparse
+from ipaddress import IPv4Address
 import json
 import os
 from pathlib import Path
 import socket
 import subprocess
+import re
+import tempfile
 
 
 def adb(*args):
@@ -32,6 +35,58 @@ def choose_phone(devices, state, model=None):
     row = matches[0]
     label = next((field.split(":", 1)[1] for field in row[2:] if field.startswith("model:")), "unknown")
     return row[0], label
+
+
+def save_private(path, value):
+    fd, name = tempfile.mkstemp(prefix='.bridge-', dir=path.parent)
+    try:
+        with os.fdopen(fd, 'w') as stream:
+            json.dump(value, stream)
+            stream.write('\n')
+        os.replace(name, path)
+        path.chmod(0o600)
+    finally:
+        if os.path.exists(name):
+            os.unlink(name)
+
+
+def recover_tablet(devices, config):
+    """Reconnect only a recorded physical device; never select another phone."""
+    physical = config.get('device_serial')
+    endpoint = config.get('endpoint', '')
+    try:
+        host, port = endpoint.rsplit(':', 1)
+        if not physical or IPv4Address(host).is_loopback or not 1 <= int(port) <= 65535:
+            raise ValueError
+    except (ValueError, TypeError):
+        raise SystemExit('Invalid private tablet connection configuration.') from None
+    ready = {row[0]: row for row in devices if len(row) > 1 and row[1] == 'device'}
+    if physical in ready:
+        try:
+            addresses = adb('-s', physical, 'shell', 'ip', '-4', 'addr', 'show', 'wlan0')
+            match = re.search(r'\binet ([0-9.]+)/', addresses)
+            if match and not IPv4Address(match[1]).is_loopback:
+                endpoint = f'{IPv4Address(match[1])}:{int(port)}'
+                config['endpoint'] = endpoint
+        except (SystemExit, ValueError):
+            pass
+    if endpoint not in ready:
+        try:
+            adb('connect', endpoint)
+            devices = [line.split() for line in adb('devices', '-l').splitlines()[1:] if line.strip()]
+            ready = {row[0]: row for row in devices if len(row) > 1 and row[1] == 'device'}
+        except SystemExit:
+            pass
+    for serial in (endpoint, physical):
+        if serial not in ready:
+            continue
+        try:
+            identity = adb('-s', serial, 'shell', 'getprop', 'ro.serialno')
+        except SystemExit:
+            continue
+        if identity == physical:
+            return choose_phone([ready[serial]], {'serial': serial})
+    raise SystemExit('The configured tablet is unavailable. Keep its Wi-Fi/VPN active or reconnect its USB cable.')
 
 
 def main():
@@ -62,13 +117,25 @@ def main():
         return
 
     devices = [line.split() for line in adb("devices", "-l").splitlines()[1:] if line.strip()]
-    serial, model = choose_phone(devices, state, args.model)
+    tablet_file = private / 'tablet-wireless.json'
+    tablet = json.loads(tablet_file.read_text()) if tablet_file.exists() else None
+    recovery = tablet and not args.model and tablet.get('model') == state.get('model')
+    if recovery:
+        serial, model = recover_tablet(devices, tablet)
+        save_private(tablet_file, tablet)
+    else:
+        serial, model = choose_phone(devices, state, args.model)
     local, remote = f"tcp:{port}", f"tcp:{remote_port}"
     expected = [serial, local, remote]
     if state.get("owned"):
         previous = [state["serial"], f"tcp:{state['local_port']}", f"tcp:{state['remote_port']}"]
         if previous != expected and previous in forwards:
-            raise SystemExit("Stop the recorded bridge with --stop before choosing another device or port.")
+            if not recovery:
+                raise SystemExit("Stop the recorded bridge with --stop before choosing another device or port.")
+            # Identity was checked above. Remove only this launcher's recorded
+            # forward when switching transports on that same physical device.
+            adb('-s', state['serial'], 'forward', '--remove', previous[1])
+            forwards.remove(previous)
     owners = [row for row in forwards if len(row) == 3 and row[1] == local]
     if owners and owners != [expected]:
         raise SystemExit("That local port belongs to another USB forward. Choose another --port.")
@@ -80,9 +147,8 @@ def main():
     os.umask(0o077)
     private.mkdir(mode=0o700, exist_ok=True)
     private.chmod(0o700)
-    state_file.write_text(json.dumps({"serial": serial, "model": model, "local_port": port,
-                                     "remote_port": remote_port, "owned": owned}) + "\n")
-    state_file.chmod(0o600)
+    save_private(state_file, {"serial": serial, "model": model, "local_port": port,
+                             "remote_port": remote_port, "owned": owned})
     try:
         with socket.create_connection(("127.0.0.1", port), timeout=3) as connection:
             connection.settimeout(3)
@@ -95,9 +161,10 @@ def main():
         else:
             message = "USB forwarding is prepared, but the phone proxy is not responding. Keep the configured phone and its VPN connected, then retry."
         raise SystemExit(message) from None
-    print(f"USB SOCKS5 bridge is responding on the configured phone ({model}).")
+    transport = 'Wi-Fi' if ':' in serial else 'USB'
+    print(f"{transport} SOCKS5 bridge is responding on the configured device ({model}).")
     print(f"Private server proxy setting: socks5h://127.0.0.1:{port}")
-    print("The phone must stay connected. VPN routing still needs an endpoint test.")
+    print("Automatic recovery remains pinned to the configured device. Keep its VPN active.")
 
 
 if __name__ == "__main__":
