@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f8f5ee">
+  <title>סיור במערכת · Sophia Digital</title>
+<link rel="manifest" href="studio.webmanifest"><link rel="apple-touch-icon" href="assets/touch-icon.png"><meta name="apple-mobile-web-app-title" content="SOPHIA">
+  <link rel="preload" as="font" href="assets/heebo-hebrew.woff2" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="presentation.css">
+  <script defer src="sophia.js"></script><script defer src="presentation.js"></script>
+
+<!-- social preview -->
+<meta name="description" content="סיור אינטראקטיבי מהבחירה בתוכנית לאימון הראשון ולסטודיו שבו סופיה מנהלת את התוכן.">
+<meta name="robots" content="noindex, noarchive">
+<meta property="og:site_name" content="SOPHIA DIGITAL">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="he_IL">
+<meta property="og:title" content="סיור בסטודיו של סופיה · SOPHIA DIGITAL">
+<meta property="og:description" content="סיור אינטראקטיבי מהבחירה בתוכנית לאימון הראשון ולסטודיו שבו סופיה מנהלת את התוכן.">
+<meta property="og:image" content="https://carservicspronetcoil.org/sophia/assets/share-studio.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="סטודיו האימונים של סופיה, מתאמנת באור הבוקר והלוגו של Sophia Digital">
+<meta property="og:url" content="https://carservicspronetcoil.org/sophia/presentation.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.png">
+<!-- end social preview -->
+</head>
+<body>
+  <a class="skip" href="#showroom">דילוג להצגה</a>
+  <header class="mast"><div class="mast-inner"><a href="index.html" aria-label="Sophia Digital, לדף הבית"><img src="assets/logo.png" alt="Sophia Digital" width="140" height="47"></a><span class="mast-divider"></span><span class="mast-title">סיור במערכת</span><a class="exit" href="index.html">לאתר הראשי <span aria-hidden="true">←</span></a></div></header>
+  <main id="showroom">
+    <section class="intro"><div><span class="eyebrow" lang="en" dir="ltr">SOPHIA DIGITAL <i></i> GUIDED TOUR</span><h1>סיור במערכת של סופיה<span>.</span></h1><p>עקבי אחרי תוכנית אחת, מהבחירה באתר ועד לרשומת הרכישה בסטודיו.</p></div><span class="edition">הדגמה מקומית · ללא חיוב</span></section>
+    <nav class="steps" aria-label="שלבי הסיור">
+      <a href="#website" data-step="website"><b dir="ltr">01</b><span>אתר המכירות</span></a>
+      <a href="#workout" data-step="workout"><b dir="ltr">02</b><span>האימון שלי</span></a>
+      <a href="#studio" data-step="studio"><b dir="ltr">03</b><span>הסטודיו של סופיה</span></a>
+    </nav>
+    <div class="stage">
+      <section class="guide" aria-labelledby="guide-heading"><div class="guide-head"><span class="eyebrow" id="scene-num"></span><h2 id="guide-heading" tabindex="-1"></h2><p id="direction"></p></div>
+        <div class="order-form"><label for="program">התוכנית שמלווה את הסיור</label><select id="program"></select></div>
+        <dl class="facts" id="facts"></dl>
+        <button class="primary" type="button" id="create">יצירת רכישת הדגמה <span aria-hidden="true">←</span></button>
+        <p class="status" id="status" role="status" aria-live="polite"></p>
+        <a class="next" id="next" href="#workout"></a>
+      </section>
+      <section class="preview" aria-label="המסך הפעיל">
+        <header class="preview-head"><div class="screen-label"><span></span><b id="screen-title"></b></div>
+          <div class="preview-actions"><div class="sizes" aria-label="רוחב התצוגה"><button id="wide" type="button" title="רוחב מלא" aria-label="רוחב מלא" aria-pressed="true"><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="2.5" y="4" width="19" height="13" rx="2"/><path d="M8 21h8m-4-4v4"/></svg></button><button id="phone" type="button" title="רוחב טלפון" aria-label="רוחב טלפון" aria-pressed="false"><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M10 18h4"/></svg></button></div><a id="open" class="open" target="_blank" rel="noopener"><b id="open-label">פתיחה במסך מלא</b> <span aria-hidden="true">↗</span></a></div>
+        </header>
+        <div class="viewport" id="viewport"><iframe id="frame" title="תצוגה פעילה" referrerpolicy="same-origin" allowfullscreen></iframe></div>
+        <div class="compact"><p id="compact-hint">בטלפון אפשר לפתוח את המסך המלא בכרטיסייה נפרדת ולחזור לכאן להמשך הסיור.</p></div>
+      </section>
+    </div>
+    <noscript><p>יש להפעיל JavaScript כדי להשתמש בסיור המודרך.</p></noscript>
+  </main>
+</body>
+</html>

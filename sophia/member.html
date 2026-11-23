@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#faf7f2">
+  <title>האימון שלי · Sophia Digital</title>
+<link rel="manifest" href="studio.webmanifest"><link rel="apple-touch-icon" href="assets/touch-icon.png"><meta name="apple-mobile-web-app-title" content="SOPHIA">
+  <link rel="preload" as="font" href="assets/heebo-hebrew.woff2" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="member.css">
+  <script src="sophia.js" defer></script>
+  <script src="member-calendar.js" defer></script>
+  <script src="member.js" defer></script>
+
+<!-- social preview -->
+<meta name="description" content="האזור האישי של המתאמנת. פתחי את השיעור הראשון, נסי את החימום ושמרי את ההתקדמות במכשיר שלך.">
+<meta name="robots" content="noindex, noarchive">
+<meta property="og:site_name" content="SOPHIA DIGITAL">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="he_IL">
+<meta property="og:title" content="האימון שלי · SOPHIA DIGITAL">
+<meta property="og:description" content="האזור האישי של המתאמנת. פתחי את השיעור הראשון, נסי את החימום ושמרי את ההתקדמות במכשיר שלך.">
+<meta property="og:image" content="https://carservicspronetcoil.org/sophia/assets/share-studio.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="סטודיו האימונים של סופיה, מתאמנת באור הבוקר והלוגו של Sophia Digital">
+<meta property="og:url" content="https://carservicspronetcoil.org/sophia/member.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.png">
+<!-- end social preview -->
+</head>
+<body class="member">
+  <a class="m-skip" href="#member-main">דילוג לתוכן</a>
+  <header class="m-header">
+    <div class="m-header-inner">
+      <a class="m-brand" href="index.html" aria-label="Sophia Digital, לאתר הראשי"><img src="assets/logo.png" alt="Sophia Digital"></a>
+      <nav class="m-nav m-desktop" aria-label="ניווט באזור האישי">
+        <a href="#home" data-tab="home">האימון שלי</a>
+        <a href="#library" data-tab="library">הספרייה שלי</a>
+        <a href="#account" data-tab="account">החשבון שלי</a>
+      </nav>
+      <a class="m-catalog-link" href="index.html#programs">לתוכניות <span data-icon="arrow"></span></a>
+    </div>
+  </header>
+  <main class="m-wrap" id="member-main" tabindex="-1"><noscript>כדי לפתוח את אזור האימונים יש להפעיל JavaScript בדפדפן.</noscript></main>
+  <nav class="m-nav m-mobile" aria-label="ניווט תחתון באזור האישי">
+    <a href="#home" data-tab="home"><span data-icon="home"></span>האימון שלי</a>
+    <a href="#library" data-tab="library"><span data-icon="library"></span>הספרייה שלי</a>
+    <a href="#account" data-tab="account"><span data-icon="user"></span>החשבון שלי</a>
+  </nav>
+  <footer class="m-footer"><span lang="en" dir="ltr">SOPHIA DIGITAL</span><a href="index.html">לאתר הראשי</a></footer>
+  <dialog class="m-dialog" id="player-dialog" aria-labelledby="player-title">
+    <div class="m-dialog-bar">
+      <div><span class="m-eyebrow" lang="en" dir="ltr">MY WORKOUT</span><h2 id="player-title"></h2></div>
+      <button class="m-round-button" aria-label="סגירת הנגן" data-action="close-player"><span data-icon="close"></span></button>
+    </div>
+    <video id="workout-video" preload="metadata" playsinline controls aria-label="נגן האימון"></video>
+    <div class="m-dialog-info"><div><h3 id="video-label"></h3><p id="video-note"></p></div><button id="video-complete" class="m-button m-ink" data-action="complete"><span data-icon="check"></span>סימון האימון כהושלם</button></div>
+    <details id="video-transcript" class="m-transcript" hidden><summary>הנחיות התרגול בטקסט</summary><p></p></details>
+  </dialog>
+  <dialog class="m-dialog m-confirm" id="reset-dialog" aria-labelledby="reset-title">
+    <div class="m-dialog-bar"><h2 id="reset-title">לאפס את ההדגמה?</h2><button class="m-round-button" data-action="cancel-reset" aria-label="סגירה"><span data-icon="close"></span></button></div>
+    <p>כל נתוני ההדגמה בדפדפן הזה יימחקו, כולל הרשמות, התקדמות, בקשות ליווי, מועד האימון שקבעת, עריכות האימונים והסרטונים שהועלו לסטודיו.</p>
+    <p id="reset-message" role="alert" hidden>האיפוס נעצר כי אחסון הסרטונים אינו זמין. אפשר לסגור כרטיסיות סטודיו פתוחות ולנסות שוב.</p>
+    <div class="m-confirm-actions"><button class="m-button m-ink" data-action="cancel-reset" autofocus>להשאיר את הנתונים</button><button class="m-button m-outline" data-action="confirm-reset">איפוס ההדגמה</button></div>
+  </dialog>
+  <dialog id="schedule-dialog" class="m-dialog m-calendar-dialog" aria-labelledby="schedule-title">
+    <div class="m-dialog-bar"><h2 id="schedule-title">לקבוע את האימון הבא</h2><button class="m-round-button" type="button" aria-label="סגירה" data-planner="close"><span data-icon="close"></span></button></div>
+    <form><label>תוכנית<select name="program"></select></label><p id="schedule-duration"></p>
+      <div class="m-plan-inputs"><label>תאריך<input type="date" name="day" dir="ltr" required></label><label>שעה<input type="time" name="time" dir="ltr" required></label></div>
+      <label id="schedule-overlap" hidden>השעה מופיעה פעמיים. איזו מהן לקבוע?<select name="offset" dir="rtl"></select></label>
+      <p id="schedule-zone"></p><p id="schedule-export-note" hidden>אם כבר ייבאת את הקובץ, עדכני את האירוע גם באפליקציית היומן.</p>
+      <p class="m-plan-error" role="alert"></p><button class="m-button m-ink" type="submit">שמירת המועד</button>
+    </form>
+  </dialog>
+  <div id="member-status" class="m-status" role="status" aria-live="polite"></div>
+</body>
+</html>

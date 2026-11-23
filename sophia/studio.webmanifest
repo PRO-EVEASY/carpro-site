@@ -1,0 +1,20 @@
+{
+  "id": "./",
+  "name": "SOPHIA DIGITAL · סטודיו האימונים",
+  "short_name": "SOPHIA",
+  "lang": "he",
+  "dir": "rtl",
+  "start_url": "./member.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#faf7f2",
+  "theme_color": "#172b43",
+  "icons": [
+    { "src": "assets/app-icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "assets/app-icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ],
+  "shortcuts": [
+    { "name": "תוכניות האימון", "url": "./index.html#programs" },
+    { "name": "הספרייה שלי", "url": "./member.html#library" }
+  ]
+}

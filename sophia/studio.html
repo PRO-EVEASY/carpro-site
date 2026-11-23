@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#faf7f2">
+  <title>Sophia Studio · ניהול הסטודיו</title>
+<link rel="manifest" href="studio.webmanifest"><link rel="apple-touch-icon" href="assets/touch-icon.png"><meta name="apple-mobile-web-app-title" content="SOPHIA">
+  <link rel="preload" as="font" href="assets/heebo-hebrew.woff2" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="fonts.css">
+  <link rel="stylesheet" href="studio.css">
+  <script defer src="sophia.js"></script>
+  <script defer src="studio.js"></script>
+
+<!-- social preview -->
+<meta name="description" content="מבט מתוך הסטודיו. התנסי בניהול תוכניות, שיעורי וידאו וגישה למתאמנות, עם נתוני הדגמה מקומיים.">
+<meta name="robots" content="noindex, noarchive">
+<meta property="og:site_name" content="SOPHIA DIGITAL">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="he_IL">
+<meta property="og:title" content="הסטודיו של סופיה · SOPHIA DIGITAL">
+<meta property="og:description" content="מבט מתוך הסטודיו. התנסי בניהול תוכניות, שיעורי וידאו וגישה למתאמנות, עם נתוני הדגמה מקומיים.">
+<meta property="og:image" content="https://carservicspronetcoil.org/sophia/assets/share-studio.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="סטודיו האימונים של סופיה, מתאמנת באור הבוקר והלוגו של Sophia Digital">
+<meta property="og:url" content="https://carservicspronetcoil.org/sophia/studio.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.png">
+<!-- end social preview -->
+</head>
+<body>
+  <a class="skip" href="#main">דילוג לתוכן</a>
+  <div class="shell">
+    <aside class="sidebar">
+      <a href="index.html" class="brand" aria-label="Sophia Digital, לאתר הראשי">
+        <img src="assets/logo.png" alt="Sophia Digital" width="134" height="61">
+      </a>
+      <nav aria-label="ניווט הסטודיו" class="main-nav">
+        <a href="#overview" data-view="overview"><i data-icon="grid"></i><span>סקירת הסטודיו</span></a>
+        <a href="#programs" data-view="programs"><i data-icon="layers"></i><span>תוכניות ואימונים</span></a>
+        <a href="#library" data-view="library"><i data-icon="video"></i><span>ספריית וידאו</span></a>
+        <a href="#customers" data-view="customers"><i data-icon="users"></i><span>רכישות והרשאות</span></a>
+      </nav>
+      <nav class="other-nav" aria-label="קישורים לאתר">
+        <a href="member.html"><i data-icon="user"></i><span>לאזור המתאמנות</span></a>
+        <a href="index.html"><i data-icon="external"></i><span>לאתר המכירות</span></a>
+      </nav>
+    </aside>
+    <div class="workspace">
+      <header class="topbar">
+        <div lang="en" dir="ltr" class="studio-mark">Sophia <em>Studio</em></div>
+        <div class="profile"><span class="demo"><b></b> מצב הדגמה</span><span class="avatar" aria-label="סופיה">S</span></div>
+      </header>
+      <main id="main" tabindex="-1"></main>
+      <footer><span lang="en" dir="ltr">Sophia Studio</span><span>השינויים בהדגמה נשמרים בדפדפן הזה</span></footer>
+    </div>
+  </div>
+  <dialog id="dialog" aria-labelledby="dialog-title">
+    <div class="dialog-head"><h2 id="dialog-title"></h2><button type="button" class="icon-button" aria-label="סגירה" data-action="close"><i data-icon="close"></i></button></div>
+    <div id="dialog-body"></div>
+  </dialog>
+  <div id="notice" role="status" aria-live="polite"></div>
+</body>
+</html>
